@@ -1,14 +1,14 @@
 {
-    "id": "2116",
-    "date": "2026-08-10 15:32:00",
+    "id": "2117",
+    "date": "2026-08-11 07:21:00",
     "chitiet": [
         {
             "idloaivang": [
                 "10"
             ],
             "loaivang": "Nhẫn 999.9",
-            "giaban": "13550000",
-            "giamua": "13150000",
+            "giaban": "13700000",
+            "giamua": "13300000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -17,8 +17,8 @@
                 "60"
             ],
             "loaivang": "Vàng Ta 999.9",
-            "giaban": "13550000",
-            "giamua": "13150000",
+            "giaban": "13700000",
+            "giamua": "13300000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -27,8 +27,8 @@
                 "4"
             ],
             "loaivang": "Vàng Ta 990",
-            "giaban": "13400000",
-            "giamua": "13000000",
+            "giaban": "13500000",
+            "giamua": "13100000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -37,8 +37,8 @@
                 "1"
             ],
             "loaivang": "Vàng 18K 750",
-            "giaban": "10222000",
-            "giamua": "9672000",
+            "giaban": "10283000",
+            "giamua": "9733000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -47,8 +47,8 @@
                 "46"
             ],
             "loaivang": "Vàng Trắng AU750",
-            "giaban": "10222000",
-            "giamua": "9672000",
+            "giaban": "10283000",
+            "giamua": "9733000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
