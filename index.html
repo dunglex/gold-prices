@@ -553,8 +553,8 @@
                     <thead>
                         <tr>
                             <th>Mã</th>
-                            <th>Tên sản phẩm</th>
                             <th>Loại</th>
+                            <th>Tên sản phẩm</th>
                             <th class="price-cell">Giá hiện tại</th>
                             <th class="price-cell">Thay đổi 6 tháng</th>
                             <th class="price-cell">Thay đổi hôm nay</th>
@@ -575,8 +575,8 @@
                     <thead>
                         <tr>
                             <th>Mã</th>
-                            <th>Tên sản phẩm</th>
                             <th>Loại</th>
+                            <th>Tên sản phẩm</th>
                             <th class="price-cell">Mua vào</th>
                             <th class="price-cell">Bán ra</th>
                             <th class="price-cell">Chênh lệch</th>
@@ -598,8 +598,8 @@
                     <thead>
                         <tr>
                             <th>Mã</th>
-                            <th>Tên sản phẩm</th>
                             <th>Loại</th>
+                            <th>Tên sản phẩm</th>
                             <th class="price-cell">Mua vào</th>
                             <th class="price-cell">Bán ra</th>
                             <th class="price-cell">Chênh lệch</th>
@@ -619,8 +619,8 @@
                     <thead>
                         <tr>
                             <th>Mã</th>
-                            <th>Tên sản phẩm</th>
                             <th>Loại</th>
+                            <th>Tên sản phẩm</th>
                             <th class="price-cell">Mua vào</th>
                             <th class="price-cell">Bán ra</th>
                             <th class="price-cell">Chênh lệch</th>
@@ -641,8 +641,8 @@
                     <thead>
                         <tr>
                             <th>Mã</th>
-                            <th>Tên sản phẩm</th>
                             <th>Loại</th>
+                            <th>Tên sản phẩm</th>
                             <th class="price-cell">Mua vào</th>
                             <th class="price-cell">Bán ra</th>
                             <th class="price-cell">Chênh lệch</th>
@@ -662,8 +662,8 @@
                     <thead>
                         <tr>
                             <th>Mã</th>
-                            <th>Tên sản phẩm</th>
                             <th>Loại</th>
+                            <th>Tên sản phẩm</th>
                             <th class="price-cell">Mua vào</th>
                             <th class="price-cell">Bán ra</th>
                             <th class="price-cell">Chênh lệch</th>
@@ -752,8 +752,8 @@
                 return `
                     <tr>
                         <td class="material-code">${escapeHtml(data.curr)}</td>
-                        <td class="material-name">${escapeHtml(row.label)}</td>
                         <td><span class="type-badge ${row.type}">${row.label === 'Vàng' ? 'Vàng' : 'Bạc'}</span></td>
+                        <td class="material-name">${escapeHtml(row.label)}</td>
                         <td class="price-cell">${formatNumber(row.price)}</td>
                         <td class="price-cell" style="color: ${chgColor}">${chgText}</td>
                         <td class="price-cell" style="color: ${pcColor}">${pcText}</td>
@@ -794,8 +794,8 @@
                 return `
                     <tr>
                         <td class="material-code">${escapeHtml(code)}</td>
-                        <td class="material-name">${escapeHtml(name)}</td>
                         <td><span class="type-badge gold">Vàng</span></td>
+                        <td class="material-name">${escapeHtml(name)}</td>
                         <td class="price-cell price-buy">${formatNumber(buy)}</td>
                         <td class="price-cell price-sell">${formatNumber(sell)}</td>
                         <td class="price-cell price-range">${diff !== null ? formatNumber(diff) : ''}<span class="price-range-percent">${diff !== null && '(' + buy +')' ? '(' + ((diff / buy) * 100).toFixed(2) + '%)' : ''}</span></td>
@@ -833,8 +833,8 @@
                 return `
                     <tr class="${statusClass}">
                         <td class="material-code">${code}</td>
-                        <td class="material-name">${escapeHtml(name)}</td>
                         <td><span class="type-badge ${typeBadge}">${typeLabel}</span></td>
+                        <td class="material-name">${escapeHtml(name)}</td>
                         <td class="price-cell price-buy">${formatNumber(buy)}</td>
                         <td class="price-cell price-sell">${formatNumber(sell)}</td>
                         <td class="price-cell price-range">${diff !== null ? formatNumber(diff) : '-'}<span class="price-range-percent">${diff !== null && '(' + buy + ')' ? '(' + ((diff / buy) * 100).toFixed(2) + '%)' : ''}</span></td>
@@ -871,8 +871,8 @@
                 return `
                     <tr>
                         <td class="material-code">${escapeHtml(code)}</td>
-                        <td class="material-name">${escapeHtml(name)}</td>
                         <td><span class="type-badge ${typeBadge}">${typeLabel}</span></td>
+                        <td class="material-name">${escapeHtml(name)}</td>
                         <td class="price-cell price-buy">${formatNumber(buy)}</td>
                         <td class="price-cell price-sell">${formatNumber(sell)}</td>
                         <td class="price-cell price-range">${diff !== null ? formatNumber(diff) : '-'}<span class="price-range-percent">${diff !== null && '(' + buy + ')' ? '(' + ((diff / buy) * 100).toFixed(2) + '%)' : ''}</span></td>
@@ -908,8 +908,8 @@
                 return `
                     <tr>
                         <td class="material-code">${escapeHtml(code)}</td>
-                        <td class="material-name">${escapeHtml(name)}</td>
                         <td><span class="type-badge ${typeBadge}">${typeLabel}</span></td>
+                        <td class="material-name">${escapeHtml(name)}</td>
                         <td class="price-cell price-buy">${formatNumber(buy)}</td>
                         <td class="price-cell price-sell">${formatNumber(sell)}</td>
                         <td class="price-cell price-range">${diff !== null ? formatNumber(diff) : ''}<span class="price-range-percent">${diff !== null && '(' + buy + ')' ? '(' + ((diff / buy) * 100).toFixed(2) + '%)' : ''}</span></td>
@@ -940,8 +940,8 @@
                 return `
                     <tr>
                         <td class="material-code">${escapeHtml(code)}</td>
-                        <td class="material-name">${escapeHtml(name)}</td>
                         <td><span class="type-badge gold">Vàng</span></td>
+                        <td class="material-name">${escapeHtml(name)}</td>
                         <td class="price-cell price-buy">${formatNumber(buy)}</td>
                         <td class="price-cell price-sell">${formatNumber(sell)}</td>
                         <td class="price-cell price-range">${diff !== null ? formatNumber(diff) : '-'}<span class="price-range-percent">${diff !== null && '(' + buy + ')' ? '(' + ((diff / buy) * 100).toFixed(2) + '%)' : ''}</span></td>
