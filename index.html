@@ -128,7 +128,13 @@
         tbody tr:hover {
             background-color: #fffef0;
         }
-
+        
+        .no-scrollbar {
+            overflow-x: hidden;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
         @media (hover: hover) {
             tbody tr:hover {
                 transform: scale(1.01);
@@ -543,7 +549,7 @@
         <div class="source-section" id="goldpriceSection">
             <div class="source-title"><span class="badge">1</span> <strong>Goldprices.org</strong></div>
             <div class="table-wrapper">
-                <table id="goldpriceTable">
+                <table id="goldpriceTable" class="no-scrollbar">
                     <thead>
                         <tr>
                             <th>Mã</th>
@@ -565,7 +571,7 @@
         <div class="source-section" id="mihongSection">
             <div class="source-title"><span class="badge">2</span> <strong>MI HỒNG</strong></div>
             <div class="table-wrapper">
-                <table id="mihongTable">
+                <table id="mihongTable" class="no-scrollbar">
                     <thead>
                         <tr>
                             <th>Mã</th>
@@ -588,7 +594,7 @@
         <div class="source-section" id="dojiSection">
             <div class="source-title"><span class="badge">3</span> <strong>DOJI</strong></div>
             <div class="table-wrapper">
-                <table id="dojiTable">
+                <table id="dojiTable" class="no-scrollbar">
                     <thead>
                         <tr>
                             <th>Mã</th>
@@ -609,7 +615,7 @@
         <div class="source-section" id="phuquySection">
             <div class="source-title"><span class="badge">4</span> <strong>PHÚ QUÝ</strong></div>
             <div class="table-wrapper">
-                <table id="phuquyTable">
+                <table id="phuquyTable" class="no-scrollbar">
                     <thead>
                         <tr>
                             <th>Mã</th>
@@ -631,7 +637,7 @@
         <div class="source-section" id="baotinManhhaiSection">
             <div class="source-title"><span class="badge">5</span> <strong>BẢO TÍN MẠNH HẢI</strong></div>
             <div class="table-wrapper">
-                <table id="baotinManhhaiTable">
+                <table id="baotinManhhaiTable" class="no-scrollbar">
                     <thead>
                         <tr>
                             <th>Mã</th>
@@ -652,7 +658,7 @@
         <div class="source-section" id="ngocthamSection">
             <div class="source-title"><span class="badge">6</span> <strong>NGỌC THẨM</strong></div>
             <div class="table-wrapper">
-                <table id="ngocthamTable">
+                <table id="ngocthamTable" class="no-scrollbar">
                     <thead>
                         <tr>
                             <th>Mã</th>
