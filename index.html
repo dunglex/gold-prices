@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="vi" translate="no">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#667eea">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
-    <meta name="description" content="Theo dõi giá vàng và bạc liên tục từ nhiều nguồn uy tín một cách nhanh chóng và chính xác.">
-    <title>Xem Giá Vàng - Gold Price Tracker</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" href="/favicon.png">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+		<meta name="theme-color" content="#667eea">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="google" content="notranslate">
+		<meta name="description" content="Theo dõi giá vàng và bạc liên tục từ nhiều nguồn uy tín một cách nhanh chóng và chính xác.">
+		<title>Xem Giá Vàng - Gold Price Tracker</title>
+		<link rel="icon" type="image/x-icon" href="/favicon.ico">
+		<link rel="icon" type="image/png" href="/favicon.png">
     <style>
         * {
             margin: 0;
@@ -264,6 +264,21 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            cursor: pointer;
+            font: inherit;
+            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .stat-card:hover,
+        .stat-card:focus-visible {
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+            transform: translateY(-4px);
+        }
+
+        .stat-card:focus-visible {
+            outline: 3px solid #fff;
+            outline-offset: 3px;
         }
 
         .stat-card .stat-value {
@@ -524,8 +539,45 @@
             color: white;
             text-decoration: none;
         }
+
+        .back-to-top {
+            position: fixed;
+            right: clamp(12px, 3vw, 24px);
+            bottom: clamp(12px, 3vw, 24px);
+            width: 46px;
+            height: 46px;
+            border: 2px solid white;
+            border-radius: 50%;
+            background: #667eea;
+            color: white;
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.22);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease, visibility 0.2s;
+            z-index: 20;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover,
+        .back-to-top:focus-visible {
+            background: #764ba2;
+            transform: translateY(-3px);
+        }
+
+        .back-to-top:focus-visible {
+            outline: 3px solid white;
+            outline-offset: 3px;
+        }
     </style>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGYDT2S6GH"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -533,151 +585,153 @@
       gtag('js', new Date());
       gtag('config', 'G-GGYDT2S6GH');
     </script>
-</head>
-<body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    <main class="container" id="main-content">
-        <header class="header">
-            <h1>💰 XEM GIÁ VÀNG</h1>
-            <p>Cập nhật giá vàng liên tục từ nhiều nguồn uy tín</p>
-            <div class="update-time" id="updateTime">&nbsp;</div>
-        </header>
+	</head>
+	<body>
+		<a href="#main-content" class="skip-link">Skip to main content</a>
+		<main class="container" id="main-content">
+			<header class="header">
+				<h1>💰 XEM GIÁ VÀNG</h1>
+				<p>Cập nhật giá vàng liên tục từ nhiều nguồn uy tín</p>
+				<div class="update-time" id="updateTime">&nbsp;</div>
+			</header>
 
-        <div class="stats" id="statsContainer"></div>
+			<div class="stats" id="statsContainer"></div>
 
-        <!-- GOLDPRICE SECTION -->
-        <div class="source-section" id="goldpriceSection">
-            <div class="source-title"><span class="badge">1</span> <strong>Goldprices.org</strong></div>
-            <div class="table-wrapper no-scrollbar">
-                <table id="goldpriceTable">
-                    <thead>
-                        <tr>
-                            <th>Mã</th>
-                            <th>Loại</th>
-                            <th>Tên sản phẩm</th>
-                            <th class="price-cell">Giá hiện tại</th>
-                            <th class="price-cell">Thay đổi 6 tháng</th>
-                            <th class="price-cell">Thay đổi hôm nay</th>
-                            <th class="price-cell">Giá đóng cửa</th>
-                        </tr>
-                    </thead>
-                    <tbody id="goldpriceBody">
-                    </tbody>
-                </table>
-            </div>
-        </div>
+			<!-- GOLDPRICE SECTION -->
+			<div class="source-section" id="goldpriceSection">
+				<div class="source-title"><span class="badge">1</span> <strong>Goldprices.org</strong></div>
+				<div class="table-wrapper no-scrollbar">
+					<table id="goldpriceTable">
+						<thead>
+							<tr>
+								<th>Mã</th>
+								<th>Loại</th>
+								<th>Tên sản phẩm</th>
+								<th class="price-cell">Giá hiện tại</th>
+								<th class="price-cell">Thay đổi 6 tháng</th>
+								<th class="price-cell">Thay đổi hôm nay</th>
+								<th class="price-cell">Giá đóng cửa</th>
+							</tr>
+						</thead>
+						<tbody id="goldpriceBody">
+						</tbody>
+					</table>
+				</div>
+			</div>
 
-        <!-- MIHONG SECTION -->
-        <div class="source-section" id="mihongSection">
-            <div class="source-title"><span class="badge">2</span> <strong>MI HỒNG</strong></div>
-            <div class="table-wrapper no-scrollbar">
-                <table id="mihongTable">
-                    <thead>
-                        <tr>
-                            <th>Mã</th>
-                            <th>Loại</th>
-                            <th>Tên sản phẩm</th>
-                            <th class="price-cell">Mua vào</th>
-                            <th class="price-cell">Bán ra</th>
-                            <th class="price-cell">Chênh lệch</th>
-                            <th class="price-cell">Thay đổi Mua</th>
-                            <th class="price-cell">Thay đổi Bán</th>
-                        </tr>
-                    </thead>
-                    <tbody id="mihongBody">
-                    </tbody>
-                </table>
-            </div>
-        </div>
+			<!-- MIHONG SECTION -->
+			<div class="source-section" id="mihongSection">
+				<div class="source-title"><span class="badge">2</span> <strong>MI HỒNG</strong></div>
+				<div class="table-wrapper no-scrollbar">
+					<table id="mihongTable">
+						<thead>
+							<tr>
+								<th>Mã</th>
+								<th>Loại</th>
+								<th>Tên sản phẩm</th>
+								<th class="price-cell">Mua vào</th>
+								<th class="price-cell">Bán ra</th>
+								<th class="price-cell">Chênh lệch</th>
+								<th class="price-cell">Thay đổi Mua</th>
+								<th class="price-cell">Thay đổi Bán</th>
+							</tr>
+						</thead>
+						<tbody id="mihongBody">
+						</tbody>
+					</table>
+				</div>
+			</div>
 
-        <!-- DOJI SECTION -->
-        <div class="source-section" id="dojiSection">
-            <div class="source-title"><span class="badge">3</span> <strong>DOJI</strong></div>
-            <div class="table-wrapper no-scrollbar">
-                <table id="dojiTable">
-                    <thead>
-                        <tr>
-                            <th>Mã</th>
-                            <th>Loại</th>
-                            <th>Tên sản phẩm</th>
-                            <th class="price-cell">Mua vào</th>
-                            <th class="price-cell">Bán ra</th>
-                            <th class="price-cell">Chênh lệch</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dojiBody">
-                    </tbody>
-                </table>
-            </div>
-        </div>
+			<!-- DOJI SECTION -->
+			<div class="source-section" id="dojiSection">
+				<div class="source-title"><span class="badge">3</span> <strong>DOJI</strong></div>
+				<div class="table-wrapper no-scrollbar">
+					<table id="dojiTable">
+						<thead>
+							<tr>
+								<th>Mã</th>
+								<th>Loại</th>
+								<th>Tên sản phẩm</th>
+								<th class="price-cell">Mua vào</th>
+								<th class="price-cell">Bán ra</th>
+								<th class="price-cell">Chênh lệch</th>
+							</tr>
+						</thead>
+						<tbody id="dojiBody">
+						</tbody>
+					</table>
+				</div>
+			</div>
 
-        <!-- PHUQUY SECTION -->
-        <div class="source-section" id="phuquySection">
-            <div class="source-title"><span class="badge">4</span> <strong>PHÚ QUÝ</strong></div>
-            <div class="table-wrapper no-scrollbar">
-                <table id="phuquyTable">
-                    <thead>
-                        <tr>
-                            <th>Mã</th>
-                            <th>Loại</th>
-                            <th>Tên sản phẩm</th>
-                            <th class="price-cell">Mua vào</th>
-                            <th class="price-cell">Bán ra</th>
-                            <th class="price-cell">Chênh lệch</th>
-                            <th class="price-cell">Thay đổi (%)</th>
-                        </tr>
-                    </thead>
-                    <tbody id="phuquyBody">
-                    </tbody>
-                </table>
-            </div>
-        </div>
+			<!-- PHUQUY SECTION -->
+			<div class="source-section" id="phuquySection">
+				<div class="source-title"><span class="badge">4</span> <strong>PHÚ QUÝ</strong></div>
+				<div class="table-wrapper no-scrollbar">
+					<table id="phuquyTable">
+						<thead>
+							<tr>
+								<th>Mã</th>
+								<th>Loại</th>
+								<th>Tên sản phẩm</th>
+								<th class="price-cell">Mua vào</th>
+								<th class="price-cell">Bán ra</th>
+								<th class="price-cell">Chênh lệch</th>
+								<th class="price-cell">Thay đổi (%)</th>
+							</tr>
+						</thead>
+						<tbody id="phuquyBody">
+						</tbody>
+					</table>
+				</div>
+			</div>
 
-        <!-- BAOTINMANHHAI SECTION -->
-        <div class="source-section" id="baotinManhhaiSection">
-            <div class="source-title"><span class="badge">5</span> <strong>BẢO TÍN MẠNH HẢI</strong></div>
-            <div class="table-wrapper no-scrollbar">
-                <table id="baotinManhhaiTable">
-                    <thead>
-                        <tr>
-                            <th>Mã</th>
-                            <th>Loại</th>
-                            <th>Tên sản phẩm</th>
-                            <th class="price-cell">Mua vào</th>
-                            <th class="price-cell">Bán ra</th>
-                            <th class="price-cell">Chênh lệch</th>
-                        </tr>
-                    </thead>
-                    <tbody id="baotinManhhaiBody">
-                    </tbody>
-                </table>
-            </div>
-        </div>
+			<!-- BAOTINMANHHAI SECTION -->
+			<div class="source-section" id="baotinManhhaiSection">
+				<div class="source-title"><span class="badge">5</span> <strong>BẢO TÍN MẠNH HẢI</strong></div>
+				<div class="table-wrapper no-scrollbar">
+					<table id="baotinManhhaiTable">
+						<thead>
+							<tr>
+								<th>Mã</th>
+								<th>Loại</th>
+								<th>Tên sản phẩm</th>
+								<th class="price-cell">Mua vào</th>
+								<th class="price-cell">Bán ra</th>
+								<th class="price-cell">Chênh lệch</th>
+							</tr>
+						</thead>
+						<tbody id="baotinManhhaiBody">
+						</tbody>
+					</table>
+				</div>
+			</div>
 
-        <!-- NGOCTHAM SECTION -->
-        <div class="source-section" id="ngocthamSection">
-            <div class="source-title"><span class="badge">6</span> <strong>NGỌC THẨM</strong></div>
-            <div class="table-wrapper no-scrollbar">
-                <table id="ngocthamTable">
-                    <thead>
-                        <tr>
-                            <th>Mã</th>
-                            <th>Loại</th>
-                            <th>Tên sản phẩm</th>
-                            <th class="price-cell">Mua vào</th>
-                            <th class="price-cell">Bán ra</th>
-                            <th class="price-cell">Chênh lệch</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ngocthamBody">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </main>
+			<!-- NGOCTHAM SECTION -->
+			<div class="source-section" id="ngocthamSection">
+				<div class="source-title"><span class="badge">6</span> <strong>NGỌC THẨM</strong></div>
+				<div class="table-wrapper no-scrollbar">
+					<table id="ngocthamTable">
+						<thead>
+							<tr>
+								<th>Mã</th>
+								<th>Loại</th>
+								<th>Tên sản phẩm</th>
+								<th class="price-cell">Mua vào</th>
+								<th class="price-cell">Bán ra</th>
+								<th class="price-cell">Chênh lệch</th>
+							</tr>
+						</thead>
+						<tbody id="ngocthamBody">
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</main>
+
+        <button class="back-to-top" id="backToTop" type="button" aria-label="Về đầu trang" title="Về đầu trang" aria-hidden="true">&#8593;</button>
 
     <script>
-        // Load five sources and render them vertically in the order: goldprice, mihong, doji, phuquy, baotinmanhhai
+        // Load data sources and render them vertically in the order: goldprice, mihong, doji, phuquy, baotinmanhhai, ngoctham
         async function fetchJsonSafe(url) {
             try {
                 const resp = await fetch(url, {cache: 'no-store'});
@@ -962,36 +1016,41 @@
             const total = [goldpriceCount, mihongCount, dojiCount, phuquyCount, baotinManhhaiCount, ngocthamCount].reduce((a,b)=>a+b,0);
 
             const statsHtml = `
-                <div class="stat-card">
+                <button class="stat-card" type="button" data-target="goldpriceSection">
                     <div class="stat-value">${total}</div>
                     <p>Tất cả nguồn</p>
-                </div>
-                <div class="stat-card">
+                </button>
+                <button class="stat-card" type="button" data-target="goldpriceSection">
                     <div class="stat-value">${goldpriceCount}</div>
                     <p>GoldPrice</p>
-                </div>
-                <div class="stat-card">
+                </button>
+                <button class="stat-card" type="button" data-target="mihongSection">
                     <div class="stat-value">${mihongCount}</div>
                     <p>Mi Hồng</p>
-                </div>
-                <div class="stat-card">
+                </button>
+                <button class="stat-card" type="button" data-target="dojiSection">
                     <div class="stat-value">${dojiCount}</div>
                     <p>DOJI</p>
-                </div>
-                <div class="stat-card">
+                </button>
+                <button class="stat-card" type="button" data-target="phuquySection">
                     <div class="stat-value">${phuquyCount}</div>
                     <p>Phú Quý</p>
-                </div>
-                <div class="stat-card">
+                </button>
+                <button class="stat-card" type="button" data-target="baotinManhhaiSection">
                     <div class="stat-value">${baotinManhhaiCount}</div>
                     <p>Bảo Tín Mạnh Hải</p>
-                </div>
-                <div class="stat-card">
+                </button>
+                <button class="stat-card" type="button" data-target="ngocthamSection">
                     <div class="stat-value">${ngocthamCount}</div>
                     <p>Ngọc Thắm</p>
-                </div>
+                </button>
             `;
             document.getElementById('statsContainer').innerHTML = statsHtml;
+            document.querySelectorAll('.stat-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    document.getElementById(card.dataset.target).scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
         }
 
         async function loadAll() {
@@ -1075,7 +1134,21 @@
         window.addEventListener('DOMContentLoaded', () => {
             refreshLoop();
             setInterval(refreshLoop, 300000); // every 5 minutes
+
+            const backToTop = document.getElementById('backToTop');
+            const updateBackToTopVisibility = () => {
+                const isVisible = window.scrollY > 300;
+                backToTop.classList.toggle('visible', isVisible);
+                backToTop.setAttribute('aria-hidden', String(!isVisible));
+            };
+
+            window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                updateBackToTopVisibility();
+            });
+            updateBackToTopVisibility();
         });
     </script>
-</body>
+	</body>
 </html>
