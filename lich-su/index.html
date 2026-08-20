@@ -7,9 +7,6 @@
 		<meta name="google" content="notranslate">
 		<meta name="description" content="Biểu đồ lịch sử giá vàng thế giới theo năm và theo tháng.">
 		<title>Lịch sử giá vàng</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=DM+Serif+Display&amp;display=swap" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 		<script>
 			try {
@@ -24,6 +21,8 @@
 		</script>
 		<style>
 			:root {
+				--font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+				--font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 				--ink: #171a20;
 				--muted: #6c7078;
 				--paper: #f4f1ea;
@@ -52,7 +51,7 @@
 					var(--paper);
 				background-size: 28px 28px;
 				color: var(--ink);
-				font-family: "DM Sans", sans-serif;
+				font-family: var(--font-sans);
 			}
 
 			button,
@@ -121,7 +120,7 @@
 			}
 
 			h1 {
-				font-family: "DM Serif Display", serif;
+				font-family: var(--font-serif);
 				font-size: clamp(2.2rem, 6vw, 4.8rem);
 				font-weight: 400;
 				letter-spacing: 0;
@@ -240,7 +239,7 @@
 			}
 
 			.stat-value {
-				font-family: "DM Serif Display", serif;
+				font-family: var(--font-serif);
 				font-size: clamp(1.25rem, 3vw, 1.85rem);
 				letter-spacing: 0;
 				margin-top: 7px;
@@ -732,7 +731,7 @@
 								border: { display: false },
 								ticks: {
 									color: textColor,
-									font: { family: "DM Sans", size: 11 },
+									font: { family: getComputedStyle(document.body).fontFamily, size: 11 },
 									maxRotation: 0,
 									maxTicksLimit: window.innerWidth < 600 ? 5 : 10,
 									callback: function(value) { return displayDate(this.getLabelForValue(value)); }
@@ -744,7 +743,7 @@
 								grid: { color: gridColor },
 								ticks: {
 									color: textColor,
-									font: { family: "DM Sans", size: 11 },
+									font: { family: getComputedStyle(document.body).fontFamily, size: 11 },
 									callback: (value) => `$${Number(value).toLocaleString("en-US")}`
 								}
 							}
