@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-		<meta name="theme-color" content="#667eea">
+        <meta name="theme-color" content="#171a20">
 		<meta name="mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<meta name="google" content="notranslate">
@@ -11,6 +11,20 @@
 		<title>Xem Giá Vàng - Gold Price Tracker</title>
 		<link rel="icon" type="image/x-icon" href="/favicon.ico">
 		<link rel="icon" type="image/png" href="/favicon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=DM+Serif+Display&amp;display=swap" rel="stylesheet">
+        <script>
+            try {
+                const savedTheme = localStorage.getItem("gold-price-theme") || "purple-light";
+                const [style, mode = "light"] = savedTheme.split("-");
+                document.documentElement.dataset.theme = style;
+                document.documentElement.dataset.mode = mode;
+            } catch (error) {
+                document.documentElement.dataset.theme = "purple";
+                document.documentElement.dataset.mode = "light";
+            }
+        </script>
     <style>
         * {
             margin: 0;
@@ -60,6 +74,34 @@
             font-size: 0.85em;
             opacity: 0.8;
             word-break: break-word;
+        }
+
+        .history-link {
+            align-items: center;
+            background: rgba(0, 0, 0, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 6px;
+            color: #fff;
+            display: inline-flex;
+            font-size: 0.88rem;
+            font-weight: 600;
+            gap: 8px;
+            margin-top: 14px;
+            padding: 9px 13px;
+            text-decoration: none;
+            transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .history-link:hover,
+        .history-link:focus-visible {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .history-link:focus-visible {
+            outline: 3px solid #fff;
+            outline-offset: 3px;
         }
 
         .source-section {
@@ -469,49 +511,47 @@
             }
         }
 
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
-            .table-wrapper {
-                background: #2d2d2d;
-                color: #e0e0e0;
-            }
+        html[data-theme="purple"][data-mode="dark"] body {
+            background: linear-gradient(135deg, #29264f 0%, #171422 100%);
+        }
 
-            th {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            }
+        html[data-theme="purple"][data-mode="dark"] .table-wrapper {
+            background: #24222c;
+            color: #eceaf2;
+        }
 
-            td {
-                color: #e0e0e0;
-                border-bottom-color: #444;
-            }
+        html[data-theme="purple"][data-mode="dark"] th {
+            background: linear-gradient(135deg, #4f5eb5 0%, #633f7e 100%);
+        }
 
-            .material-name {
-                color: #e0e0e0;
-            }
+        html[data-theme="purple"][data-mode="dark"] td {
+            color: #eceaf2;
+            border-bottom-color: #403d49;
+        }
 
-            .price-buy {
-                color: #66bb6a;
-            }
+        html[data-theme="purple"][data-mode="dark"] .material-name {
+            color: #eceaf2;
+        }
 
-            .price-sell {
-                color: #f44336;
-            }
+        html[data-theme="purple"][data-mode="dark"] .price-buy {
+            color: #74c69d;
+        }
 
-            .price-range-percent {
-                color: #aaa;
-            }
+        html[data-theme="purple"][data-mode="dark"] .price-sell {
+            color: #ff7b72;
+        }
 
-            tbody tr:hover {
-                background-color: #3a3a3a;
-            }
+        html[data-theme="purple"][data-mode="dark"] .price-range-percent,
+        html[data-theme="purple"][data-mode="dark"] .no-data {
+            color: #b8b3c2;
+        }
 
-            tbody tr.inactive {
-                background-color: #252525;
-            }
+        html[data-theme="purple"][data-mode="dark"] tbody tr:hover {
+            background-color: #302d39;
+        }
 
-            .no-data {
-                color: #aaa;
-            }
+        html[data-theme="purple"][data-mode="dark"] tbody tr.inactive {
+            background-color: #1d1b23;
         }
         .skip-link {
             position: absolute;
@@ -612,6 +652,272 @@
             outline: 2px solid white;
             outline-offset: 2px;
         }
+
+        :root {
+            --ink: #171a20;
+            --muted: #6c7078;
+            --paper: #f4f1ea;
+            --surface: #fffdf8;
+            --line: #ded9cf;
+            --gold: #b77b12;
+            --gold-light: #e8b951;
+            --green: #28755d;
+            --red: #b94b3f;
+        }
+
+        html[data-theme="paper"] body {
+            background:
+                linear-gradient(rgba(23, 26, 32, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(23, 26, 32, 0.035) 1px, transparent 1px),
+                var(--paper);
+            background-size: 28px 28px;
+            color: var(--ink);
+            font-family: "DM Sans", sans-serif;
+        }
+
+        html[data-theme="paper"] .header {
+            color: var(--ink);
+        }
+
+        html[data-theme="paper"] .header h1 {
+            color: var(--ink);
+            font-family: "DM Serif Display", serif;
+            font-weight: 400;
+            letter-spacing: 0;
+            text-shadow: none;
+        }
+
+        html[data-theme="paper"] .header p,
+        html[data-theme="paper"] .update-time {
+            color: var(--muted);
+            opacity: 1;
+        }
+
+        html[data-theme="paper"] .history-link {
+            background: var(--ink);
+            border-color: var(--ink);
+            color: var(--surface);
+        }
+
+        html[data-theme="paper"] .history-link:hover,
+        html[data-theme="paper"] .history-link:focus-visible {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        html[data-theme="paper"] .history-link:focus-visible {
+            outline-color: var(--gold);
+        }
+
+        html[data-theme="paper"] .source-title {
+            color: var(--ink);
+        }
+
+        html[data-theme="paper"] .source-title span.badge {
+            background: var(--ink);
+            color: var(--surface);
+        }
+
+        html[data-theme="paper"] .table-wrapper {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            box-shadow: 0 18px 55px rgba(52, 45, 31, 0.09);
+        }
+
+        html[data-theme="paper"] thead {
+            background: var(--ink);
+            color: var(--surface);
+        }
+
+        html[data-theme="paper"] td {
+            border-bottom-color: var(--line);
+            color: var(--ink);
+        }
+
+        html[data-theme="paper"] tbody tr:hover,
+        html[data-theme="paper"] tbody tr.inactive {
+            background-color: #f8f4e9;
+        }
+
+        html[data-theme="paper"] .material-code {
+            color: var(--gold);
+        }
+
+        html[data-theme="paper"] .material-name {
+            color: var(--ink);
+        }
+
+        html[data-theme="paper"] .price-buy {
+            color: var(--green);
+        }
+
+        html[data-theme="paper"] .price-sell {
+            color: var(--red);
+        }
+
+        html[data-theme="paper"] .price-range,
+        html[data-theme="paper"] .price-range-percent,
+        html[data-theme="paper"] .no-data {
+            color: var(--muted);
+        }
+
+        html[data-theme="paper"] .stats {
+            gap: 1px;
+            overflow: hidden;
+            background: var(--line);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+        }
+
+        html[data-theme="paper"] .stat-card {
+            background: var(--surface);
+            border: 0;
+            border-radius: 0;
+            color: var(--ink);
+            backdrop-filter: none;
+        }
+
+        html[data-theme="paper"] .stat-card:hover,
+        html[data-theme="paper"] .stat-card:focus-visible {
+            background: #f8f4e9;
+            box-shadow: none;
+        }
+
+        html[data-theme="paper"] .stat-card .stat-value {
+            color: var(--gold);
+            font-family: "DM Serif Display", serif;
+            letter-spacing: 0;
+        }
+
+        html[data-theme="paper"] .stat-card p {
+            color: var(--muted);
+            opacity: 1;
+        }
+
+        html[data-theme="paper"] .stat-card:focus-visible,
+        html[data-theme="paper"] .back-to-top:focus-visible,
+        html[data-theme="paper"] .tag:focus-visible {
+            outline-color: var(--gold);
+        }
+
+        html[data-theme="paper"] .skip-link:focus,
+        html[data-theme="paper"] .back-to-top {
+            background: var(--ink);
+            color: var(--surface);
+        }
+
+        html[data-theme="paper"] .back-to-top {
+            border-color: var(--gold-light);
+        }
+
+        html[data-theme="paper"] .back-to-top:hover,
+        html[data-theme="paper"] .back-to-top:focus-visible {
+            background: var(--gold);
+        }
+
+        html[data-theme="paper"] .tag {
+            background: var(--surface);
+            border-color: var(--line);
+            color: var(--muted);
+        }
+
+        html[data-theme="paper"] .tag:hover,
+        html[data-theme="paper"] .tag:focus-visible {
+            background: var(--ink);
+            border-color: var(--ink);
+            color: var(--surface);
+        }
+
+        html[data-theme="paper"][data-mode="dark"] {
+            --ink: #f1ede4;
+            --muted: #aaa398;
+            --paper: #171612;
+            --surface: #22201b;
+            --line: #3f3b32;
+            --gold: #e8b951;
+            --gold-light: #f0c96c;
+            --green: #74b99d;
+            --red: #e07a70;
+        }
+
+        html[data-theme="paper"][data-mode="dark"] body {
+            background:
+                linear-gradient(rgba(244, 241, 234, 0.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(244, 241, 234, 0.045) 1px, transparent 1px),
+                var(--paper);
+        }
+
+        html[data-theme="paper"][data-mode="dark"] .table-wrapper {
+            box-shadow: 0 18px 55px rgba(0, 0, 0, 0.24);
+        }
+
+        html[data-theme="paper"][data-mode="dark"] tbody tr:hover,
+        html[data-theme="paper"][data-mode="dark"] tbody tr.inactive,
+        html[data-theme="paper"][data-mode="dark"] .stat-card:hover,
+        html[data-theme="paper"][data-mode="dark"] .stat-card:focus-visible {
+            background: #2b2821;
+        }
+
+        .theme-picker {
+            align-items: center;
+            background: rgba(255, 253, 248, 0.94);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(23, 26, 32, 0.14);
+            bottom: 16px;
+            display: flex;
+            gap: 8px;
+            left: 16px;
+            padding: 7px;
+            position: fixed;
+            z-index: 30;
+        }
+
+        .theme-swatch {
+            border: 2px solid transparent;
+            border-radius: 50%;
+            cursor: pointer;
+            height: 26px;
+            padding: 0;
+            width: 26px;
+        }
+
+        .theme-swatch[data-theme-choice="purple-light"] {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .theme-swatch[data-theme-choice="purple-dark"] {
+            background: linear-gradient(135deg, #4f5eb5 48%, #171422 50%);
+        }
+
+        .theme-swatch[data-theme-choice="paper-light"] {
+            background: linear-gradient(135deg, #f4f1ea 48%, #b77b12 50%);
+        }
+
+        .theme-swatch[data-theme-choice="paper-dark"] {
+            background: linear-gradient(135deg, #171612 48%, #e8b951 50%);
+        }
+
+        .theme-swatch[aria-pressed="true"] {
+            border-color: var(--ink);
+            box-shadow: 0 0 0 2px var(--surface);
+        }
+
+        .theme-swatch:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        html[data-mode="dark"] .theme-picker {
+            background: rgba(34, 32, 27, 0.96);
+            border-color: #514b40;
+        }
+
+        html[data-mode="dark"] .theme-swatch[aria-pressed="true"] {
+            border-color: #fffdf8;
+            box-shadow: 0 0 0 2px #22201b;
+        }
     </style>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGYDT2S6GH"></script>
     <script>
@@ -623,11 +929,41 @@
 	</head>
 	<body>
 		<a href="#main-content" class="skip-link">Skip to main content</a>
+        <div class="theme-picker" role="group" aria-label="Chọn giao diện">
+            <button class="theme-swatch" type="button" data-theme-choice="purple-light" aria-label="Giao diện tím sáng" title="Giao diện tím sáng"></button>
+            <button class="theme-swatch" type="button" data-theme-choice="purple-dark" aria-label="Giao diện tím tối" title="Giao diện tím tối"></button>
+            <button class="theme-swatch" type="button" data-theme-choice="paper-light" aria-label="Giao diện giấy sáng" title="Giao diện giấy sáng"></button>
+            <button class="theme-swatch" type="button" data-theme-choice="paper-dark" aria-label="Giao diện giấy tối" title="Giao diện giấy tối"></button>
+        </div>
+        <script>
+            function applyTheme(choice) {
+                const [theme, mode] = choice.split("-");
+                document.documentElement.dataset.theme = theme;
+                document.documentElement.dataset.mode = mode;
+                const themeColors = {
+                    "purple-light": "#667eea",
+                    "purple-dark": "#29264f",
+                    "paper-light": "#171a20",
+                    "paper-dark": "#171612"
+                };
+                document.querySelector('meta[name="theme-color"]').content = themeColors[choice];
+                document.querySelectorAll("[data-theme-choice]").forEach((button) => {
+                    button.setAttribute("aria-pressed", button.dataset.themeChoice === choice);
+                });
+                try { localStorage.setItem("gold-price-theme", choice); } catch (error) {}
+            }
+
+            document.querySelectorAll("[data-theme-choice]").forEach((button) => {
+                button.addEventListener("click", () => applyTheme(button.dataset.themeChoice));
+            });
+            applyTheme(`${document.documentElement.dataset.theme}-${document.documentElement.dataset.mode}`);
+        </script>
 		<main class="container" id="main-content">
 			<header class="header">
 				<h1>💰 XEM GIÁ VÀNG</h1>
 				<p>Cập nhật giá vàng liên tục từ nhiều nguồn uy tín</p>
 				<div class="update-time" id="updateTime">&nbsp;</div>
+                <a class="history-link" href="lich-su/">Lịch sử giá vàng <span aria-hidden="true">&rarr;</span></a>
 			</header>
 
 			<div class="stats" id="statsContainer"></div>
@@ -770,6 +1106,7 @@
             <a class="tag" href="https://vangphuquy.netlify.app" target="_blank" rel="noopener noreferrer">#vangphuquy</a>
             <a class="tag" href="https://vangmihong.netlify.app" target="_blank" rel="noopener noreferrer">#vangmihong</a>
             <a class="tag" href="https://baotinmanhhai.netlify.app" target="_blank" rel="noopener noreferrer">#baotinmanhhai</a>
+            <a class="tag" href="/lich-su/" target="_blank" rel="noopener noreferrer">#lich-su</a>
             <a class="tag" href="https://www.google.com/search?q=%23giavanghomnay" target="_blank" rel="noopener noreferrer">#giavanghomnay</a>
             <a class="tag" href="https://www.google.com/search?q=%23vangsjc" target="_blank" rel="noopener noreferrer">#vangsjc</a>
             <a class="tag" href="https://www.google.com/search?q=%23vang9999" target="_blank" rel="noopener noreferrer">#vang9999</a>
