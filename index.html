@@ -577,6 +577,41 @@
             outline: 3px solid white;
             outline-offset: 3px;
         }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin: 28px auto 8px;
+            max-width: 900px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 10px;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 999px;
+            background: rgba(0,0,0,0.12);
+            color: rgba(255,255,255,0.88);
+            font-size: 0.78rem;
+            line-height: 1.2;
+            text-decoration: none;
+            transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .tag:hover,
+        .tag:focus-visible {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.75);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tag:focus-visible {
+            outline: 2px solid white;
+            outline-offset: 2px;
+        }
     </style>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGYDT2S6GH"></script>
     <script>
@@ -727,9 +762,22 @@
 				</div>
 			</div>
 		</main>
-
         <button class="back-to-top" id="backToTop" type="button" aria-label="Về đầu trang" title="Về đầu trang" aria-hidden="true">&#8593;</button>
-
+        <footer class="tag-list" aria-label="Chủ đề theo dõi">
+            <a class="tag" href="https://xemgia.netlify.app" target="_blank" rel="noopener noreferrer">#xemgia</a>
+            <a class="tag" href="https://xemgiavang.netlify.app" target="_blank" rel="noopener noreferrer">#xemgiavang</a>
+            <a class="tag" href="https://vangdoji.netlify.app" target="_blank" rel="noopener noreferrer">#vangdoji</a>
+            <a class="tag" href="https://vangphuquy.netlify.app" target="_blank" rel="noopener noreferrer">#vangphuquy</a>
+            <a class="tag" href="https://vangmihong.netlify.app" target="_blank" rel="noopener noreferrer">#vangmihong</a>
+            <a class="tag" href="https://www.google.com/search?q=%23giavanghomnay" target="_blank" rel="noopener noreferrer">#giavanghomnay</a>
+            <a class="tag" href="https://www.google.com/search?q=%23vangsjc" target="_blank" rel="noopener noreferrer">#vangsjc</a>
+            <a class="tag" href="https://www.google.com/search?q=%23vang9999" target="_blank" rel="noopener noreferrer">#vang9999</a>
+            <a class="tag" href="https://www.google.com/search?q=%23mihong" target="_blank" rel="noopener noreferrer">#mihong</a>
+            <a class="tag" href="https://www.google.com/search?q=%23giabac" target="_blank" rel="noopener noreferrer">#giabac</a>
+            <a class="tag" href="https://www.google.com/search?q=%23muavao" target="_blank" rel="noopener noreferrer">#muavao</a>
+            <a class="tag" href="https://www.google.com/search?q=%23banra" target="_blank" rel="noopener noreferrer">#banra</a>
+            <a class="tag" href="https://www.google.com/search?q=%23sosanhgiavang" target="_blank" rel="noopener noreferrer">#sosanhgiavang</a>
+        </footer>
     <script>
         // Load data sources and render them vertically in the order: goldprice, mihong, doji, phuquy, baotinmanhhai, ngoctham
         async function fetchJsonSafe(url) {
