@@ -32,7 +32,7 @@ jobs:
         run: node decrypt.js
       
       - name: Download gold monthly prices
-        run: bash download-monthly.sh
+        run: bash download.sh
         working-directory: lich-su
 
       - name: Check if files changed
