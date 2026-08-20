@@ -284,6 +284,65 @@
 				margin: 16px 4px 0;
 			}
 
+			.site-footer {
+				margin: 0 auto;
+				max-width: 1240px;
+				padding: 0 24px;
+			}
+
+			.tag-list {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+				justify-content: center;
+			}
+
+			.tag {
+				background: var(--surface);
+				border: 1px solid var(--line);
+				border-radius: 999px;
+				color: var(--muted);
+				font-size: 0.78rem;
+				line-height: 1.2;
+				padding: 5px 10px;
+				text-decoration: none;
+				transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+			}
+
+			.tag:hover,
+			.tag:focus-visible {
+				background: var(--ink);
+				border-color: var(--ink);
+				color: var(--surface);
+			}
+
+			.tag:focus-visible {
+				outline: 2px solid var(--gold);
+				outline-offset: 2px;
+			}
+
+			.repo-footer {
+				color: var(--muted);
+				font-size: 0.82rem;
+				padding: 16px 20px 28px;
+				text-align: center;
+			}
+
+			.repo-footer a {
+				color: var(--ink);
+				font-weight: 600;
+				text-underline-offset: 3px;
+			}
+
+			.repo-footer a:hover {
+				text-decoration-thickness: 2px;
+			}
+
+			.repo-footer a:focus-visible {
+				outline: 2px solid var(--gold);
+				outline-offset: 3px;
+			}
+
 			@media (max-width: 720px) {
 				.topbar {
 					padding: 0 20px;
@@ -431,6 +490,27 @@
 			}
 
 			html[data-theme="purple"] .currency strong {
+				color: #fff;
+			}
+
+			html[data-theme="purple"] .tag {
+				background: rgba(0, 0, 0, 0.12);
+				border-color: rgba(255, 255, 255, 0.35);
+				color: rgba(255, 255, 255, 0.88);
+			}
+
+			html[data-theme="purple"] .tag:hover,
+			html[data-theme="purple"] .tag:focus-visible {
+				background: rgba(255, 255, 255, 0.2);
+				border-color: rgba(255, 255, 255, 0.75);
+				color: #fff;
+			}
+
+			html[data-theme="purple"] .repo-footer {
+				color: rgba(255, 255, 255, 0.78);
+			}
+
+			html[data-theme="purple"] .repo-footer a {
 				color: #fff;
 			}
 
@@ -624,6 +704,28 @@
 			</section>
 			<p class="note">Nguồn dữ liệu lịch sử được tổng hợp theo giá vàng thế giới danh nghĩa. Dữ liệu năm 2026 có thể bao gồm các kỳ dự báo hoặc chưa hoàn tất.</p>
 		</main>
+		<footer class="site-footer">
+			<nav class="tag-list" aria-label="Chủ đề theo dõi">
+				<a class="tag" href="https://xemgia.netlify.app" target="_blank" rel="noopener noreferrer">#xemgia</a>
+				<a class="tag" href="https://xemgiavang.netlify.app" target="_blank" rel="noopener noreferrer">#xemgiavang</a>
+				<a class="tag" href="https://vangdoji.netlify.app" target="_blank" rel="noopener noreferrer">#vangdoji</a>
+				<a class="tag" href="https://vangphuquy.netlify.app" target="_blank" rel="noopener noreferrer">#vangphuquy</a>
+				<a class="tag" href="https://vangmihong.netlify.app" target="_blank" rel="noopener noreferrer">#vangmihong</a>
+				<a class="tag" href="https://baotinmanhhai.netlify.app" target="_blank" rel="noopener noreferrer">#baotinmanhhai</a>
+				<a class="tag" href="./">#lich-su</a>
+				<a class="tag" href="https://www.google.com/search?q=%23giavanghomnay" target="_blank" rel="noopener noreferrer">#giavanghomnay</a>
+				<a class="tag" href="https://www.google.com/search?q=%23vangsjc" target="_blank" rel="noopener noreferrer">#vangsjc</a>
+				<a class="tag" href="https://www.google.com/search?q=%23vang9999" target="_blank" rel="noopener noreferrer">#vang9999</a>
+				<a class="tag" href="https://www.google.com/search?q=%23mihong" target="_blank" rel="noopener noreferrer">#mihong</a>
+				<a class="tag" href="https://www.google.com/search?q=%23giabac" target="_blank" rel="noopener noreferrer">#giabac</a>
+				<a class="tag" href="https://www.google.com/search?q=%23muavao" target="_blank" rel="noopener noreferrer">#muavao</a>
+				<a class="tag" href="https://www.google.com/search?q=%23banra" target="_blank" rel="noopener noreferrer">#banra</a>
+				<a class="tag" href="https://www.google.com/search?q=%23sosanhgiavang" target="_blank" rel="noopener noreferrer">#sosanhgiavang</a>
+			</nav>
+			<div class="repo-footer">
+				GitHub: <a href="https://github.com/dunglex/gold-prices" target="_blank" rel="noopener noreferrer">dunglex/gold-prices</a>
+			</div>
+		</footer>
 
 		<script>
 			const dataFile = "monthly.csv";

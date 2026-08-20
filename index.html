@@ -621,6 +621,11 @@
             outline-offset: 3px;
         }
 
+        .site-footer {
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
         .tag-list {
             display: flex;
             flex-wrap: wrap;
@@ -654,6 +659,28 @@
         .tag:focus-visible {
             outline: 2px solid white;
             outline-offset: 2px;
+        }
+
+        .repo-footer {
+            color: rgba(255,255,255,0.78);
+            font-size: 0.82rem;
+            padding: 14px 16px 28px;
+            text-align: center;
+        }
+
+        .repo-footer a {
+            color: #fff;
+            font-weight: 600;
+            text-underline-offset: 3px;
+        }
+
+        .repo-footer a:hover {
+            text-decoration-thickness: 2px;
+        }
+
+        .repo-footer a:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 3px;
         }
 
         :root {
@@ -830,6 +857,18 @@
             background: var(--ink);
             border-color: var(--ink);
             color: var(--surface);
+        }
+
+        html[data-theme="paper"] .repo-footer {
+            color: var(--muted);
+        }
+
+        html[data-theme="paper"] .repo-footer a {
+            color: var(--ink);
+        }
+
+        html[data-theme="paper"] .repo-footer a:focus-visible {
+            outline-color: var(--gold);
         }
 
         html[data-theme="paper"][data-mode="dark"] {
@@ -1102,22 +1141,27 @@
 			</div>
 		</main>
         <button class="back-to-top" id="backToTop" type="button" aria-label="Về đầu trang" title="Về đầu trang" aria-hidden="true">&#8593;</button>
-        <footer class="tag-list" aria-label="Chủ đề theo dõi">
-            <a class="tag" href="https://xemgia.netlify.app" target="_blank" rel="noopener noreferrer">#xemgia</a>
-            <a class="tag" href="https://xemgiavang.netlify.app" target="_blank" rel="noopener noreferrer">#xemgiavang</a>
-            <a class="tag" href="https://vangdoji.netlify.app" target="_blank" rel="noopener noreferrer">#vangdoji</a>
-            <a class="tag" href="https://vangphuquy.netlify.app" target="_blank" rel="noopener noreferrer">#vangphuquy</a>
-            <a class="tag" href="https://vangmihong.netlify.app" target="_blank" rel="noopener noreferrer">#vangmihong</a>
-            <a class="tag" href="https://baotinmanhhai.netlify.app" target="_blank" rel="noopener noreferrer">#baotinmanhhai</a>
-            <a class="tag" href="/lich-su/" target="_blank" rel="noopener noreferrer">#lich-su</a>
-            <a class="tag" href="https://www.google.com/search?q=%23giavanghomnay" target="_blank" rel="noopener noreferrer">#giavanghomnay</a>
-            <a class="tag" href="https://www.google.com/search?q=%23vangsjc" target="_blank" rel="noopener noreferrer">#vangsjc</a>
-            <a class="tag" href="https://www.google.com/search?q=%23vang9999" target="_blank" rel="noopener noreferrer">#vang9999</a>
-            <a class="tag" href="https://www.google.com/search?q=%23mihong" target="_blank" rel="noopener noreferrer">#mihong</a>
-            <a class="tag" href="https://www.google.com/search?q=%23giabac" target="_blank" rel="noopener noreferrer">#giabac</a>
-            <a class="tag" href="https://www.google.com/search?q=%23muavao" target="_blank" rel="noopener noreferrer">#muavao</a>
-            <a class="tag" href="https://www.google.com/search?q=%23banra" target="_blank" rel="noopener noreferrer">#banra</a>
-            <a class="tag" href="https://www.google.com/search?q=%23sosanhgiavang" target="_blank" rel="noopener noreferrer">#sosanhgiavang</a>
+        <footer class="site-footer">
+            <nav class="tag-list" aria-label="Chủ đề theo dõi">
+                <a class="tag" href="https://xemgia.netlify.app" target="_blank" rel="noopener noreferrer">#xemgia</a>
+                <a class="tag" href="https://xemgiavang.netlify.app" target="_blank" rel="noopener noreferrer">#xemgiavang</a>
+                <a class="tag" href="https://vangdoji.netlify.app" target="_blank" rel="noopener noreferrer">#vangdoji</a>
+                <a class="tag" href="https://vangphuquy.netlify.app" target="_blank" rel="noopener noreferrer">#vangphuquy</a>
+                <a class="tag" href="https://vangmihong.netlify.app" target="_blank" rel="noopener noreferrer">#vangmihong</a>
+                <a class="tag" href="https://baotinmanhhai.netlify.app" target="_blank" rel="noopener noreferrer">#baotinmanhhai</a>
+                <a class="tag" href="/lich-su/">#lich-su</a>
+                <a class="tag" href="https://www.google.com/search?q=%23giavanghomnay" target="_blank" rel="noopener noreferrer">#giavanghomnay</a>
+                <a class="tag" href="https://www.google.com/search?q=%23vangsjc" target="_blank" rel="noopener noreferrer">#vangsjc</a>
+                <a class="tag" href="https://www.google.com/search?q=%23vang9999" target="_blank" rel="noopener noreferrer">#vang9999</a>
+                <a class="tag" href="https://www.google.com/search?q=%23mihong" target="_blank" rel="noopener noreferrer">#mihong</a>
+                <a class="tag" href="https://www.google.com/search?q=%23giabac" target="_blank" rel="noopener noreferrer">#giabac</a>
+                <a class="tag" href="https://www.google.com/search?q=%23muavao" target="_blank" rel="noopener noreferrer">#muavao</a>
+                <a class="tag" href="https://www.google.com/search?q=%23banra" target="_blank" rel="noopener noreferrer">#banra</a>
+                <a class="tag" href="https://www.google.com/search?q=%23sosanhgiavang" target="_blank" rel="noopener noreferrer">#sosanhgiavang</a>
+            </nav>
+            <div class="repo-footer">
+                GitHub: <a href="https://github.com/dunglex/gold-prices" target="_blank" rel="noopener noreferrer">dunglex/gold-prices</a>
+            </div>
         </footer>
     <script>
         // Load data sources and render them vertically in the order: goldprice, mihong, doji, phuquy, baotinmanhhai, ngoctham
