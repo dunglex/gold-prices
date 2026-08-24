@@ -1,14 +1,14 @@
 {
-    "id": "2178",
-    "date": "2026-08-24 10:05:00",
+    "id": "2179",
+    "date": "2026-08-24 14:35:00",
     "chitiet": [
         {
             "idloaivang": [
                 "10"
             ],
             "loaivang": "Nhẫn 999.9",
-            "giaban": "14450000",
-            "giamua": "14050000",
+            "giaban": "14500000",
+            "giamua": "14100000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -17,8 +17,8 @@
                 "60"
             ],
             "loaivang": "Vàng Ta 999.9",
-            "giaban": "14450000",
-            "giamua": "14050000",
+            "giaban": "14500000",
+            "giamua": "14100000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -27,8 +27,8 @@
                 "4"
             ],
             "loaivang": "Vàng Ta 990",
-            "giaban": "14250000",
-            "giamua": "13850000",
+            "giaban": "14300000",
+            "giamua": "13900000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -57,8 +57,8 @@
                 "58"
             ],
             "loaivang": "Vàng Miếng SJC (Loại 10 chỉ)",
-            "giaban": "14950000",
-            "giamua": "14600000",
+            "giaban": "15000000",
+            "giamua": "14650000",
             "chihiengiaban": "0",
             "chihiengiamua": "0"
         }
