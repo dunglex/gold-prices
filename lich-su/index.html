@@ -1,1008 +1,1031 @@
 <!DOCTYPE html>
 <html lang="vi" translate="no">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-		<meta name="theme-color" content="#171a20">
-		<meta name="google" content="notranslate">
-		<meta name="description" content="Biểu đồ lịch sử giá vàng thế giới theo năm và theo tháng.">
-		<title>Lịch sử giá vàng</title>
-		<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-		<script>
-			try {
-				const savedTheme = localStorage.getItem("gold-price-theme") || "paper-light";
-				const [style, mode = "light"] = savedTheme.split("-");
-				document.documentElement.dataset.theme = style;
-				document.documentElement.dataset.mode = mode;
-			} catch (error) {
-				document.documentElement.dataset.theme = "paper";
-				document.documentElement.dataset.mode = "light";
-			}
-			document.title = "Lịch sử giá vàng - " + window.location.hostname;
-		</script>
-		<style>
-			:root {
-				--font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-				--font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-				--ink: #171a20;
-				--muted: #6c7078;
-				--paper: #f4f1ea;
-				--surface: #fffdf8;
-				--line: #ded9cf;
-				--gold: #b77b12;
-				--gold-light: #e8b951;
-				--green: #28755d;
-				--red: #b94b3f;
-			}
 
-			* {
-				box-sizing: border-box;
-			}
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<meta name="theme-color" content="#171a20">
+	<meta name="google" content="notranslate">
+	<meta name="description" content="Biểu đồ lịch sử giá vàng thế giới theo năm và theo tháng.">
+	<title>Lịch sử giá vàng</title>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+	<script>
+		try {
+			const savedTheme = localStorage.getItem("gold-price-theme") || "paper-light";
+			const [style, mode = "light"] = savedTheme.split("-");
+			document.documentElement.dataset.theme = style;
+			document.documentElement.dataset.mode = mode;
+		} catch (error) {
+			document.documentElement.dataset.theme = "paper";
+			document.documentElement.dataset.mode = "light";
+		}
+		document.title = "Lịch sử giá vàng - " + window.location.hostname;
+	</script>
+	<style>
+		:root {
+			--font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+			--font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+			--ink: #171a20;
+			--muted: #6c7078;
+			--paper: #f4f1ea;
+			--surface: #fffdf8;
+			--line: #ded9cf;
+			--gold: #b77b12;
+			--gold-light: #e8b951;
+			--green: #28755d;
+			--red: #b94b3f;
+		}
 
-			html,
-			body {
-				margin: 0;
-				min-height: 100%;
-			}
+		* {
+			box-sizing: border-box;
+		}
 
-			body {
-				background:
-					linear-gradient(rgba(23, 26, 32, 0.035) 1px, transparent 1px),
-					linear-gradient(90deg, rgba(23, 26, 32, 0.035) 1px, transparent 1px),
-					var(--paper);
-				background-size: 28px 28px;
-				color: var(--ink);
-				font-family: var(--font-sans);
-			}
+		html,
+		body {
+			margin: 0;
+			min-height: 100%;
+		}
 
-			button,
-			a {
-				font: inherit;
-			}
+		body {
+			background:
+				linear-gradient(rgba(23, 26, 32, 0.035) 1px, transparent 1px),
+				linear-gradient(90deg, rgba(23, 26, 32, 0.035) 1px, transparent 1px),
+				var(--paper);
+			background-size: 28px 28px;
+			color: var(--ink);
+			font-family: var(--font-sans);
+		}
 
+		button,
+		a {
+			font: inherit;
+		}
+
+		.topbar {
+			align-items: center;
+			background: var(--ink);
+			color: #fff;
+			display: flex;
+			justify-content: space-between;
+			min-height: 62px;
+			padding: 0 5vw;
+		}
+
+		.brand {
+			align-items: center;
+			display: flex;
+			font-weight: 700;
+			gap: 10px;
+			text-decoration: none;
+			color: #fff;
+		}
+
+		.brand-mark {
+			background: var(--gold-light);
+			border-radius: 50%;
+			box-shadow: inset 0 0 0 3px rgba(23, 26, 32, 0.16);
+			height: 25px;
+			width: 25px;
+		}
+
+		.back-link {
+			color: #ddd9d0;
+			font-size: 0.88rem;
+			text-decoration: none;
+		}
+
+		.back-link:hover {
+			color: #fff;
+		}
+
+		main {
+			margin: 0 auto;
+			max-width: 1240px;
+			padding: 54px 24px 48px;
+		}
+
+		.intro {
+			align-items: end;
+			display: grid;
+			gap: 24px;
+			grid-template-columns: minmax(0, 1fr) auto;
+			margin-bottom: 30px;
+		}
+
+		.eyebrow {
+			color: var(--gold);
+			font-size: 0.74rem;
+			font-weight: 700;
+			letter-spacing: 0.14em;
+			margin: 0 0 8px;
+			text-transform: uppercase;
+		}
+
+		h1 {
+			font-family: var(--font-serif);
+			font-size: clamp(2.2rem, 6vw, 4.8rem);
+			font-weight: 400;
+			letter-spacing: 0;
+			line-height: 0.98;
+			margin: 0;
+		}
+
+		.intro-copy {
+			color: var(--muted);
+			line-height: 1.6;
+			margin: 14px 0 0;
+			max-width: 610px;
+		}
+
+		.currency {
+			border-left: 1px solid var(--line);
+			color: var(--muted);
+			font-size: 0.78rem;
+			padding-left: 22px;
+			white-space: nowrap;
+		}
+
+		.currency strong {
+			color: var(--ink);
+			display: block;
+			font-size: 1rem;
+			margin-bottom: 4px;
+		}
+
+		.dashboard {
+			background: var(--surface);
+			border: 1px solid var(--line);
+			border-radius: 8px;
+			box-shadow: 0 18px 55px rgba(52, 45, 31, 0.09);
+			overflow: hidden;
+		}
+
+		.toolbar {
+			align-items: center;
+			border-bottom: 1px solid var(--line);
+			display: flex;
+			gap: 18px;
+			justify-content: space-between;
+			padding: 16px 20px;
+		}
+
+		.segmented,
+		.periods {
+			align-items: center;
+			display: flex;
+			gap: 4px;
+		}
+
+		.segmented {
+			background: #ebe7de;
+			border-radius: 6px;
+			padding: 4px;
+		}
+
+		.segmented button,
+		.periods button {
+			border: 0;
+			cursor: pointer;
+		}
+
+		.segmented button {
+			background: transparent;
+			border-radius: 4px;
+			color: var(--muted);
+			font-size: 0.86rem;
+			font-weight: 600;
+			padding: 9px 14px;
+		}
+
+		.segmented button.active {
+			background: var(--surface);
+			box-shadow: 0 1px 5px rgba(23, 26, 32, 0.12);
+			color: var(--ink);
+		}
+
+		.periods button {
+			background: transparent;
+			border-bottom: 2px solid transparent;
+			color: var(--muted);
+			font-size: 0.78rem;
+			font-weight: 600;
+			padding: 8px 9px 6px;
+		}
+
+		.periods button.active {
+			border-color: var(--gold);
+			color: var(--ink);
+		}
+
+		.stats {
+			border-bottom: 1px solid var(--line);
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		.stat {
+			border-right: 1px solid var(--line);
+			padding: 19px 22px;
+		}
+
+		.stat:last-child {
+			border-right: 0;
+		}
+
+		.stat-label {
+			color: var(--muted);
+			font-size: 0.7rem;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		.stat-value {
+			font-family: var(--font-serif);
+			font-size: clamp(1.25rem, 3vw, 1.85rem);
+			letter-spacing: 0;
+			margin-top: 7px;
+			white-space: nowrap;
+		}
+
+		.positive {
+			color: var(--green);
+		}
+
+		.negative {
+			color: var(--red);
+		}
+
+		.chart-area {
+			height: min(54vh, 520px);
+			min-height: 340px;
+			padding: 28px 20px 18px;
+			position: relative;
+		}
+
+		.chart-status {
+			align-items: center;
+			background: var(--surface);
+			color: var(--muted);
+			display: flex;
+			font-size: 0.9rem;
+			inset: 0;
+			justify-content: center;
+			position: absolute;
+			z-index: 2;
+		}
+
+		.chart-status[hidden] {
+			display: none;
+		}
+
+		.note {
+			color: var(--muted);
+			font-size: 0.75rem;
+			line-height: 1.5;
+			margin: 16px 4px 0;
+		}
+
+		.site-footer {
+			margin: 0 auto;
+			max-width: 1240px;
+			padding: 0 24px;
+		}
+
+		.tag-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			justify-content: center;
+		}
+
+		.tag {
+			background: var(--surface);
+			border: 1px solid var(--line);
+			border-radius: 999px;
+			color: var(--muted);
+			font-size: 0.78rem;
+			line-height: 1.2;
+			padding: 5px 10px;
+			text-decoration: none;
+			transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+		}
+
+		.tag:hover,
+		.tag:focus-visible {
+			background: var(--ink);
+			border-color: var(--ink);
+			color: var(--surface);
+		}
+
+		.tag:focus-visible {
+			outline: 2px solid var(--gold);
+			outline-offset: 2px;
+		}
+
+		.repo-footer {
+			color: var(--muted);
+			font-size: 0.82rem;
+			padding: 16px 20px 28px;
+			text-align: center;
+		}
+
+		.repo-footer a {
+			color: var(--ink);
+			font-weight: 600;
+			text-underline-offset: 3px;
+		}
+
+		.repo-footer a:hover {
+			text-decoration-thickness: 2px;
+		}
+
+		.repo-footer a:focus-visible {
+			outline: 2px solid var(--gold);
+			outline-offset: 3px;
+		}
+
+		@media (max-width: 720px) {
 			.topbar {
-				align-items: center;
-				background: var(--ink);
-				color: #fff;
-				display: flex;
-				justify-content: space-between;
-				min-height: 62px;
-				padding: 0 5vw;
-			}
-
-			.brand {
-				align-items: center;
-				display: flex;
-				font-weight: 700;
-				gap: 10px;
-				text-decoration: none;
-				color: #fff;
-			}
-
-			.brand-mark {
-				background: var(--gold-light);
-				border-radius: 50%;
-				box-shadow: inset 0 0 0 3px rgba(23, 26, 32, 0.16);
-				height: 25px;
-				width: 25px;
-			}
-
-			.back-link {
-				color: #ddd9d0;
-				font-size: 0.88rem;
-				text-decoration: none;
-			}
-
-			.back-link:hover {
-				color: #fff;
+				padding: 0 20px;
 			}
 
 			main {
-				margin: 0 auto;
-				max-width: 1240px;
-				padding: 54px 24px 48px;
+				padding: 38px 14px 30px;
 			}
 
 			.intro {
-				align-items: end;
-				display: grid;
-				gap: 24px;
-				grid-template-columns: minmax(0, 1fr) auto;
-				margin-bottom: 30px;
-			}
-
-			.eyebrow {
-				color: var(--gold);
-				font-size: 0.74rem;
-				font-weight: 700;
-				letter-spacing: 0.14em;
-				margin: 0 0 8px;
-				text-transform: uppercase;
-			}
-
-			h1 {
-				font-family: var(--font-serif);
-				font-size: clamp(2.2rem, 6vw, 4.8rem);
-				font-weight: 400;
-				letter-spacing: 0;
-				line-height: 0.98;
-				margin: 0;
-			}
-
-			.intro-copy {
-				color: var(--muted);
-				line-height: 1.6;
-				margin: 14px 0 0;
-				max-width: 610px;
+				grid-template-columns: 1fr;
 			}
 
 			.currency {
-				border-left: 1px solid var(--line);
-				color: var(--muted);
-				font-size: 0.78rem;
-				padding-left: 22px;
-				white-space: nowrap;
-			}
-
-			.currency strong {
-				color: var(--ink);
-				display: block;
-				font-size: 1rem;
-				margin-bottom: 4px;
-			}
-
-			.dashboard {
-				background: var(--surface);
-				border: 1px solid var(--line);
-				border-radius: 8px;
-				box-shadow: 0 18px 55px rgba(52, 45, 31, 0.09);
-				overflow: hidden;
+				border-left: 0;
+				border-top: 1px solid var(--line);
+				padding: 14px 0 0;
 			}
 
 			.toolbar {
-				align-items: center;
-				border-bottom: 1px solid var(--line);
-				display: flex;
-				gap: 18px;
-				justify-content: space-between;
-				padding: 16px 20px;
-			}
-
-			.segmented,
-			.periods {
-				align-items: center;
-				display: flex;
-				gap: 4px;
-			}
-
-			.segmented {
-				background: #ebe7de;
-				border-radius: 6px;
-				padding: 4px;
-			}
-
-			.segmented button,
-			.periods button {
-				border: 0;
-				cursor: pointer;
+				align-items: stretch;
+				flex-direction: column;
 			}
 
 			.segmented button {
-				background: transparent;
-				border-radius: 4px;
-				color: var(--muted);
-				font-size: 0.86rem;
-				font-weight: 600;
-				padding: 9px 14px;
+				flex: 1;
 			}
 
-			.segmented button.active {
-				background: var(--surface);
-				box-shadow: 0 1px 5px rgba(23, 26, 32, 0.12);
-				color: var(--ink);
-			}
-
-			.periods button {
-				background: transparent;
-				border-bottom: 2px solid transparent;
-				color: var(--muted);
-				font-size: 0.78rem;
-				font-weight: 600;
-				padding: 8px 9px 6px;
-			}
-
-			.periods button.active {
-				border-color: var(--gold);
-				color: var(--ink);
+			.periods {
+				justify-content: space-between;
 			}
 
 			.stats {
-				border-bottom: 1px solid var(--line);
-				display: grid;
-				grid-template-columns: repeat(4, 1fr);
+				grid-template-columns: repeat(2, 1fr);
 			}
 
-			.stat {
-				border-right: 1px solid var(--line);
-				padding: 19px 22px;
-			}
-
-			.stat:last-child {
+			.stat:nth-child(2) {
 				border-right: 0;
 			}
 
-			.stat-label {
-				color: var(--muted);
-				font-size: 0.7rem;
-				font-weight: 700;
-				letter-spacing: 0.08em;
-				text-transform: uppercase;
-			}
-
-			.stat-value {
-				font-family: var(--font-serif);
-				font-size: clamp(1.25rem, 3vw, 1.85rem);
-				letter-spacing: 0;
-				margin-top: 7px;
-				white-space: nowrap;
-			}
-
-			.positive {
-				color: var(--green);
-			}
-
-			.negative {
-				color: var(--red);
+			.stat:nth-child(-n + 2) {
+				border-bottom: 1px solid var(--line);
 			}
 
 			.chart-area {
-				height: min(54vh, 520px);
-				min-height: 340px;
-				padding: 28px 20px 18px;
-				position: relative;
+				height: 390px;
+				padding: 22px 10px 12px;
+			}
+		}
+
+		@media (prefers-reduced-motion: no-preference) {
+
+			.intro,
+			.dashboard {
+				animation: reveal 0.6s ease both;
 			}
 
-			.chart-status {
-				align-items: center;
-				background: var(--surface);
-				color: var(--muted);
-				display: flex;
-				font-size: 0.9rem;
-				inset: 0;
-				justify-content: center;
-				position: absolute;
-				z-index: 2;
+			.dashboard {
+				animation-delay: 0.1s;
 			}
 
-			.chart-status[hidden] {
-				display: none;
-			}
-
-			.note {
-				color: var(--muted);
-				font-size: 0.75rem;
-				line-height: 1.5;
-				margin: 16px 4px 0;
-			}
-
-			.site-footer {
-				margin: 0 auto;
-				max-width: 1240px;
-				padding: 0 24px;
-			}
-
-			.tag-list {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 8px;
-				justify-content: center;
-			}
-
-			.tag {
-				background: var(--surface);
-				border: 1px solid var(--line);
-				border-radius: 999px;
-				color: var(--muted);
-				font-size: 0.78rem;
-				line-height: 1.2;
-				padding: 5px 10px;
-				text-decoration: none;
-				transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-			}
-
-			.tag:hover,
-			.tag:focus-visible {
-				background: var(--ink);
-				border-color: var(--ink);
-				color: var(--surface);
-			}
-
-			.tag:focus-visible {
-				outline: 2px solid var(--gold);
-				outline-offset: 2px;
-			}
-
-			.repo-footer {
-				color: var(--muted);
-				font-size: 0.82rem;
-				padding: 16px 20px 28px;
-				text-align: center;
-			}
-
-			.repo-footer a {
-				color: var(--ink);
-				font-weight: 600;
-				text-underline-offset: 3px;
-			}
-
-			.repo-footer a:hover {
-				text-decoration-thickness: 2px;
-			}
-
-			.repo-footer a:focus-visible {
-				outline: 2px solid var(--gold);
-				outline-offset: 3px;
-			}
-
-			@media (max-width: 720px) {
-				.topbar {
-					padding: 0 20px;
+			@keyframes reveal {
+				from {
+					opacity: 0;
+					transform: translateY(14px);
 				}
 
-				main {
-					padding: 38px 14px 30px;
-				}
-
-				.intro {
-					grid-template-columns: 1fr;
-				}
-
-				.currency {
-					border-left: 0;
-					border-top: 1px solid var(--line);
-					padding: 14px 0 0;
-				}
-
-				.toolbar {
-					align-items: stretch;
-					flex-direction: column;
-				}
-
-				.segmented button {
-					flex: 1;
-				}
-
-				.periods {
-					justify-content: space-between;
-				}
-
-				.stats {
-					grid-template-columns: repeat(2, 1fr);
-				}
-
-				.stat:nth-child(2) {
-					border-right: 0;
-				}
-
-				.stat:nth-child(-n + 2) {
-					border-bottom: 1px solid var(--line);
-				}
-
-				.chart-area {
-					height: 390px;
-					padding: 22px 10px 12px;
+				to {
+					opacity: 1;
+					transform: translateY(0);
 				}
 			}
+		}
 
-			@media (prefers-reduced-motion: no-preference) {
-				.intro,
-				.dashboard {
-					animation: reveal 0.6s ease both;
-				}
+		.theme-picker {
+			align-items: center;
+			background: rgba(255, 253, 248, 0.94);
+			border: 1px solid var(--line);
+			border-radius: 8px;
+			box-shadow: 0 8px 24px rgba(23, 26, 32, 0.14);
+			bottom: 16px;
+			display: flex;
+			gap: 8px;
+			left: 16px;
+			padding: 7px;
+			position: fixed;
+			z-index: 30;
+		}
 
-				.dashboard {
-					animation-delay: 0.1s;
-				}
+		.theme-swatch {
+			border: 2px solid transparent;
+			border-radius: 50%;
+			cursor: pointer;
+			height: 26px;
+			padding: 0;
+			width: 26px;
+		}
 
-				@keyframes reveal {
-					from {
-						opacity: 0;
-						transform: translateY(14px);
-					}
-					to {
-						opacity: 1;
-						transform: translateY(0);
-					}
-				}
-			}
+		.theme-swatch[data-theme-choice="blue-light"] {
+			background: linear-gradient(135deg, #667eea, #764ba2);
+		}
 
-			.theme-picker {
-				align-items: center;
-				background: rgba(255, 253, 248, 0.94);
-				border: 1px solid var(--line);
-				border-radius: 8px;
-				box-shadow: 0 8px 24px rgba(23, 26, 32, 0.14);
-				bottom: 16px;
-				display: flex;
-				gap: 8px;
-				left: 16px;
-				padding: 7px;
-				position: fixed;
-				z-index: 30;
-			}
+		.theme-swatch[data-theme-choice="blue-dark"] {
+			background: linear-gradient(135deg, #4f5eb5 48%, #171422 50%);
+		}
 
-			.theme-swatch {
-				border: 2px solid transparent;
-				border-radius: 50%;
-				cursor: pointer;
-				height: 26px;
-				padding: 0;
-				width: 26px;
-			}
+		.theme-swatch[data-theme-choice="red-light"] {
+			background: linear-gradient(135deg, #bf0b0b 48%, #f7dfdf 50%);
+		}
 
-			.theme-swatch[data-theme-choice="blue-light"] {
-				background: linear-gradient(135deg, #667eea, #764ba2);
-			}
+		.theme-swatch[data-theme-choice="red-dark"] {
+			background: linear-gradient(135deg, #8f0a0a 48%, #1c0909 50%);
+		}
 
-			.theme-swatch[data-theme-choice="blue-dark"] {
-				background: linear-gradient(135deg, #4f5eb5 48%, #171422 50%);
-			}
+		.theme-swatch[data-theme-choice="paper-light"] {
+			background: linear-gradient(135deg, #f4f1ea 48%, #b77b12 50%);
+		}
 
-			.theme-swatch[data-theme-choice="red-light"] {
-				background: linear-gradient(135deg, #bf0b0b 48%, #f7dfdf 50%);
-			}
+		.theme-swatch[data-theme-choice="paper-dark"] {
+			background: linear-gradient(135deg, #171612 48%, #e8b951 50%);
+		}
 
-			.theme-swatch[data-theme-choice="red-dark"] {
-				background: linear-gradient(135deg, #8f0a0a 48%, #1c0909 50%);
-			}
+		.theme-swatch[aria-pressed="true"] {
+			border-color: var(--ink);
+			box-shadow: 0 0 0 2px var(--surface);
+		}
 
-			.theme-swatch[data-theme-choice="paper-light"] {
-				background: linear-gradient(135deg, #f4f1ea 48%, #b77b12 50%);
-			}
+		.theme-swatch:focus-visible {
+			outline: 3px solid var(--gold);
+			outline-offset: 2px;
+		}
 
-			.theme-swatch[data-theme-choice="paper-dark"] {
-				background: linear-gradient(135deg, #171612 48%, #e8b951 50%);
-			}
+		html[data-theme="blue"] body {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			background-size: auto;
+			color: #fff;
+		}
 
-			.theme-swatch[aria-pressed="true"] {
-				border-color: var(--ink);
-				box-shadow: 0 0 0 2px var(--surface);
-			}
+		html[data-theme="blue"] .topbar {
+			background: rgba(23, 26, 32, 0.18);
+		}
 
-			.theme-swatch:focus-visible {
-				outline: 3px solid var(--gold);
-				outline-offset: 2px;
-			}
+		html[data-theme="blue"] .eyebrow {
+			color: #ffe49a;
+		}
 
-			html[data-theme="blue"] body {
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-				background-size: auto;
-				color: #fff;
-			}
+		html[data-theme="blue"] .intro-copy,
+		html[data-theme="blue"] .currency,
+		html[data-theme="blue"] .note {
+			color: rgba(255, 255, 255, 0.82);
+		}
 
-			html[data-theme="blue"] .topbar {
-				background: rgba(23, 26, 32, 0.18);
-			}
+		html[data-theme="blue"] .currency {
+			border-color: rgba(255, 255, 255, 0.35);
+		}
 
-			html[data-theme="blue"] .eyebrow {
-				color: #ffe49a;
-			}
+		html[data-theme="blue"] .currency strong {
+			color: #fff;
+		}
 
-			html[data-theme="blue"] .intro-copy,
-			html[data-theme="blue"] .currency,
-			html[data-theme="blue"] .note {
-				color: rgba(255, 255, 255, 0.82);
-			}
+		html[data-theme="blue"] .tag {
+			background: rgba(0, 0, 0, 0.12);
+			border-color: rgba(255, 255, 255, 0.35);
+			color: rgba(255, 255, 255, 0.88);
+		}
 
-			html[data-theme="blue"] .currency {
-				border-color: rgba(255, 255, 255, 0.35);
-			}
+		html[data-theme="blue"] .tag:hover,
+		html[data-theme="blue"] .tag:focus-visible {
+			background: rgba(255, 255, 255, 0.2);
+			border-color: rgba(255, 255, 255, 0.75);
+			color: #fff;
+		}
 
-			html[data-theme="blue"] .currency strong {
-				color: #fff;
-			}
+		html[data-theme="blue"] .repo-footer {
+			color: rgba(255, 255, 255, 0.78);
+		}
 
-			html[data-theme="blue"] .tag {
-				background: rgba(0, 0, 0, 0.12);
-				border-color: rgba(255, 255, 255, 0.35);
-				color: rgba(255, 255, 255, 0.88);
-			}
+		html[data-theme="blue"] .repo-footer a {
+			color: #fff;
+		}
 
-			html[data-theme="blue"] .tag:hover,
-			html[data-theme="blue"] .tag:focus-visible {
-				background: rgba(255, 255, 255, 0.2);
-				border-color: rgba(255, 255, 255, 0.75);
-				color: #fff;
-			}
+		html[data-theme="blue"] .dashboard {
+			background: #fff9e6;
+			border-color: rgba(255, 255, 255, 0.5);
+			box-shadow: 0 10px 40px rgba(0, 0, 0, 0.16);
+			color: var(--ink);
+		}
 
-			html[data-theme="blue"] .repo-footer {
-				color: rgba(255, 255, 255, 0.78);
-			}
+		html[data-theme="blue"] .toolbar,
+		html[data-theme="blue"] .stats,
+		html[data-theme="blue"] .stat,
+		html[data-theme="blue"] .stat:nth-child(-n + 2) {
+			border-color: #e0ddd3;
+		}
 
-			html[data-theme="blue"] .repo-footer a {
-				color: #fff;
-			}
+		html[data-theme="blue"] .segmented {
+			background: rgba(102, 126, 234, 0.14);
+		}
 
-			html[data-theme="blue"] .dashboard {
-				background: #fff9e6;
-				border-color: rgba(255, 255, 255, 0.5);
-				box-shadow: 0 10px 40px rgba(0, 0, 0, 0.16);
-				color: var(--ink);
-			}
+		html[data-theme="blue"] .segmented button.active {
+			background: #fff;
+		}
 
-			html[data-theme="blue"] .toolbar,
-			html[data-theme="blue"] .stats,
-			html[data-theme="blue"] .stat,
-			html[data-theme="blue"] .stat:nth-child(-n + 2) {
-				border-color: #e0ddd3;
-			}
+		html[data-theme="blue"] .chart-status {
+			background: #fff9e6;
+		}
 
-			html[data-theme="blue"] .segmented {
-				background: rgba(102, 126, 234, 0.14);
-			}
+		html[data-theme="blue"][data-mode="dark"] body {
+			background: linear-gradient(135deg, #29264f 0%, #171422 100%);
+		}
 
-			html[data-theme="blue"] .segmented button.active {
-				background: #fff;
-			}
+		html[data-theme="blue"][data-mode="dark"] .dashboard,
+		html[data-theme="blue"][data-mode="dark"] .chart-status {
+			background: #24222c;
+			color: #eceaf2;
+		}
 
-			html[data-theme="blue"] .chart-status {
-				background: #fff9e6;
-			}
+		html[data-theme="blue"][data-mode="dark"] .toolbar,
+		html[data-theme="blue"][data-mode="dark"] .stats,
+		html[data-theme="blue"][data-mode="dark"] .stat,
+		html[data-theme="blue"][data-mode="dark"] .stat:nth-child(-n + 2) {
+			border-color: #403d49;
+		}
 
-			html[data-theme="blue"][data-mode="dark"] body {
-				background: linear-gradient(135deg, #29264f 0%, #171422 100%);
-			}
+		html[data-theme="blue"][data-mode="dark"] .segmented {
+			background: #302d39;
+		}
 
-			html[data-theme="blue"][data-mode="dark"] .dashboard,
-			html[data-theme="blue"][data-mode="dark"] .chart-status {
-				background: #24222c;
-				color: #eceaf2;
-			}
+		html[data-theme="blue"][data-mode="dark"] .segmented button.active {
+			background: #4a4658;
+			color: #fff;
+		}
 
-			html[data-theme="blue"][data-mode="dark"] .toolbar,
-			html[data-theme="blue"][data-mode="dark"] .stats,
-			html[data-theme="blue"][data-mode="dark"] .stat,
-			html[data-theme="blue"][data-mode="dark"] .stat:nth-child(-n + 2) {
-				border-color: #403d49;
-			}
+		html[data-theme="blue"][data-mode="dark"] .periods button.active,
+		html[data-theme="blue"][data-mode="dark"] .stat-value {
+			color: #eceaf2;
+		}
 
-			html[data-theme="blue"][data-mode="dark"] .segmented {
-				background: #302d39;
-			}
+		html[data-theme="red"] body {
+			background: linear-gradient(135deg, #bf0b0b 0%, #720707 100%);
+			background-size: auto;
+			color: #fff;
+		}
 
-			html[data-theme="blue"][data-mode="dark"] .segmented button.active {
-				background: #4a4658;
-				color: #fff;
-			}
+		html[data-theme="red"] .topbar {
+			background: rgba(53, 0, 0, 0.24);
+		}
 
-			html[data-theme="blue"][data-mode="dark"] .periods button.active,
-			html[data-theme="blue"][data-mode="dark"] .stat-value {
-				color: #eceaf2;
-			}
+		html[data-theme="red"] .eyebrow {
+			color: #ffe0a3;
+		}
 
-			html[data-theme="red"] body {
-				background: linear-gradient(135deg, #bf0b0b 0%, #720707 100%);
-				background-size: auto;
-				color: #fff;
-			}
+		html[data-theme="red"] .intro-copy,
+		html[data-theme="red"] .currency,
+		html[data-theme="red"] .note {
+			color: rgba(255, 255, 255, 0.82);
+		}
 
-			html[data-theme="red"] .topbar {
-				background: rgba(53, 0, 0, 0.24);
-			}
+		html[data-theme="red"] .currency {
+			border-color: rgba(255, 255, 255, 0.35);
+		}
 
-			html[data-theme="red"] .eyebrow {
-				color: #ffe0a3;
-			}
+		html[data-theme="red"] .currency strong {
+			color: #fff;
+		}
 
-			html[data-theme="red"] .intro-copy,
-			html[data-theme="red"] .currency,
-			html[data-theme="red"] .note {
-				color: rgba(255, 255, 255, 0.82);
-			}
+		html[data-theme="red"] .tag {
+			background: rgba(0, 0, 0, 0.12);
+			border-color: rgba(255, 255, 255, 0.35);
+			color: rgba(255, 255, 255, 0.88);
+		}
 
-			html[data-theme="red"] .currency {
-				border-color: rgba(255, 255, 255, 0.35);
-			}
+		html[data-theme="red"] .tag:hover,
+		html[data-theme="red"] .tag:focus-visible {
+			background: rgba(255, 255, 255, 0.2);
+			border-color: rgba(255, 255, 255, 0.75);
+			color: #fff;
+		}
 
-			html[data-theme="red"] .currency strong {
-				color: #fff;
-			}
+		html[data-theme="red"] .repo-footer {
+			color: rgba(255, 255, 255, 0.78);
+		}
 
-			html[data-theme="red"] .tag {
-				background: rgba(0, 0, 0, 0.12);
-				border-color: rgba(255, 255, 255, 0.35);
-				color: rgba(255, 255, 255, 0.88);
-			}
+		html[data-theme="red"] .repo-footer a {
+			color: #fff;
+		}
 
-			html[data-theme="red"] .tag:hover,
-			html[data-theme="red"] .tag:focus-visible {
-				background: rgba(255, 255, 255, 0.2);
-				border-color: rgba(255, 255, 255, 0.75);
-				color: #fff;
-			}
+		html[data-theme="red"] .dashboard {
+			background: #fff8f5;
+			border-color: rgba(255, 255, 255, 0.5);
+			box-shadow: 0 10px 40px rgba(0, 0, 0, 0.16);
+			color: var(--ink);
+		}
 
-			html[data-theme="red"] .repo-footer {
-				color: rgba(255, 255, 255, 0.78);
-			}
+		html[data-theme="red"] .toolbar,
+		html[data-theme="red"] .stats,
+		html[data-theme="red"] .stat,
+		html[data-theme="red"] .stat:nth-child(-n + 2) {
+			border-color: #e8d8d3;
+		}
 
-			html[data-theme="red"] .repo-footer a {
-				color: #fff;
-			}
+		html[data-theme="red"] .segmented {
+			background: rgba(191, 11, 11, 0.12);
+		}
 
-			html[data-theme="red"] .dashboard {
-				background: #fff8f5;
-				border-color: rgba(255, 255, 255, 0.5);
-				box-shadow: 0 10px 40px rgba(0, 0, 0, 0.16);
-				color: var(--ink);
-			}
+		html[data-theme="red"] .segmented button.active {
+			background: #fff;
+		}
 
-			html[data-theme="red"] .toolbar,
-			html[data-theme="red"] .stats,
-			html[data-theme="red"] .stat,
-			html[data-theme="red"] .stat:nth-child(-n + 2) {
-				border-color: #e8d8d3;
-			}
+		html[data-theme="red"] .chart-status {
+			background: #fff8f5;
+		}
 
-			html[data-theme="red"] .segmented {
-				background: rgba(191, 11, 11, 0.12);
-			}
+		html[data-theme="red"][data-mode="dark"] body {
+			background: linear-gradient(135deg, #4a0707 0%, #1c0909 100%);
+		}
 
-			html[data-theme="red"] .segmented button.active {
-				background: #fff;
-			}
+		html[data-theme="red"][data-mode="dark"] .dashboard,
+		html[data-theme="red"][data-mode="dark"] .chart-status {
+			background: #292020;
+			color: #f3e9e9;
+		}
 
-			html[data-theme="red"] .chart-status {
-				background: #fff8f5;
-			}
+		html[data-theme="red"][data-mode="dark"] .toolbar,
+		html[data-theme="red"][data-mode="dark"] .stats,
+		html[data-theme="red"][data-mode="dark"] .stat,
+		html[data-theme="red"][data-mode="dark"] .stat:nth-child(-n + 2) {
+			border-color: #4a3737;
+		}
 
-			html[data-theme="red"][data-mode="dark"] body {
-				background: linear-gradient(135deg, #4a0707 0%, #1c0909 100%);
-			}
+		html[data-theme="red"][data-mode="dark"] .segmented {
+			background: #382a2a;
+		}
 
-			html[data-theme="red"][data-mode="dark"] .dashboard,
-			html[data-theme="red"][data-mode="dark"] .chart-status {
-				background: #292020;
-				color: #f3e9e9;
-			}
+		html[data-theme="red"][data-mode="dark"] .segmented button.active {
+			background: #513b3b;
+			color: #fff;
+		}
 
-			html[data-theme="red"][data-mode="dark"] .toolbar,
-			html[data-theme="red"][data-mode="dark"] .stats,
-			html[data-theme="red"][data-mode="dark"] .stat,
-			html[data-theme="red"][data-mode="dark"] .stat:nth-child(-n + 2) {
-				border-color: #4a3737;
-			}
+		html[data-theme="red"][data-mode="dark"] .periods button.active,
+		html[data-theme="red"][data-mode="dark"] .stat-value {
+			color: #f3e9e9;
+		}
 
-			html[data-theme="red"][data-mode="dark"] .segmented {
-				background: #382a2a;
-			}
+		html[data-theme="paper"][data-mode="dark"] {
+			--ink: #f1ede4;
+			--muted: #aaa398;
+			--paper: #171612;
+			--surface: #22201b;
+			--line: #3f3b32;
+			--gold: #e8b951;
+			--gold-light: #f0c96c;
+			--green: #74b99d;
+			--red: #e07a70;
+		}
 
-			html[data-theme="red"][data-mode="dark"] .segmented button.active {
-				background: #513b3b;
-				color: #fff;
-			}
+		html[data-theme="paper"][data-mode="dark"] body {
+			background:
+				linear-gradient(rgba(244, 241, 234, 0.045) 1px, transparent 1px),
+				linear-gradient(90deg, rgba(244, 241, 234, 0.045) 1px, transparent 1px),
+				var(--paper);
+		}
 
-			html[data-theme="red"][data-mode="dark"] .periods button.active,
-			html[data-theme="red"][data-mode="dark"] .stat-value {
-				color: #f3e9e9;
-			}
+		html[data-theme="paper"][data-mode="dark"] .topbar {
+			background: #0f0f0d;
+		}
 
-			html[data-theme="paper"][data-mode="dark"] {
-				--ink: #f1ede4;
-				--muted: #aaa398;
-				--paper: #171612;
-				--surface: #22201b;
-				--line: #3f3b32;
-				--gold: #e8b951;
-				--gold-light: #f0c96c;
-				--green: #74b99d;
-				--red: #e07a70;
-			}
+		html[data-theme="paper"][data-mode="dark"] .segmented {
+			background: #302d26;
+		}
 
-			html[data-theme="paper"][data-mode="dark"] body {
-				background:
-					linear-gradient(rgba(244, 241, 234, 0.045) 1px, transparent 1px),
-					linear-gradient(90deg, rgba(244, 241, 234, 0.045) 1px, transparent 1px),
-					var(--paper);
-			}
+		html[data-theme="paper"][data-mode="dark"] .segmented button.active {
+			background: #403b31;
+		}
 
-			html[data-theme="paper"][data-mode="dark"] .topbar {
-				background: #0f0f0d;
-			}
+		html[data-mode="dark"] .theme-picker {
+			background: rgba(34, 32, 27, 0.96);
+			border-color: #514b40;
+		}
 
-			html[data-theme="paper"][data-mode="dark"] .segmented {
-				background: #302d26;
-			}
+		html[data-mode="dark"] .theme-swatch[aria-pressed="true"] {
+			border-color: #fffdf8;
+			box-shadow: 0 0 0 2px #22201b;
+		}
+	</style>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-GGYDT2S6GH"></script>
+	<script>
+		window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-GGYDT2S6GH');
+	</script>
+</head>
 
-			html[data-theme="paper"][data-mode="dark"] .segmented button.active {
-				background: #403b31;
-			}
-
-			html[data-mode="dark"] .theme-picker {
-				background: rgba(34, 32, 27, 0.96);
-				border-color: #514b40;
-			}
-
-			html[data-mode="dark"] .theme-swatch[aria-pressed="true"] {
-				border-color: #fffdf8;
-				box-shadow: 0 0 0 2px #22201b;
-			}
-		</style>
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-GGYDT2S6GH"></script>
-		<script>
-		window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-GGYDT2S6GH');
-		</script>
-	</head>
-	<body>
-		<div class="theme-picker" role="group" aria-label="Chọn giao diện">
-			<button class="theme-swatch" type="button" data-theme-choice="blue-light" aria-label="Giao diện tím sáng" title="Giao diện tím sáng"></button>
-			<button class="theme-swatch" type="button" data-theme-choice="blue-dark" aria-label="Giao diện tím tối" title="Giao diện tím tối"></button>
-			<button class="theme-swatch" type="button" data-theme-choice="red-light" aria-label="Giao diện đỏ sáng" title="Giao diện đỏ sáng"></button>
-			<button class="theme-swatch" type="button" data-theme-choice="red-dark" aria-label="Giao diện đỏ tối" title="Giao diện đỏ tối"></button>
-			<button class="theme-swatch" type="button" data-theme-choice="paper-light" aria-label="Giao diện giấy sáng" title="Giao diện giấy sáng"></button>
-			<button class="theme-swatch" type="button" data-theme-choice="paper-dark" aria-label="Giao diện giấy tối" title="Giao diện giấy tối"></button>
-		</div>
-		<script>
-			function applyTheme(choice) {
-				const [theme, mode] = choice.split("-");
-				document.documentElement.dataset.theme = theme;
-				document.documentElement.dataset.mode = mode;
-				const themeColors = {
-					"blue-light": "#667eea",
-					"blue-dark": "#29264f",
-					"red-light": "#bf0b0b",
-					"red-dark": "#4a0707",
-					"paper-light": "#171a20",
-					"paper-dark": "#171612"
-				};
-				document.querySelector('meta[name="theme-color"]').content = themeColors[choice];
-				document.querySelectorAll("[data-theme-choice]").forEach((button) => {
-					button.setAttribute("aria-pressed", button.dataset.themeChoice === choice);
-				});
-				try { localStorage.setItem("gold-price-theme", choice); } catch (error) {}
-				document.dispatchEvent(new CustomEvent("themechange"));
-			}
-
+<body>
+	<div class="theme-picker" role="group" aria-label="Chọn giao diện">
+		<button class="theme-swatch" type="button" data-theme-choice="blue-light" aria-label="Giao diện tím sáng"
+			title="Giao diện tím sáng"></button>
+		<button class="theme-swatch" type="button" data-theme-choice="blue-dark" aria-label="Giao diện tím tối"
+			title="Giao diện tím tối"></button>
+		<button class="theme-swatch" type="button" data-theme-choice="red-light" aria-label="Giao diện đỏ sáng"
+			title="Giao diện đỏ sáng"></button>
+		<button class="theme-swatch" type="button" data-theme-choice="red-dark" aria-label="Giao diện đỏ tối"
+			title="Giao diện đỏ tối"></button>
+		<button class="theme-swatch" type="button" data-theme-choice="paper-light" aria-label="Giao diện giấy sáng"
+			title="Giao diện giấy sáng"></button>
+		<button class="theme-swatch" type="button" data-theme-choice="paper-dark" aria-label="Giao diện giấy tối"
+			title="Giao diện giấy tối"></button>
+	</div>
+	<script>
+		function applyTheme(choice) {
+			const [theme, mode] = choice.split("-");
+			document.documentElement.dataset.theme = theme;
+			document.documentElement.dataset.mode = mode;
+			const themeColors = {
+				"blue-light": "#667eea",
+				"blue-dark": "#29264f",
+				"red-light": "#bf0b0b",
+				"red-dark": "#4a0707",
+				"paper-light": "#171a20",
+				"paper-dark": "#171612"
+			};
+			document.querySelector('meta[name="theme-color"]').content = themeColors[choice];
 			document.querySelectorAll("[data-theme-choice]").forEach((button) => {
-				button.addEventListener("click", () => applyTheme(button.dataset.themeChoice));
+				button.setAttribute("aria-pressed", button.dataset.themeChoice === choice);
 			});
-			applyTheme(`${document.documentElement.dataset.theme}-${document.documentElement.dataset.mode}`);
-		</script>
-		<header class="topbar">
-			<a class="brand" href="../" aria-label="Trang giá vàng">
-				<span class="brand-mark" aria-hidden="true"></span>
-				Xem Giá Vàng
-			</a>
-			<a class="back-link" href="../">Giá vàng hôm nay &rarr;</a>
-		</header>
+			try { localStorage.setItem("gold-price-theme", choice); } catch (error) { }
+			document.dispatchEvent(new CustomEvent("themechange"));
+		}
 
-		<main>
-			<section class="intro" aria-labelledby="page-title">
-				<div>
-					<p class="eyebrow">Dữ liệu lịch sử 1833&ndash;2026</p>
-					<h1 id="page-title">Lịch sử giá vàng</h1>
-					<p class="intro-copy">Quan sát biến động dài hạn của giá vàng thế giới qua dữ liệu theo từng tháng.</p>
-				</div>
-				<div class="currency">
-					<strong>USD / ounce</strong>
-					Đơn vị niêm yết
-				</div>
-			</section>
+		document.querySelectorAll("[data-theme-choice]").forEach((button) => {
+			button.addEventListener("click", () => applyTheme(button.dataset.themeChoice));
+		});
+		applyTheme(`${document.documentElement.dataset.theme}-${document.documentElement.dataset.mode}`);
+	</script>
+	<header class="topbar">
+		<a class="brand" href="../" aria-label="Trang giá vàng">
+			<span class="brand-mark" aria-hidden="true"></span>
+			Xem Giá Vàng
+		</a>
+		<a class="back-link" href="../">Giá vàng hôm nay &rarr;</a>
+	</header>
 
-			<section class="dashboard" aria-label="Biểu đồ lịch sử giá vàng">
-				<div class="toolbar">
-					<div class="periods" aria-label="Khoảng thời gian">
-						<button type="button" data-years="1">1N</button>
-                        <button type="button" data-years="2">2N</button>
-						<button type="button" data-years="5">5N</button>
-                        <button type="button" data-years="10">10N</button>
-                        <button type="button" data-years="15">15N</button>
-						<button type="button" data-years="20">20N</button>
-						<button class="active" type="button" data-years="all">Tất cả</button>
-					</div>
-				</div>
-
-				<div class="stats" aria-live="polite">
-					<div class="stat">
-						<div class="stat-label">Mới nhất</div>
-						<div class="stat-value" id="latest-price">&mdash;</div>
-					</div>
-					<div class="stat">
-						<div class="stat-label">Thay đổi</div>
-						<div class="stat-value" id="price-change">&mdash;</div>
-					</div>
-					<div class="stat">
-						<div class="stat-label">Cao nhất</div>
-						<div class="stat-value" id="highest-price">&mdash;</div>
-					</div>
-					<div class="stat">
-						<div class="stat-label">Thấp nhất</div>
-						<div class="stat-value" id="lowest-price">&mdash;</div>
-					</div>
-				</div>
-
-				<div class="chart-area">
-					<div class="chart-status" id="chart-status">Đang tải dữ liệu&hellip;</div>
-					<canvas id="gold-chart" aria-label="Đường biểu diễn giá vàng theo thời gian" role="img"></canvas>
-				</div>
-			</section>
-			<p class="note">Nguồn dữ liệu lịch sử được tổng hợp theo giá vàng thế giới danh nghĩa. Dữ liệu năm 2026 có thể bao gồm các kỳ dự báo hoặc chưa hoàn tất.</p>
-		</main>
-		<footer class="site-footer">
-			<nav class="tag-list" aria-label="Chủ đề theo dõi">
-				<a class="tag" href="https://xemgia.netlify.app" target="_blank" rel="noopener noreferrer">#xemgia</a>
-				<a class="tag" href="https://xemgiavang.netlify.app" target="_blank" rel="noopener noreferrer">#xemgiavang</a>
-				<a class="tag" href="https://vangdoji.netlify.app" target="_blank" rel="noopener noreferrer">#vangdoji</a>
-				<a class="tag" href="https://vangphuquy.netlify.app" target="_blank" rel="noopener noreferrer">#vangphuquy</a>
-				<a class="tag" href="https://vangmihong.netlify.app" target="_blank" rel="noopener noreferrer">#vangmihong</a>
-				<a class="tag" href="https://baotinmanhhai.netlify.app" target="_blank" rel="noopener noreferrer">#baotinmanhhai</a>
-				<a class="tag" href="./">#lich-su</a>
-				<a class="tag" href="https://www.google.com/search?q=%23giavanghomnay" target="_blank" rel="noopener noreferrer">#giavanghomnay</a>
-				<a class="tag" href="https://www.google.com/search?q=%23vangsjc" target="_blank" rel="noopener noreferrer">#vangsjc</a>
-				<a class="tag" href="https://www.google.com/search?q=%23vang9999" target="_blank" rel="noopener noreferrer">#vang9999</a>
-				<a class="tag" href="https://www.google.com/search?q=%23mihong" target="_blank" rel="noopener noreferrer">#mihong</a>
-				<a class="tag" href="https://www.google.com/search?q=%23giabac" target="_blank" rel="noopener noreferrer">#giabac</a>
-				<a class="tag" href="https://www.google.com/search?q=%23sosanhgiavang" target="_blank" rel="noopener noreferrer">#sosanhgiavang</a>
-			</nav>
-			<div class="repo-footer">
-				GitHub: <a href="https://github.com/dunglex/gold-prices" target="_blank" rel="noopener noreferrer">dunglex/gold-prices</a>
+	<main>
+		<section class="intro" aria-labelledby="page-title">
+			<div>
+				<p class="eyebrow">Dữ liệu lịch sử 1833&ndash;2026</p>
+				<h1 id="page-title">Lịch sử giá vàng</h1>
+				<p class="intro-copy">Quan sát biến động dài hạn của giá vàng thế giới qua dữ liệu theo từng tháng.</p>
 			</div>
-		</footer>
+			<div class="currency">
+				<strong>USD / ounce</strong>
+				Đơn vị niêm yết
+			</div>
+		</section>
 
-		<script>
-			const dataFile = "monthly.csv";
-			let monthlyData;
-			const state = { years: "all" };
-			const status = document.getElementById("chart-status");
-			const currency = new Intl.NumberFormat("vi-VN", {
-				style: "currency",
-				currency: "USD",
-				maximumFractionDigits: 0
-			});
-			let chart;
+		<section class="dashboard" aria-label="Biểu đồ lịch sử giá vàng">
+			<div class="toolbar">
+				<div class="periods" aria-label="Khoảng thời gian">
+					<button type="button" data-years="1">1N</button>
+					<button type="button" data-years="2">2N</button>
+					<button type="button" data-years="5">5N</button>
+					<button type="button" data-years="10">10N</button>
+					<button type="button" data-years="15">15N</button>
+					<button type="button" data-years="20">20N</button>
+					<button class="active" type="button" data-years="all">Tất cả</button>
+				</div>
+			</div>
 
-			function parseCsv(csv) {
-				return csv.trim().split(/\r?\n/).slice(1).map((row) => {
-					const [date, price] = row.split(",");
-					return { date, price: Number(price) };
-				}).filter((item) => item.date && Number.isFinite(item.price));
-			}
+			<div class="stats" aria-live="polite">
+				<div class="stat">
+					<div class="stat-label">Mới nhất</div>
+					<div class="stat-value" id="latest-price">&mdash;</div>
+				</div>
+				<div class="stat">
+					<div class="stat-label">Thay đổi</div>
+					<div class="stat-value" id="price-change">&mdash;</div>
+				</div>
+				<div class="stat">
+					<div class="stat-label">Cao nhất</div>
+					<div class="stat-value" id="highest-price">&mdash;</div>
+				</div>
+				<div class="stat">
+					<div class="stat-label">Thấp nhất</div>
+					<div class="stat-value" id="lowest-price">&mdash;</div>
+				</div>
+			</div>
 
-			async function loadData() {
-				if (monthlyData) return monthlyData;
-				const response = await fetch(dataFile);
-				if (!response.ok) throw new Error(`HTTP ${response.status}`);
-				monthlyData = parseCsv(await response.text());
-				return monthlyData;
-			}
+			<div class="chart-area">
+				<div class="chart-status" id="chart-status">Đang tải dữ liệu&hellip;</div>
+				<canvas id="gold-chart" aria-label="Đường biểu diễn giá vàng theo thời gian" role="img"></canvas>
+			</div>
+		</section>
+		<p class="note">Nguồn dữ liệu lịch sử được tổng hợp theo giá vàng thế giới danh nghĩa. Dữ liệu năm 2026 có thể
+			bao gồm các kỳ dự báo hoặc chưa hoàn tất.</p>
+	</main>
+	<footer class="site-footer">
+		<nav class="tag-list" aria-label="Chủ đề theo dõi">
+			<a class="tag" href="https://xemgia.netlify.app" target="_blank" rel="noopener noreferrer">#xemgia</a>
+			<a class="tag" href="https://xemgiavang.netlify.app" target="_blank"
+				rel="noopener noreferrer">#xemgiavang</a>
+			<a class="tag" href="https://vangdoji.netlify.app" target="_blank" rel="noopener noreferrer">#vangdoji</a>
+			<a class="tag" href="https://vangphuquy.netlify.app" target="_blank"
+				rel="noopener noreferrer">#vangphuquy</a>
+			<a class="tag" href="https://vangmihong.netlify.app" target="_blank"
+				rel="noopener noreferrer">#vangmihong</a>
+			<a class="tag" href="https://baotinmanhhai.netlify.app" target="_blank"
+				rel="noopener noreferrer">#baotinmanhhai</a>
+			<a class="tag" href="./">#lich-su</a>
+			<a class="tag" href="https://www.google.com/search?q=%23giavanghomnay" target="_blank"
+				rel="noopener noreferrer">#giavanghomnay</a>
+			<a class="tag" href="https://www.google.com/search?q=%23vangsjc" target="_blank"
+				rel="noopener noreferrer">#vangsjc</a>
+			<a class="tag" href="https://www.google.com/search?q=%23vang9999" target="_blank"
+				rel="noopener noreferrer">#vang9999</a>
+			<a class="tag" href="https://www.google.com/search?q=%23mihong" target="_blank"
+				rel="noopener noreferrer">#mihong</a>
+			<a class="tag" href="https://www.google.com/search?q=%23giabac" target="_blank"
+				rel="noopener noreferrer">#giabac</a>
+			<a class="tag" href="https://www.google.com/search?q=%23sosanhgiavang" target="_blank"
+				rel="noopener noreferrer">#sosanhgiavang</a>
+		</nav>
+		<div class="repo-footer">
+			GitHub: <a href="https://github.com/dunglex/gold-prices" target="_blank"
+				rel="noopener noreferrer">dunglex/gold-prices</a>
+		</div>
+	</footer>
 
-			function filterData(data) {
-				if (state.years === "all") return data;
-				return data.slice(-(Number(state.years) * 12));
-			}
+	<script>
+		const dataFile = "monthly.csv";
+		let monthlyData;
+		const state = { years: "all" };
+		const status = document.getElementById("chart-status");
+		const currency = new Intl.NumberFormat("vi-VN", {
+			style: "currency",
+			currency: "USD",
+			maximumFractionDigits: 0
+		});
+		let chart;
 
-			function displayDate(value) {
-				if (!value.includes("-")) return value;
-				const [year, month] = value.split("-");
-				return `T${Number(month)}/${year}`;
-			}
+		function parseCsv(csv) {
+			return csv.trim().split(/\r?\n/).slice(1).map((row) => {
+				const [date, price] = row.split(",");
+				return { date, price: Number(price) };
+			}).filter((item) => item.date && Number.isFinite(item.price));
+		}
 
-			function setStat(id, value) {
-				document.getElementById(id).textContent = value;
-			}
+		async function loadData() {
+			if (monthlyData) return monthlyData;
+			const response = await fetch(dataFile);
+			if (!response.ok) throw new Error(`HTTP ${response.status}`);
+			monthlyData = parseCsv(await response.text());
+			return monthlyData;
+		}
 
-			function updateStats(data) {
-				const prices = data.map((item) => item.price);
-				const first = prices[0];
-				const latest = prices.at(-1);
-				const change = ((latest - first) / first) * 100;
-				const changeElement = document.getElementById("price-change");
+		function filterData(data) {
+			if (state.years === "all") return data;
+			return data.slice(-(Number(state.years) * 12));
+		}
 
-				setStat("latest-price", currency.format(latest));
-				setStat("price-change", `${change >= 0 ? "+" : ""}${change.toLocaleString("vi-VN", { maximumFractionDigits: 1 })}%`);
-				setStat("highest-price", currency.format(Math.max(...prices)));
-				setStat("lowest-price", currency.format(Math.min(...prices)));
-				changeElement.classList.toggle("positive", change >= 0);
-				changeElement.classList.toggle("negative", change < 0);
-			}
+		function displayDate(value) {
+			if (!value.includes("-")) return value;
+			const [year, month] = value.split("-");
+			return `T${Number(month)}/${year}`;
+		}
 
-			function drawChart(data) {
-				const context = document.getElementById("gold-chart").getContext("2d");
-				const darkMode = document.documentElement.dataset.mode === "dark";
-				const textColor = darkMode ? "#b8b3aa" : "#777a80";
-				const gridColor = darkMode ? "rgba(255, 255, 255, 0.09)" : "rgba(23, 26, 32, 0.08)";
-				const fill = context.createLinearGradient(0, 0, 0, 430);
-				fill.addColorStop(0, darkMode ? "rgba(232, 185, 81, 0.32)" : "rgba(183, 123, 18, 0.28)");
-				fill.addColorStop(1, darkMode ? "rgba(232, 185, 81, 0.02)" : "rgba(183, 123, 18, 0.01)");
+		function setStat(id, value) {
+			document.getElementById(id).textContent = value;
+		}
 
-				chart?.destroy();
-				chart = new Chart(context, {
-					type: "line",
-					data: {
-						labels: data.map((item) => item.date),
-						datasets: [{
-							data: data.map((item) => item.price),
-							borderColor: darkMode ? "#e8b951" : "#b77b12",
-							backgroundColor: fill,
-							borderWidth: 2,
-							fill: true,
-							pointRadius: 0,
-							pointHoverRadius: 4,
-							pointHoverBackgroundColor: darkMode ? "#fffdf8" : "#171a20",
-							tension: 0.16
-						}]
+		function updateStats(data) {
+			const prices = data.map((item) => item.price);
+			const first = prices[0];
+			const latest = prices.at(-1);
+			const change = ((latest - first) / first) * 100;
+			const changeElement = document.getElementById("price-change");
+
+			setStat("latest-price", currency.format(latest));
+			setStat("price-change", `${change >= 0 ? "+" : ""}${change.toLocaleString("vi-VN", { maximumFractionDigits: 1 })}%`);
+			setStat("highest-price", currency.format(Math.max(...prices)));
+			setStat("lowest-price", currency.format(Math.min(...prices)));
+			changeElement.classList.toggle("positive", change >= 0);
+			changeElement.classList.toggle("negative", change < 0);
+		}
+
+		function drawChart(data) {
+			const context = document.getElementById("gold-chart").getContext("2d");
+			const darkMode = document.documentElement.dataset.mode === "dark";
+			const textColor = darkMode ? "#b8b3aa" : "#777a80";
+			const gridColor = darkMode ? "rgba(255, 255, 255, 0.09)" : "rgba(23, 26, 32, 0.08)";
+			const fill = context.createLinearGradient(0, 0, 0, 430);
+			fill.addColorStop(0, darkMode ? "rgba(232, 185, 81, 0.32)" : "rgba(183, 123, 18, 0.28)");
+			fill.addColorStop(1, darkMode ? "rgba(232, 185, 81, 0.02)" : "rgba(183, 123, 18, 0.01)");
+
+			chart?.destroy();
+			chart = new Chart(context, {
+				type: "line",
+				data: {
+					labels: data.map((item) => item.date),
+					datasets: [{
+						data: data.map((item) => item.price),
+						borderColor: darkMode ? "#e8b951" : "#b77b12",
+						backgroundColor: fill,
+						borderWidth: 2,
+						fill: true,
+						pointRadius: 0,
+						pointHoverRadius: 4,
+						pointHoverBackgroundColor: darkMode ? "#fffdf8" : "#171a20",
+						tension: 0.16
+					}]
+				},
+				options: {
+					responsive: true,
+					maintainAspectRatio: false,
+					interaction: { intersect: false, mode: "index" },
+					animation: { duration: 550 },
+					plugins: {
+						legend: { display: false },
+						tooltip: {
+							backgroundColor: darkMode ? "#0f0f0d" : "#171a20",
+							padding: 12,
+							displayColors: false,
+							callbacks: {
+								title: (items) => displayDate(items[0].label),
+								label: (item) => currency.format(item.raw)
+							}
+						}
 					},
-					options: {
-						responsive: true,
-						maintainAspectRatio: false,
-						interaction: { intersect: false, mode: "index" },
-						animation: { duration: 550 },
-						plugins: {
-							legend: { display: false },
-							tooltip: {
-								backgroundColor: darkMode ? "#0f0f0d" : "#171a20",
-								padding: 12,
-								displayColors: false,
-								callbacks: {
-									title: (items) => displayDate(items[0].label),
-									label: (item) => currency.format(item.raw)
-								}
+					scales: {
+						x: {
+							grid: { display: false },
+							border: { display: false },
+							ticks: {
+								color: textColor,
+								font: { family: getComputedStyle(document.body).fontFamily, size: 11 },
+								maxRotation: 0,
+								maxTicksLimit: window.innerWidth < 600 ? 5 : 10,
+								callback: function (value) { return displayDate(this.getLabelForValue(value)); }
 							}
 						},
-						scales: {
-							x: {
-								grid: { display: false },
-								border: { display: false },
-								ticks: {
-									color: textColor,
-									font: { family: getComputedStyle(document.body).fontFamily, size: 11 },
-									maxRotation: 0,
-									maxTicksLimit: window.innerWidth < 600 ? 5 : 10,
-									callback: function(value) { return displayDate(this.getLabelForValue(value)); }
-								}
-							},
-							y: {
-								beginAtZero: false,
-								border: { display: false },
-								grid: { color: gridColor },
-								ticks: {
-									color: textColor,
-									font: { family: getComputedStyle(document.body).fontFamily, size: 11 },
-									callback: (value) => `$${Number(value).toLocaleString("en-US")}`
-								}
+						y: {
+							beginAtZero: false,
+							border: { display: false },
+							grid: { color: gridColor },
+							ticks: {
+								color: textColor,
+								font: { family: getComputedStyle(document.body).fontFamily, size: 11 },
+								callback: (value) => `$${Number(value).toLocaleString("en-US")}`
 							}
 						}
 					}
-				});
-			}
-
-			async function render() {
-				status.hidden = false;
-				status.textContent = "Đang tải dữ liệu…";
-				try {
-					const data = filterData(await loadData());
-					if (data.length === 0) throw new Error("Không có dữ liệu");
-					updateStats(data);
-					drawChart(data);
-					status.hidden = true;
-				} catch (error) {
-					console.error(error);
-					status.textContent = "Không thể tải dữ liệu. Hãy mở trang qua máy chủ web.";
 				}
+			});
+		}
+
+		async function render() {
+			status.hidden = false;
+			status.textContent = "Đang tải dữ liệu…";
+			try {
+				const data = filterData(await loadData());
+				if (data.length === 0) throw new Error("Không có dữ liệu");
+				updateStats(data);
+				drawChart(data);
+				status.hidden = true;
+			} catch (error) {
+				console.error(error);
+				status.textContent = "Không thể tải dữ liệu. Hãy mở trang qua máy chủ web.";
 			}
+		}
 
-			document.querySelectorAll("[data-years]").forEach((button) => {
-				button.addEventListener("click", () => {
-					state.years = button.dataset.years;
-					document.querySelectorAll("[data-years]").forEach((item) => item.classList.toggle("active", item === button));
-					render();
-				});
+		document.querySelectorAll("[data-years]").forEach((button) => {
+			button.addEventListener("click", () => {
+				state.years = button.dataset.years;
+				document.querySelectorAll("[data-years]").forEach((item) => item.classList.toggle("active", item === button));
+				render();
 			});
+		});
 
-			document.addEventListener("themechange", () => {
-				if (monthlyData) render();
-			});
+		document.addEventListener("themechange", () => {
+			if (monthlyData) render();
+		});
 
-			render();
-		</script>
-	</body>
+		render();
+	</script>
+</body>
+
 </html>

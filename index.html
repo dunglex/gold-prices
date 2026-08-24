@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="vi" translate="no">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-        <meta name="theme-color" content="#171a20">
-		<meta name="mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-		<meta name="google" content="notranslate">
-		<meta name="description" content="Theo dõi giá vàng và bạc liên tục từ nhiều nguồn uy tín một cách nhanh chóng và chính xác.">
-		<title>Xem Giá Vàng</title>
-		<link rel="icon" type="image/x-icon" href="/favicon.ico">
-		<link rel="icon" type="image/png" href="/favicon.png">
-        <script>
-            try {
-                const savedTheme = localStorage.getItem("gold-price-theme") || "blue-light";
-                const [style, mode = "light"] = savedTheme.split("-");
-                document.documentElement.dataset.theme = style;
-                document.documentElement.dataset.mode = mode;
-            } catch (error) {
-                document.documentElement.dataset.theme = "blue";
-                document.documentElement.dataset.mode = "light";
-            }
-            document.title = "Xem Giá Vàng - " + window.location.hostname;
-        </script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#171a20">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="description"
+        content="Theo dõi giá vàng và bạc liên tục từ nhiều nguồn uy tín một cách nhanh chóng và chính xác.">
+    <title>Xem Giá Vàng</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <script>
+        try {
+            const savedTheme = localStorage.getItem("gold-price-theme") || "blue-light";
+            const [style, mode = "light"] = savedTheme.split("-");
+            document.documentElement.dataset.theme = style;
+            document.documentElement.dataset.mode = mode;
+        } catch (error) {
+            document.documentElement.dataset.theme = "blue";
+            document.documentElement.dataset.mode = "light";
+        }
+        document.title = "Xem Giá Vàng - " + window.location.hostname;
+    </script>
     <style>
         :root {
             --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
@@ -36,7 +38,8 @@
             box-sizing: border-box;
         }
 
-        html, body {
+        html,
+        body {
             width: 100%;
             overflow-x: hidden;
         }
@@ -63,7 +66,7 @@
         .header h1 {
             font-size: clamp(1.5rem, 8vw, 3rem);
             margin-bottom: 8px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             word-break: break-word;
         }
 
@@ -122,7 +125,7 @@
         }
 
         .source-title span.badge {
-            background: rgba(0,0,0,0.15);
+            background: rgba(0, 0, 0, 0.15);
             color: white;
             padding: 6px 10px;
             border-radius: 10px;
@@ -132,7 +135,7 @@
         .table-wrapper {
             background: #fff9e6;
             border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             animation: slideUp 0.6s ease-out;
             overflow-x: auto;
@@ -174,13 +177,13 @@
         tbody tr:hover {
             background-color: #fffef0;
         }
-        
+
         .no-scrollbar {
-           
+
             scrollbar-width: none;
             -ms-overflow-style: none;
         }
-        
+
         @media (hover: hover) {
             tbody tr:hover {
                 transform: scale(1.01);
@@ -267,6 +270,7 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -278,6 +282,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -299,7 +304,7 @@
         }
 
         .stat-card {
-            background: rgba(0,0,0,0.1);
+            background: rgba(0, 0, 0, 0.1);
             border: 2px solid white;
             border-radius: 12px;
             padding: clamp(16px, 4vw, 20px);
@@ -317,8 +322,8 @@
 
         .stat-card:hover,
         .stat-card:focus-visible {
-            background: rgba(255,255,255,0.2);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
             transform: translateY(-4px);
         }
 
@@ -364,7 +369,8 @@
                 min-width: 0;
             }
 
-            th, td {
+            th,
+            td {
                 padding: 10px 8px;
                 font-size: 0.8rem;
             }
@@ -430,7 +436,8 @@
                 font-size: 0.75rem;
             }
 
-            th, td {
+            th,
+            td {
                 padding: 8px 6px;
             }
 
@@ -466,7 +473,8 @@
                 min-width: 320px;
             }
 
-            th, td {
+            th,
+            td {
                 padding: 6px 4px;
                 font-size: 0.7rem;
             }
@@ -509,7 +517,8 @@
         }
 
         /* High DPI displays */
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        @media (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi) {
             .table-wrapper {
                 border: 0.5px solid #e0e0e0;
             }
@@ -622,6 +631,7 @@
         html[data-theme="red"][data-mode="dark"] tbody tr.inactive {
             background-color: #211919;
         }
+
         .skip-link {
             position: absolute;
             width: 1px;
@@ -662,7 +672,7 @@
             font-size: 1.5rem;
             line-height: 1;
             cursor: pointer;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.22);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
@@ -704,10 +714,10 @@
         .tag {
             display: inline-block;
             padding: 5px 10px;
-            border: 1px solid rgba(255,255,255,0.35);
+            border: 1px solid rgba(255, 255, 255, 0.35);
             border-radius: 999px;
-            background: rgba(0,0,0,0.12);
-            color: rgba(255,255,255,0.88);
+            background: rgba(0, 0, 0, 0.12);
+            color: rgba(255, 255, 255, 0.88);
             font-size: 0.78rem;
             line-height: 1.2;
             text-decoration: none;
@@ -716,8 +726,8 @@
 
         .tag:hover,
         .tag:focus-visible {
-            background: rgba(255,255,255,0.2);
-            border-color: rgba(255,255,255,0.75);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.75);
             color: white;
             transform: translateY(-2px);
         }
@@ -728,7 +738,7 @@
         }
 
         .repo-footer {
-            color: rgba(255,255,255,0.78);
+            color: rgba(255, 255, 255, 0.78);
             font-size: 0.82rem;
             padding: 14px 16px 28px;
             text-align: center;
@@ -1037,210 +1047,305 @@
     </style>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGYDT2S6GH"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-GGYDT2S6GH');
+        window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-GGYDT2S6GH');
     </script>
-	</head>
-	<body>
-		<a href="#main-content" class="skip-link">Skip to main content</a>
-        <div class="theme-picker" role="group" aria-label="Chọn giao diện">
-            <button class="theme-swatch" type="button" data-theme-choice="blue-light" aria-label="Giao diện tím sáng" title="Giao diện tím sáng"></button>
-            <button class="theme-swatch" type="button" data-theme-choice="blue-dark" aria-label="Giao diện tím tối" title="Giao diện tím tối"></button>
-            <button class="theme-swatch" type="button" data-theme-choice="red-light" aria-label="Giao diện đỏ sáng" title="Giao diện đỏ sáng"></button>
-            <button class="theme-swatch" type="button" data-theme-choice="red-dark" aria-label="Giao diện đỏ tối" title="Giao diện đỏ tối"></button>
-            <button class="theme-swatch" type="button" data-theme-choice="paper-light" aria-label="Giao diện giấy sáng" title="Giao diện giấy sáng"></button>
-            <button class="theme-swatch" type="button" data-theme-choice="paper-dark" aria-label="Giao diện giấy tối" title="Giao diện giấy tối"></button>
-        </div>
-        <script>
-            function applyTheme(choice) {
-                const [theme, mode] = choice.split("-");
-                document.documentElement.dataset.theme = theme;
-                document.documentElement.dataset.mode = mode;
-                const themeColors = {
-                    "blue-light": "#667eea",
-                    "blue-dark": "#29264f",
-                    "red-light": "#bf0b0b",
-                    "red-dark": "#4a0707",
-                    "paper-light": "#171a20",
-                    "paper-dark": "#171612"
-                };
-                document.querySelector('meta[name="theme-color"]').content = themeColors[choice];
-                document.querySelectorAll("[data-theme-choice]").forEach((button) => {
-                    button.setAttribute("aria-pressed", button.dataset.themeChoice === choice);
-                });
-                try { localStorage.setItem("gold-price-theme", choice); } catch (error) {}
-            }
+</head>
 
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="theme-picker" role="group" aria-label="Chọn giao diện">
+        <button class="theme-swatch" type="button" data-theme-choice="blue-light" aria-label="Giao diện tím sáng"
+            title="Giao diện tím sáng"></button>
+        <button class="theme-swatch" type="button" data-theme-choice="blue-dark" aria-label="Giao diện tím tối"
+            title="Giao diện tím tối"></button>
+        <button class="theme-swatch" type="button" data-theme-choice="red-light" aria-label="Giao diện đỏ sáng"
+            title="Giao diện đỏ sáng"></button>
+        <button class="theme-swatch" type="button" data-theme-choice="red-dark" aria-label="Giao diện đỏ tối"
+            title="Giao diện đỏ tối"></button>
+        <button class="theme-swatch" type="button" data-theme-choice="paper-light" aria-label="Giao diện giấy sáng"
+            title="Giao diện giấy sáng"></button>
+        <button class="theme-swatch" type="button" data-theme-choice="paper-dark" aria-label="Giao diện giấy tối"
+            title="Giao diện giấy tối"></button>
+    </div>
+    <script>
+        function applyTheme(choice) {
+            const [theme, mode] = choice.split("-");
+            document.documentElement.dataset.theme = theme;
+            document.documentElement.dataset.mode = mode;
+            const themeColors = {
+                "blue-light": "#667eea",
+                "blue-dark": "#29264f",
+                "red-light": "#bf0b0b",
+                "red-dark": "#4a0707",
+                "paper-light": "#171a20",
+                "paper-dark": "#171612"
+            };
+            document.querySelector('meta[name="theme-color"]').content = themeColors[choice];
             document.querySelectorAll("[data-theme-choice]").forEach((button) => {
-                button.addEventListener("click", () => applyTheme(button.dataset.themeChoice));
+                button.setAttribute("aria-pressed", button.dataset.themeChoice === choice);
             });
-            applyTheme(`${document.documentElement.dataset.theme}-${document.documentElement.dataset.mode}`);
-        </script>
-		<main class="container" id="main-content">
-			<header class="header">
-				<h1>💰 XEM GIÁ VÀNG</h1>
-				<p>Cập nhật giá vàng liên tục từ nhiều nguồn uy tín</p>
-				<div class="update-time" id="updateTime">&nbsp;</div>
-                <a class="history-link" href="lich-su/">Lịch sử giá vàng <span aria-hidden="true">&rarr;</span></a>
-			</header>
+            try { localStorage.setItem("gold-price-theme", choice); } catch (error) { }
+        }
 
-			<div class="stats" id="statsContainer"></div>
+        document.querySelectorAll("[data-theme-choice]").forEach((button) => {
+            button.addEventListener("click", () => applyTheme(button.dataset.themeChoice));
+        });
+        applyTheme(`${document.documentElement.dataset.theme}-${document.documentElement.dataset.mode}`);
+    </script>
+    <main class="container" id="main-content">
+        <header class="header">
+            <h1>💰 XEM GIÁ VÀNG</h1>
+            <p>Cập nhật giá vàng liên tục từ nhiều nguồn uy tín</p>
+            <div class="update-time" id="updateTime">&nbsp;</div>
+            <a class="history-link" href="lich-su/">Lịch sử giá vàng <span aria-hidden="true">&rarr;</span></a>
+        </header>
 
-			<!-- GOLDPRICE SECTION -->
-			<div class="source-section" id="goldpriceSection">
-				<div class="source-title"><span class="badge">1</span> <strong>Goldprices.org</strong></div>
-				<div class="table-wrapper no-scrollbar">
-					<table id="goldpriceTable">
-						<thead>
-							<tr>
-								<th>Mã</th>
-								<th>Loại</th>
-								<th>Tên sản phẩm</th>
-								<th class="price-cell">Giá hiện tại</th>
-								<th class="price-cell">Thay đổi 6 tháng</th>
-								<th class="price-cell">Thay đổi hôm nay</th>
-								<th class="price-cell">Giá đóng cửa</th>
-							</tr>
-						</thead>
-						<tbody id="goldpriceBody">
-						</tbody>
-					</table>
-				</div>
-			</div>
+        <div class="stats" id="statsContainer"></div>
 
-			<!-- MIHONG SECTION -->
-			<div class="source-section" id="mihongSection">
-				<div class="source-title"><span class="badge">2</span> <strong>MI HỒNG</strong></div>
-				<div class="table-wrapper no-scrollbar">
-					<table id="mihongTable">
-						<thead>
-							<tr>
-								<th>Mã</th>
-								<th>Loại</th>
-								<th>Tên sản phẩm</th>
-								<th class="price-cell">Mua vào</th>
-								<th class="price-cell">Bán ra</th>
-								<th class="price-cell">Chênh lệch</th>
-								<th class="price-cell">Thay đổi Mua</th>
-								<th class="price-cell">Thay đổi Bán</th>
-							</tr>
-						</thead>
-						<tbody id="mihongBody">
-						</tbody>
-					</table>
-				</div>
-			</div>
-
-			<!-- DOJI SECTION -->
-			<div class="source-section" id="dojiSection">
-				<div class="source-title"><span class="badge">3</span> <strong>DOJI</strong></div>
-				<div class="table-wrapper no-scrollbar">
-					<table id="dojiTable">
-						<thead>
-							<tr>
-								<th>Mã</th>
-								<th>Loại</th>
-								<th>Tên sản phẩm</th>
-								<th class="price-cell">Mua vào</th>
-								<th class="price-cell">Bán ra</th>
-								<th class="price-cell">Chênh lệch</th>
-							</tr>
-						</thead>
-						<tbody id="dojiBody">
-						</tbody>
-					</table>
-				</div>
-			</div>
-
-			<!-- PHUQUY SECTION -->
-			<div class="source-section" id="phuquySection">
-				<div class="source-title"><span class="badge">4</span> <strong>PHÚ QUÝ</strong></div>
-				<div class="table-wrapper no-scrollbar">
-					<table id="phuquyTable">
-						<thead>
-							<tr>
-								<th>Mã</th>
-								<th>Loại</th>
-								<th>Tên sản phẩm</th>
-								<th class="price-cell">Mua vào</th>
-								<th class="price-cell">Bán ra</th>
-								<th class="price-cell">Chênh lệch</th>
-								<th class="price-cell">Thay đổi (%)</th>
-							</tr>
-						</thead>
-						<tbody id="phuquyBody">
-						</tbody>
-					</table>
-				</div>
-			</div>
-
-			<!-- BAOTINMANHHAI SECTION -->
-			<div class="source-section" id="baotinManhhaiSection">
-				<div class="source-title"><span class="badge">5</span> <strong>BẢO TÍN MẠNH HẢI</strong></div>
-				<div class="table-wrapper no-scrollbar">
-					<table id="baotinManhhaiTable">
-						<thead>
-							<tr>
-								<th>Mã</th>
-								<th>Loại</th>
-								<th>Tên sản phẩm</th>
-								<th class="price-cell">Mua vào</th>
-								<th class="price-cell">Bán ra</th>
-								<th class="price-cell">Chênh lệch</th>
-							</tr>
-						</thead>
-						<tbody id="baotinManhhaiBody">
-						</tbody>
-					</table>
-				</div>
-			</div>
-
-			<!-- NGOCTHAM SECTION -->
-			<div class="source-section" id="ngocthamSection">
-				<div class="source-title"><span class="badge">6</span> <strong>NGỌC THẨM</strong></div>
-				<div class="table-wrapper no-scrollbar">
-					<table id="ngocthamTable">
-						<thead>
-							<tr>
-								<th>Mã</th>
-								<th>Loại</th>
-								<th>Tên sản phẩm</th>
-								<th class="price-cell">Mua vào</th>
-								<th class="price-cell">Bán ra</th>
-								<th class="price-cell">Chênh lệch</th>
-							</tr>
-						</thead>
-						<tbody id="ngocthamBody">
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</main>
-        <button class="back-to-top" id="backToTop" type="button" aria-label="Về đầu trang" title="Về đầu trang" aria-hidden="true">&#8593;</button>
-        <footer class="site-footer">
-            <nav class="tag-list" aria-label="Chủ đề theo dõi">
-                <a class="tag" href="https://xemgia.netlify.app" target="_blank" rel="noopener noreferrer">#xemgia</a>
-                <a class="tag" href="https://xemgiavang.netlify.app" target="_blank" rel="noopener noreferrer">#xemgiavang</a>
-                <a class="tag" href="https://vangdoji.netlify.app" target="_blank" rel="noopener noreferrer">#vangdoji</a>
-                <a class="tag" href="https://vangphuquy.netlify.app" target="_blank" rel="noopener noreferrer">#vangphuquy</a>
-                <a class="tag" href="https://vangmihong.netlify.app" target="_blank" rel="noopener noreferrer">#vangmihong</a>
-                <a class="tag" href="https://baotinmanhhai.netlify.app" target="_blank" rel="noopener noreferrer">#baotinmanhhai</a>
-                <a class="tag" href="/lich-su/">#lich-su</a>
-                <a class="tag" href="https://www.google.com/search?q=%23giavanghomnay" target="_blank" rel="noopener noreferrer">#giavanghomnay</a>
-                <a class="tag" href="https://www.google.com/search?q=%23vangsjc" target="_blank" rel="noopener noreferrer">#vangsjc</a>
-                <a class="tag" href="https://www.google.com/search?q=%23vang9999" target="_blank" rel="noopener noreferrer">#vang9999</a>
-                <a class="tag" href="https://www.google.com/search?q=%23mihong" target="_blank" rel="noopener noreferrer">#mihong</a>
-                <a class="tag" href="https://www.google.com/search?q=%23giabac" target="_blank" rel="noopener noreferrer">#giabac</a>
-                <a class="tag" href="https://www.google.com/search?q=%23sosanhgiavang" target="_blank" rel="noopener noreferrer">#sosanhgiavang</a>
-            </nav>
-            <div class="repo-footer">
-                GitHub: <a href="https://github.com/dunglex/gold-prices" target="_blank" rel="noopener noreferrer">dunglex/gold-prices</a>
+        <!-- GOLDPRICE SECTION -->
+        <div class="source-section" id="goldpriceSection">
+            <div class="source-title"><span class="badge">1</span> <strong>Goldprices.org</strong></div>
+            <div class="table-wrapper no-scrollbar">
+                <table id="goldpriceTable">
+                    <thead>
+                        <tr>
+                            <th>Mã</th>
+                            <th>Loại</th>
+                            <th>Tên sản phẩm</th>
+                            <th class="price-cell">Giá hiện tại</th>
+                            <th class="price-cell">Thay đổi 6 tháng</th>
+                            <th class="price-cell">Thay đổi hôm nay</th>
+                            <th class="price-cell">Giá đóng cửa</th>
+                        </tr>
+                    </thead>
+                    <tbody id="goldpriceBody">
+                    </tbody>
+                </table>
             </div>
-        </footer>
+        </div>
+
+        <!-- MIHONG SECTION -->
+        <div class="source-section" id="mihongSection">
+            <div class="source-title"><span class="badge">2</span> <strong>MI HỒNG</strong></div>
+            <div class="table-wrapper no-scrollbar">
+                <table id="mihongTable">
+                    <thead>
+                        <tr>
+                            <th>Mã</th>
+                            <th>Loại</th>
+                            <th>Tên sản phẩm</th>
+                            <th class="price-cell">Mua vào</th>
+                            <th class="price-cell">Bán ra</th>
+                            <th class="price-cell">Chênh lệch</th>
+                            <th class="price-cell">Thay đổi Mua</th>
+                            <th class="price-cell">Thay đổi Bán</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mihongBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- DOJI SECTION -->
+        <div class="source-section" id="dojiSection">
+            <div class="source-title"><span class="badge">3</span> <strong>DOJI</strong></div>
+            <div class="table-wrapper no-scrollbar">
+                <table id="dojiTable">
+                    <thead>
+                        <tr>
+                            <th>Mã</th>
+                            <th>Loại</th>
+                            <th>Tên sản phẩm</th>
+                            <th class="price-cell">Mua vào</th>
+                            <th class="price-cell">Bán ra</th>
+                            <th class="price-cell">Chênh lệch</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dojiBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- PHUQUY SECTION -->
+        <div class="source-section" id="phuquySection">
+            <div class="source-title"><span class="badge">4</span> <strong>PHÚ QUÝ</strong></div>
+            <div class="table-wrapper no-scrollbar">
+                <table id="phuquyTable">
+                    <thead>
+                        <tr>
+                            <th>Mã</th>
+                            <th>Loại</th>
+                            <th>Tên sản phẩm</th>
+                            <th class="price-cell">Mua vào</th>
+                            <th class="price-cell">Bán ra</th>
+                            <th class="price-cell">Chênh lệch</th>
+                            <th class="price-cell">Thay đổi (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="phuquyBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- BAOTINMANHHAI SECTION -->
+        <div class="source-section" id="baotinManhhaiSection">
+            <div class="source-title"><span class="badge">5</span> <strong>BẢO TÍN MẠNH HẢI</strong></div>
+            <div class="table-wrapper no-scrollbar">
+                <table id="baotinManhhaiTable">
+                    <thead>
+                        <tr>
+                            <th>Mã</th>
+                            <th>Loại</th>
+                            <th>Tên sản phẩm</th>
+                            <th class="price-cell">Mua vào</th>
+                            <th class="price-cell">Bán ra</th>
+                            <th class="price-cell">Chênh lệch</th>
+                        </tr>
+                    </thead>
+                    <tbody id="baotinManhhaiBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- NGOCTHAM SECTION -->
+        <div class="source-section" id="ngocthamSection">
+            <div class="source-title"><span class="badge">6</span> <strong>NGỌC THẨM</strong></div>
+            <div class="table-wrapper no-scrollbar">
+                <table id="ngocthamTable">
+                    <thead>
+                        <tr>
+                            <th>Mã</th>
+                            <th>Loại</th>
+                            <th>Tên sản phẩm</th>
+                            <th class="price-cell">Mua vào</th>
+                            <th class="price-cell">Bán ra</th>
+                            <th class="price-cell">Chênh lệch</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ngocthamBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <template id="statCardTemplate">
+        <button class="stat-card" type="button" data-field="card">
+            <div class="stat-value" data-field="value"></div>
+            <p data-field="label"></p>
+        </button>
+    </template>
+    <template id="mihongRowTemplate">
+        <tr>
+            <td class="material-code" data-field="code"></td>
+            <td><span class="type-badge" data-field="type"></span></td>
+            <td class="material-name" data-field="name"></td>
+            <td class="price-cell price-buy" data-field="buy"></td>
+            <td class="price-cell price-sell" data-field="sell"></td>
+            <td class="price-cell price-range"><span data-field="diff"></span><span class="price-range-percent"
+                    data-field="percent"></span></td>
+            <td class="price-cell" data-field="buyChange"></td>
+            <td class="price-cell" data-field="sellChange"></td>
+        </tr>
+    </template>
+    <template id="dojiRowTemplate">
+        <tr>
+            <td class="material-code" data-field="code"></td>
+            <td><span class="type-badge" data-field="type"></span></td>
+            <td class="material-name" data-field="name"></td>
+            <td class="price-cell price-buy" data-field="buy"></td>
+            <td class="price-cell price-sell" data-field="sell"></td>
+            <td class="price-cell price-range"><span data-field="diff"></span><span class="price-range-percent"
+                    data-field="percent"></span></td>
+        </tr>
+    </template>
+    <template id="phuquyRowTemplate">
+        <tr>
+            <td class="material-code" data-field="code"></td>
+            <td><span class="type-badge" data-field="type"></span></td>
+            <td class="material-name" data-field="name"></td>
+            <td class="price-cell price-buy" data-field="buy"></td>
+            <td class="price-cell price-sell" data-field="sell"></td>
+            <td class="price-cell price-range"><span data-field="diff"></span><span class="price-range-percent"
+                    data-field="percent"></span></td>
+            <td class="price-cell" data-field="change"></td>
+        </tr>
+    </template>
+    <template id="baotinManhhaiRowTemplate">
+        <tr>
+            <td class="material-code" data-field="code"></td>
+            <td><span class="type-badge" data-field="type"></span></td>
+            <td class="material-name" data-field="name"></td>
+            <td class="price-cell price-buy" data-field="buy"></td>
+            <td class="price-cell price-sell" data-field="sell"></td>
+            <td class="price-cell price-range"><span data-field="diff"></span><span class="price-range-percent"
+                    data-field="percent"></span></td>
+        </tr>
+    </template>
+    <template id="ngocthamRowTemplate">
+        <tr>
+            <td class="material-code" data-field="code"></td>
+            <td><span class="type-badge" data-field="type"></span></td>
+            <td class="material-name" data-field="name"></td>
+            <td class="price-cell price-buy" data-field="buy"></td>
+            <td class="price-cell price-sell" data-field="sell"></td>
+            <td class="price-cell price-range"><span data-field="diff"></span><span class="price-range-percent"
+                    data-field="percent"></span></td>
+        </tr>
+    </template>
+    <template id="goldPriceRowTemplate">
+        <tr>
+            <td class="material-code" data-field="code"></td>
+            <td><span class="type-badge" data-field="type"></span></td>
+            <td class="material-name" data-field="name"></td>
+            <td class="price-cell" data-field="price"></td>
+            <td class="price-cell" data-field="change"></td>
+            <td class="price-cell" data-field="percentChange"></td>
+            <td class="price-cell" data-field="close"></td>
+        </tr>
+    </template>
+
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Về đầu trang" title="Về đầu trang"
+        aria-hidden="true">&#8593;</button>
+    <footer class="site-footer">
+        <nav class="tag-list" aria-label="Chủ đề theo dõi">
+            <a class="tag" href="https://xemgia.netlify.app" target="_blank" rel="noopener noreferrer">#xemgia</a>
+            <a class="tag" href="https://xemgiavang.netlify.app" target="_blank"
+                rel="noopener noreferrer">#xemgiavang</a>
+            <a class="tag" href="https://vangdoji.netlify.app" target="_blank" rel="noopener noreferrer">#vangdoji</a>
+            <a class="tag" href="https://vangphuquy.netlify.app" target="_blank"
+                rel="noopener noreferrer">#vangphuquy</a>
+            <a class="tag" href="https://vangmihong.netlify.app" target="_blank"
+                rel="noopener noreferrer">#vangmihong</a>
+            <a class="tag" href="https://baotinmanhhai.netlify.app" target="_blank"
+                rel="noopener noreferrer">#baotinmanhhai</a>
+            <a class="tag" href="/lich-su/">#lich-su</a>
+            <a class="tag" href="https://www.google.com/search?q=%23giavanghomnay" target="_blank"
+                rel="noopener noreferrer">#giavanghomnay</a>
+            <a class="tag" href="https://www.google.com/search?q=%23vangsjc" target="_blank"
+                rel="noopener noreferrer">#vangsjc</a>
+            <a class="tag" href="https://www.google.com/search?q=%23vang9999" target="_blank"
+                rel="noopener noreferrer">#vang9999</a>
+            <a class="tag" href="https://www.google.com/search?q=%23mihong" target="_blank"
+                rel="noopener noreferrer">#mihong</a>
+            <a class="tag" href="https://www.google.com/search?q=%23giabac" target="_blank"
+                rel="noopener noreferrer">#giabac</a>
+            <a class="tag" href="https://www.google.com/search?q=%23sosanhgiavang" target="_blank"
+                rel="noopener noreferrer">#sosanhgiavang</a>
+        </nav>
+        <div class="repo-footer">
+            GitHub: <a href="https://github.com/dunglex/gold-prices" target="_blank"
+                rel="noopener noreferrer">dunglex/gold-prices</a>
+        </div>
+    </footer>
     <script>
         // Load data sources and render them vertically in the order: goldprice, mihong, doji, phuquy, baotinmanhhai, ngoctham
         async function fetchJsonSafe(url) {
             try {
-                const resp = await fetch(url, {cache: 'no-store'});
+                const resp = await fetch(url, { cache: 'no-store' });
                 const text = await resp.text();
                 // Try to parse JSON; if content is HTML or unparsable, return an object describing the error
                 try {
@@ -1259,7 +1364,7 @@
             if (v === null || v === undefined || isNaN(v)) return '-';
             try { return Number(v).toLocaleString('vi-VN'); } catch (e) { return String(v); }
         }
-        
+
         function escapeHtml(s) {
             if (s === null || s === undefined) return '';
             return String(s)
@@ -1268,6 +1373,41 @@
                 .replace(/>/g, '&gt;')
                 .replace(/"/g, '&quot;')
                 .replace(/'/g, '&#039;');
+        }
+
+        function renderTableRow(templateId, fields, typeBadge, fieldColors = {}, rowClass = '') {
+            const row = document.getElementById(templateId).content.firstElementChild.cloneNode(true);
+
+            row.className = rowClass;
+            Object.entries(fields).forEach(([field, value]) => {
+                const cell = row.querySelector(`[data-field="${field}"]`);
+                if (cell) cell.textContent = value;
+            });
+            const type = row.querySelector('[data-field="type"]');
+            if (type && typeBadge) type.classList.add(typeBadge);
+            Object.entries(fieldColors).forEach(([field, color]) => {
+                const cell = row.querySelector(`[data-field="${field}"]`);
+                if (cell) cell.style.color = color;
+            });
+
+            return row.outerHTML;
+        }
+
+        function renderPriceRow({ templateId, code, typeBadge, typeLabel, name, buy, sell, diff, rowClass = '', emptyDiff = '-', extraFields = {}, fieldColors = {} }) {
+            const diffText = diff !== null ? formatNumber(diff) : emptyDiff;
+            const percentText = diff !== null && Number(buy) !== 0
+                ? `(${((diff / buy) * 100).toFixed(2)}%)`
+                : '';
+            return renderTableRow(templateId, {
+                code,
+                type: typeLabel,
+                name,
+                buy: formatNumber(buy),
+                sell: formatNumber(sell),
+                diff: diffText,
+                percent: percentText,
+                ...extraFields
+            }, typeBadge, fieldColors, rowClass);
         }
 
         function renderErrorInto(bodyElId, message, raw, colspan) {
@@ -1287,7 +1427,7 @@
                     hour: '2-digit', minute: '2-digit', second: '2-digit'
                 });
                 document.getElementById('updateTime').textContent = `Cập nhật: ${formatted}`;
-            } catch (e) {}
+            } catch (e) { }
         }
 
         function renderGoldPrice(bodyElId, items) {
@@ -1309,17 +1449,15 @@
                 const chgText = row.chg != null ? (row.chg > 0 ? '+' + formatNumber(row.chg) : formatNumber(row.chg)) : '-';
                 const pcText = row.pc != null ? (row.pc > 0 ? '+' + row.pc.toFixed(3) + '%' : row.pc.toFixed(3) + '%') : '-';
 
-                return `
-                    <tr>
-                        <td class="material-code">${escapeHtml(data.curr)}</td>
-                        <td><span class="type-badge ${row.type}">${row.label === 'Vàng' ? 'Vàng' : 'Bạc'}</span></td>
-                        <td class="material-name">${escapeHtml(row.label)}</td>
-                        <td class="price-cell">${formatNumber(row.price)}</td>
-                        <td class="price-cell" style="color: ${chgColor}">${chgText}</td>
-                        <td class="price-cell" style="color: ${pcColor}">${pcText}</td>
-                        <td class="price-cell">${formatNumber(row.close)}</td>
-                    </tr>
-                `;
+                return renderTableRow('goldPriceRowTemplate', {
+                    code: data.curr,
+                    type: row.label === 'Vàng' ? 'Vàng' : 'Bạc',
+                    name: row.label,
+                    price: formatNumber(row.price),
+                    change: chgText,
+                    percentChange: pcText,
+                    close: formatNumber(row.close)
+                }, row.type, { change: chgColor, percentChange: pcColor });
             }).join('');
         }
 
@@ -1337,10 +1475,10 @@
                 let sell = price.sellingPrice ?? '';
                 let buyChange = price.buyChange ?? '';
                 let sellChange = price.sellChange ?? '';
-                if (buy == 0) buy ='';
-                if (sell == 0) sell ='';
-                if (buy == '' || buyChange == 0) buyChange ='';
-                if (sell == '' || sellChange == 0) sellChange ='';
+                if (buy == 0) buy = '';
+                if (sell == 0) sell = '';
+                if (buy == '' || buyChange == 0) buyChange = '';
+                if (sell == '' || sellChange == 0) sellChange = '';
                 let diff = null;
                 if (buy != null && sell != null && !isNaN(buy) && !isNaN(sell) && buy > 0 && sell > 0) {
                     diff = sell - buy;
@@ -1351,18 +1489,11 @@
                 const buyChangeText = buyChange != null ? (buyChange > 0 ? '+' + formatNumber(buyChange) : formatNumber(buyChange)) : '-';
                 const sellChangeText = sellChange != null ? (sellChange > 0 ? '+' + formatNumber(sellChange) : formatNumber(sellChange)) : '-';
 
-                return `
-                    <tr>
-                        <td class="material-code">${escapeHtml(code)}</td>
-                        <td><span class="type-badge gold">Vàng</span></td>
-                        <td class="material-name">${escapeHtml(name)}</td>
-                        <td class="price-cell price-buy">${formatNumber(buy)}</td>
-                        <td class="price-cell price-sell">${formatNumber(sell)}</td>
-                        <td class="price-cell price-range">${diff !== null ? formatNumber(diff) : ''}<span class="price-range-percent">${diff !== null && '(' + buy +')' ? '(' + ((diff / buy) * 100).toFixed(2) + '%)' : ''}</span></td>
-                        <td class="price-cell" style="color: ${buyChangeColor}">${buyChangeText}</td>
-                        <td class="price-cell" style="color: ${sellChangeColor}">${sellChangeText}</td>
-                    </tr>
-                `;
+                return renderPriceRow({
+                    templateId: 'mihongRowTemplate', code, typeBadge: 'gold', typeLabel: 'Vàng', name, buy, sell, diff, emptyDiff: '',
+                    extraFields: { buyChange: buyChangeText, sellChange: sellChangeText },
+                    fieldColors: { buyChange: buyChangeColor, sellChange: sellChangeColor }
+                });
             }).join('');
         }
 
@@ -1390,16 +1521,9 @@
                 const typeBadge = (price.type === 'S' || type === 'S') ? 'silver' : 'gold';
                 const typeLabel = (price.type === 'S' || type === 'S') ? 'Bạc' : 'Vàng';
 
-                return `
-                    <tr class="${statusClass}">
-                        <td class="material-code">${code}</td>
-                        <td><span class="type-badge ${typeBadge}">${typeLabel}</span></td>
-                        <td class="material-name">${escapeHtml(name)}</td>
-                        <td class="price-cell price-buy">${formatNumber(buy)}</td>
-                        <td class="price-cell price-sell">${formatNumber(sell)}</td>
-                        <td class="price-cell price-range">${diff !== null ? formatNumber(diff) : '-'}<span class="price-range-percent">${diff !== null && '(' + buy + ')' ? '(' + ((diff / buy) * 100).toFixed(2) + '%)' : ''}</span></td>
-                    </tr>
-                `;
+                return renderPriceRow({
+                    templateId: 'dojiRowTemplate', code, typeBadge, typeLabel, name, buy, sell, diff, rowClass: statusClass
+                });
             }).join('');
         }
 
@@ -1428,17 +1552,10 @@
                 const typeBadge = (code === 'B') ? 'silver' : 'gold';
                 const typeLabel = (code === 'B') ? 'Bạc' : 'Vàng';
 
-                return `
-                    <tr>
-                        <td class="material-code">${escapeHtml(code)}</td>
-                        <td><span class="type-badge ${typeBadge}">${typeLabel}</span></td>
-                        <td class="material-name">${escapeHtml(name)}</td>
-                        <td class="price-cell price-buy">${formatNumber(buy)}</td>
-                        <td class="price-cell price-sell">${formatNumber(sell)}</td>
-                        <td class="price-cell price-range">${diff !== null ? formatNumber(diff) : '-'}<span class="price-range-percent">${diff !== null && '(' + buy + ')' ? '(' + ((diff / buy) * 100).toFixed(2) + '%)' : ''}</span></td>
-                        <td class="price-cell" style="color: ${changeColor}">${changeText}</td>
-                    </tr>
-                `;
+                return renderPriceRow({
+                    templateId: 'phuquyRowTemplate', code, typeBadge, typeLabel, name, buy, sell, diff,
+                    extraFields: { change: changeText }, fieldColors: { change: changeColor }
+                });
             }).join('');
         }
 
@@ -1455,7 +1572,7 @@
                 let buy = item.buy_price ?? null;
                 let sell = item.sell_price ?? null;
                 if (buy == 0 || buy == 1) buy = '';
-                if (sell == 0 || sell == 1) sell = '';  
+                if (sell == 0 || sell == 1) sell = '';
                 let diff = null;
                 if (buy != null && sell != null && !isNaN(buy) && !isNaN(sell) && buy > 0 && sell > 0) {
                     diff = sell - buy;
@@ -1465,16 +1582,9 @@
                 const typeBadge = (code.includes('B') || name.includes('Bạc')) ? 'silver' : 'gold';
                 const typeLabel = (code.includes('B') || name.includes('Bạc')) ? 'Bạc' : 'Vàng';
 
-                return `
-                    <tr>
-                        <td class="material-code">${escapeHtml(code)}</td>
-                        <td><span class="type-badge ${typeBadge}">${typeLabel}</span></td>
-                        <td class="material-name">${escapeHtml(name)}</td>
-                        <td class="price-cell price-buy">${formatNumber(buy)}</td>
-                        <td class="price-cell price-sell">${formatNumber(sell)}</td>
-                        <td class="price-cell price-range">${diff !== null ? formatNumber(diff) : ''}<span class="price-range-percent">${diff !== null && '(' + buy + ')' ? '(' + ((diff / buy) * 100).toFixed(2) + '%)' : ''}</span></td>
-                    </tr>
-                `;
+                return renderPriceRow({
+                    templateId: 'baotinManhhaiRowTemplate', code, typeBadge, typeLabel, name, buy, sell, diff, emptyDiff: ''
+                });
             }).join('');
         }
 
@@ -1497,16 +1607,9 @@
                     diff = sell - buy;
                 }
 
-                return `
-                    <tr>
-                        <td class="material-code">${escapeHtml(code)}</td>
-                        <td><span class="type-badge gold">Vàng</span></td>
-                        <td class="material-name">${escapeHtml(name)}</td>
-                        <td class="price-cell price-buy">${formatNumber(buy)}</td>
-                        <td class="price-cell price-sell">${formatNumber(sell)}</td>
-                        <td class="price-cell price-range">${diff !== null ? formatNumber(diff) : '-'}<span class="price-range-percent">${diff !== null && '(' + buy + ')' ? '(' + ((diff / buy) * 100).toFixed(2) + '%)' : ''}</span></td>
-                    </tr>
-                `;
+                return renderPriceRow({
+                    templateId: 'ngocthamRowTemplate', code, typeBadge: 'gold', typeLabel: 'Vàng', name, buy, sell, diff
+                });
             }).join('');
         }
 
@@ -1519,44 +1622,30 @@
             const baotinManhhaiCount = sources.baotinmanhhai || 0;
             const ngocthamCount = sources.ngoctham || 0;
 
-            const total = [goldpriceCount, mihongCount, dojiCount, phuquyCount, baotinManhhaiCount, ngocthamCount].reduce((a,b)=>a+b,0);
+            const total = [goldpriceCount, mihongCount, dojiCount, phuquyCount, baotinManhhaiCount, ngocthamCount].reduce((a, b) => a + b, 0);
 
-            const statsHtml = `
-                <button class="stat-card" type="button" data-target="goldpriceSection">
-                    <div class="stat-value">${total}</div>
-                    <p>Tất cả nguồn</p>
-                </button>
-                <button class="stat-card" type="button" data-target="goldpriceSection">
-                    <div class="stat-value">${goldpriceCount}</div>
-                    <p>GoldPrice</p>
-                </button>
-                <button class="stat-card" type="button" data-target="mihongSection">
-                    <div class="stat-value">${mihongCount}</div>
-                    <p>Mi Hồng</p>
-                </button>
-                <button class="stat-card" type="button" data-target="dojiSection">
-                    <div class="stat-value">${dojiCount}</div>
-                    <p>DOJI</p>
-                </button>
-                <button class="stat-card" type="button" data-target="phuquySection">
-                    <div class="stat-value">${phuquyCount}</div>
-                    <p>Phú Quý</p>
-                </button>
-                <button class="stat-card" type="button" data-target="baotinManhhaiSection">
-                    <div class="stat-value">${baotinManhhaiCount}</div>
-                    <p>Bảo Tín Mạnh Hải</p>
-                </button>
-                <button class="stat-card" type="button" data-target="ngocthamSection">
-                    <div class="stat-value">${ngocthamCount}</div>
-                    <p>Ngọc Thắm</p>
-                </button>
-            `;
-            document.getElementById('statsContainer').innerHTML = statsHtml;
-            document.querySelectorAll('.stat-card').forEach(card => {
+            const stats = [
+                { value: total, label: 'Tất cả nguồn', target: 'goldpriceSection' },
+                { value: goldpriceCount, label: 'GoldPrice', target: 'goldpriceSection' },
+                { value: mihongCount, label: 'Mi Hồng', target: 'mihongSection' },
+                { value: dojiCount, label: 'DOJI', target: 'dojiSection' },
+                { value: phuquyCount, label: 'Phú Quý', target: 'phuquySection' },
+                { value: baotinManhhaiCount, label: 'Bảo Tín Mạnh Hải', target: 'baotinManhhaiSection' },
+                { value: ngocthamCount, label: 'Ngọc Thắm', target: 'ngocthamSection' }
+            ];
+            const container = document.getElementById('statsContainer');
+            const template = document.getElementById('statCardTemplate');
+            const cards = stats.map(({ value, label, target }) => {
+                const card = template.content.firstElementChild.cloneNode(true);
+                card.dataset.target = target;
+                card.querySelector('[data-field="value"]').textContent = value;
+                card.querySelector('[data-field="label"]').textContent = label;
                 card.addEventListener('click', () => {
-                    document.getElementById(card.dataset.target).scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.getElementById(target).scrollIntoView({ behavior: 'smooth', block: 'start' });
                 });
+                return card;
             });
+            container.replaceChildren(...cards);
         }
 
         async function loadAll() {
@@ -1656,5 +1745,6 @@
             updateBackToTopVisibility();
         });
     </script>
-	</body>
+</body>
+
 </html>
