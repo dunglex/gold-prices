@@ -98,4 +98,26 @@ curl 'https://baotinmanhhai.vn/api/graphql' \
   -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' -k > prices_ngoctham.json
 
 # Updated At
-jq -n --arg dt "$(date -u +%Y-%m-%dT%H:%M:%SZ)" '{updatedAt: $dt}' > info.json
+json_count() {
+  jq -e -r "$2 | if type == \"array\" then length else 0 end" "$1" 2>/dev/null || printf '0\n'
+}
+
+jq -n \
+  --arg dt "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+  --argjson doji "$(json_count prices_doji.json '.')" \
+  --argjson goldprice "$(json_count prices_goldprice.json '.items')" \
+  --argjson mihong "$(json_count prices_mihong.json '.')" \
+  --argjson phuquy "$(json_count prices_phuquy.json '.data')" \
+  --argjson baotinmanhhai "$(json_count prices_baotinmanhhai.json '.data.goldRates.items')" \
+  --argjson ngoctham "$(json_count prices_ngoctham.json '.chitiet')" \
+  '{
+    updatedAt: $dt,
+    sources: {
+      doji: $doji,
+      goldprice: $goldprice,
+      mihong: $mihong,
+      phuquy: $phuquy,
+      baotinmanhhai: $baotinmanhhai,
+      ngoctham: $ngoctham
+    }
+  }' > info.json

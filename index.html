@@ -1433,14 +1433,14 @@
             }).join('');
         }
 
-        function updateStatsCombined() {
+        function updateStatsCombined(sources) {
             // Count total entries across six tables
-            const goldpriceCount = document.getElementById('goldpriceBody').querySelectorAll('tr').length;
-            const mihongCount = document.getElementById('mihongBody').querySelectorAll('tr').length;
-            const dojiCount = document.getElementById('dojiBody').querySelectorAll('tr').length;
-            const phuquyCount = document.getElementById('phuquyBody').querySelectorAll('tr').length;
-            const baotinManhhaiCount = document.getElementById('baotinManhhaiBody').querySelectorAll('tr').length;
-            const ngocthamCount = document.getElementById('ngocthamBody').querySelectorAll('tr').length;
+            const goldpriceCount = sources.goldprice || 0;
+            const mihongCount = sources.mihong || 0;
+            const dojiCount = sources.doji || 0;
+            const phuquyCount = sources.phuquy || 0;
+            const baotinManhhaiCount = sources.baotinmanhhai || 0;
+            const ngocthamCount = sources.ngoctham || 0;
 
             const total = [goldpriceCount, mihongCount, dojiCount, phuquyCount, baotinManhhaiCount, ngocthamCount].reduce((a,b)=>a+b,0);
 
@@ -1550,7 +1550,7 @@
                 const infoData = infoRes.data;
                 const updatedAt = new Date(infoData.updatedAt);
                 setUpdateTime(updatedAt);
-                updateStatsCombined();
+                updateStatsCombined(infoData.sources);
             }
         }
 
