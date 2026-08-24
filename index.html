@@ -13,12 +13,12 @@
 		<link rel="icon" type="image/png" href="/favicon.png">
         <script>
             try {
-                const savedTheme = localStorage.getItem("gold-price-theme") || "purple-light";
+                const savedTheme = localStorage.getItem("gold-price-theme") || "blue-light";
                 const [style, mode = "light"] = savedTheme.split("-");
                 document.documentElement.dataset.theme = style;
                 document.documentElement.dataset.mode = mode;
             } catch (error) {
-                document.documentElement.dataset.theme = "purple";
+                document.documentElement.dataset.theme = "blue";
                 document.documentElement.dataset.mode = "light";
             }
             document.title = "Xem Giá Vàng - " + window.location.hostname;
@@ -515,46 +515,46 @@
             }
         }
 
-        html[data-theme="purple"][data-mode="dark"] body {
+        html[data-theme="blue"][data-mode="dark"] body {
             background: linear-gradient(135deg, #29264f 0%, #171422 100%);
         }
 
-        html[data-theme="purple"][data-mode="dark"] .table-wrapper {
+        html[data-theme="blue"][data-mode="dark"] .table-wrapper {
             background: #24222c;
             color: #eceaf2;
         }
 
-        html[data-theme="purple"][data-mode="dark"] th {
+        html[data-theme="blue"][data-mode="dark"] th {
             background: linear-gradient(135deg, #4f5eb5 0%, #633f7e 100%);
         }
 
-        html[data-theme="purple"][data-mode="dark"] td {
+        html[data-theme="blue"][data-mode="dark"] td {
             color: #eceaf2;
             border-bottom-color: #403d49;
         }
 
-        html[data-theme="purple"][data-mode="dark"] .material-name {
+        html[data-theme="blue"][data-mode="dark"] .material-name {
             color: #eceaf2;
         }
 
-        html[data-theme="purple"][data-mode="dark"] .price-buy {
+        html[data-theme="blue"][data-mode="dark"] .price-buy {
             color: #74c69d;
         }
 
-        html[data-theme="purple"][data-mode="dark"] .price-sell {
+        html[data-theme="blue"][data-mode="dark"] .price-sell {
             color: #ff7b72;
         }
 
-        html[data-theme="purple"][data-mode="dark"] .price-range-percent,
-        html[data-theme="purple"][data-mode="dark"] .no-data {
+        html[data-theme="blue"][data-mode="dark"] .price-range-percent,
+        html[data-theme="blue"][data-mode="dark"] .no-data {
             color: #b8b3c2;
         }
 
-        html[data-theme="purple"][data-mode="dark"] tbody tr:hover {
+        html[data-theme="blue"][data-mode="dark"] tbody tr:hover {
             background-color: #302d39;
         }
 
-        html[data-theme="purple"][data-mode="dark"] tbody tr.inactive {
+        html[data-theme="blue"][data-mode="dark"] tbody tr.inactive {
             background-color: #1d1b23;
         }
 
@@ -991,11 +991,11 @@
             width: 26px;
         }
 
-        .theme-swatch[data-theme-choice="purple-light"] {
+        .theme-swatch[data-theme-choice="blue-light"] {
             background: linear-gradient(135deg, #667eea, #764ba2);
         }
 
-        .theme-swatch[data-theme-choice="purple-dark"] {
+        .theme-swatch[data-theme-choice="blue-dark"] {
             background: linear-gradient(135deg, #4f5eb5 48%, #171422 50%);
         }
 
@@ -1043,8 +1043,8 @@
 	<body>
 		<a href="#main-content" class="skip-link">Skip to main content</a>
         <div class="theme-picker" role="group" aria-label="Chọn giao diện">
-            <button class="theme-swatch" type="button" data-theme-choice="purple-light" aria-label="Giao diện tím sáng" title="Giao diện tím sáng"></button>
-            <button class="theme-swatch" type="button" data-theme-choice="purple-dark" aria-label="Giao diện tím tối" title="Giao diện tím tối"></button>
+            <button class="theme-swatch" type="button" data-theme-choice="blue-light" aria-label="Giao diện tím sáng" title="Giao diện tím sáng"></button>
+            <button class="theme-swatch" type="button" data-theme-choice="blue-dark" aria-label="Giao diện tím tối" title="Giao diện tím tối"></button>
             <button class="theme-swatch" type="button" data-theme-choice="red-light" aria-label="Giao diện đỏ sáng" title="Giao diện đỏ sáng"></button>
             <button class="theme-swatch" type="button" data-theme-choice="red-dark" aria-label="Giao diện đỏ tối" title="Giao diện đỏ tối"></button>
             <button class="theme-swatch" type="button" data-theme-choice="paper-light" aria-label="Giao diện giấy sáng" title="Giao diện giấy sáng"></button>
@@ -1056,8 +1056,8 @@
                 document.documentElement.dataset.theme = theme;
                 document.documentElement.dataset.mode = mode;
                 const themeColors = {
-                    "purple-light": "#667eea",
-                    "purple-dark": "#29264f",
+                    "blue-light": "#667eea",
+                    "blue-dark": "#29264f",
                     "red-light": "#bf0b0b",
                     "red-dark": "#4a0707",
                     "paper-light": "#171a20",
