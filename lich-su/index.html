@@ -448,6 +448,14 @@
 				background: linear-gradient(135deg, #4f5eb5 48%, #171422 50%);
 			}
 
+			.theme-swatch[data-theme-choice="red-light"] {
+				background: linear-gradient(135deg, #bf0b0b 48%, #f7dfdf 50%);
+			}
+
+			.theme-swatch[data-theme-choice="red-dark"] {
+				background: linear-gradient(135deg, #8f0a0a 48%, #1c0909 50%);
+			}
+
 			.theme-swatch[data-theme-choice="paper-light"] {
 				background: linear-gradient(135deg, #f4f1ea 48%, #b77b12 50%);
 			}
@@ -572,6 +580,112 @@
 				color: #eceaf2;
 			}
 
+			html[data-theme="red"] body {
+				background: linear-gradient(135deg, #bf0b0b 0%, #720707 100%);
+				background-size: auto;
+				color: #fff;
+			}
+
+			html[data-theme="red"] .topbar {
+				background: rgba(53, 0, 0, 0.24);
+			}
+
+			html[data-theme="red"] .eyebrow {
+				color: #ffe0a3;
+			}
+
+			html[data-theme="red"] .intro-copy,
+			html[data-theme="red"] .currency,
+			html[data-theme="red"] .note {
+				color: rgba(255, 255, 255, 0.82);
+			}
+
+			html[data-theme="red"] .currency {
+				border-color: rgba(255, 255, 255, 0.35);
+			}
+
+			html[data-theme="red"] .currency strong {
+				color: #fff;
+			}
+
+			html[data-theme="red"] .tag {
+				background: rgba(0, 0, 0, 0.12);
+				border-color: rgba(255, 255, 255, 0.35);
+				color: rgba(255, 255, 255, 0.88);
+			}
+
+			html[data-theme="red"] .tag:hover,
+			html[data-theme="red"] .tag:focus-visible {
+				background: rgba(255, 255, 255, 0.2);
+				border-color: rgba(255, 255, 255, 0.75);
+				color: #fff;
+			}
+
+			html[data-theme="red"] .repo-footer {
+				color: rgba(255, 255, 255, 0.78);
+			}
+
+			html[data-theme="red"] .repo-footer a {
+				color: #fff;
+			}
+
+			html[data-theme="red"] .dashboard {
+				background: #fff8f5;
+				border-color: rgba(255, 255, 255, 0.5);
+				box-shadow: 0 10px 40px rgba(0, 0, 0, 0.16);
+				color: var(--ink);
+			}
+
+			html[data-theme="red"] .toolbar,
+			html[data-theme="red"] .stats,
+			html[data-theme="red"] .stat,
+			html[data-theme="red"] .stat:nth-child(-n + 2) {
+				border-color: #e8d8d3;
+			}
+
+			html[data-theme="red"] .segmented {
+				background: rgba(191, 11, 11, 0.12);
+			}
+
+			html[data-theme="red"] .segmented button.active {
+				background: #fff;
+			}
+
+			html[data-theme="red"] .chart-status {
+				background: #fff8f5;
+			}
+
+			html[data-theme="red"][data-mode="dark"] body {
+				background: linear-gradient(135deg, #4a0707 0%, #1c0909 100%);
+			}
+
+			html[data-theme="red"][data-mode="dark"] .dashboard,
+			html[data-theme="red"][data-mode="dark"] .chart-status {
+				background: #292020;
+				color: #f3e9e9;
+			}
+
+			html[data-theme="red"][data-mode="dark"] .toolbar,
+			html[data-theme="red"][data-mode="dark"] .stats,
+			html[data-theme="red"][data-mode="dark"] .stat,
+			html[data-theme="red"][data-mode="dark"] .stat:nth-child(-n + 2) {
+				border-color: #4a3737;
+			}
+
+			html[data-theme="red"][data-mode="dark"] .segmented {
+				background: #382a2a;
+			}
+
+			html[data-theme="red"][data-mode="dark"] .segmented button.active {
+				background: #513b3b;
+				color: #fff;
+			}
+
+			html[data-theme="red"][data-mode="dark"] .periods button.active,
+			html[data-theme="red"][data-mode="dark"] .stat-value {
+				color: #f3e9e9;
+			}
+
 			html[data-theme="paper"][data-mode="dark"] {
 				--ink: #f1ede4;
 				--muted: #aaa398;
@@ -622,6 +736,8 @@
 		<div class="theme-picker" role="group" aria-label="Chọn giao diện">
 			<button class="theme-swatch" type="button" data-theme-choice="purple-light" aria-label="Giao diện tím sáng" title="Giao diện tím sáng"></button>
 			<button class="theme-swatch" type="button" data-theme-choice="purple-dark" aria-label="Giao diện tím tối" title="Giao diện tím tối"></button>
+			<button class="theme-swatch" type="button" data-theme-choice="red-light" aria-label="Giao diện đỏ sáng" title="Giao diện đỏ sáng"></button>
+			<button class="theme-swatch" type="button" data-theme-choice="red-dark" aria-label="Giao diện đỏ tối" title="Giao diện đỏ tối"></button>
 			<button class="theme-swatch" type="button" data-theme-choice="paper-light" aria-label="Giao diện giấy sáng" title="Giao diện giấy sáng"></button>
 			<button class="theme-swatch" type="button" data-theme-choice="paper-dark" aria-label="Giao diện giấy tối" title="Giao diện giấy tối"></button>
 		</div>
@@ -633,6 +749,8 @@
 				const themeColors = {
 					"purple-light": "#667eea",
 					"purple-dark": "#29264f",
+					"red-light": "#bf0b0b",
+					"red-dark": "#4a0707",
 					"paper-light": "#171a20",
 					"paper-dark": "#171612"
 				};

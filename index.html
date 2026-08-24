@@ -557,6 +557,71 @@
         html[data-theme="purple"][data-mode="dark"] tbody tr.inactive {
             background-color: #1d1b23;
         }
+
+        html[data-theme="red"] body {
+            background: linear-gradient(135deg, #bf0b0b 0%, #720707 100%);
+        }
+
+        html[data-theme="red"] thead {
+            background: linear-gradient(135deg, #bf0b0b 0%, #720707 100%);
+        }
+
+        html[data-theme="red"] .material-code {
+            color: #bf0b0b;
+        }
+
+        html[data-theme="red"] .back-to-top {
+            background: #bf0b0b;
+        }
+
+        html[data-theme="red"] .back-to-top:hover,
+        html[data-theme="red"] .back-to-top:focus-visible {
+            background: #720707;
+        }
+
+        html[data-theme="red"][data-mode="dark"] body {
+            background: linear-gradient(135deg, #4a0707 0%, #1c0909 100%);
+        }
+
+        html[data-theme="red"][data-mode="dark"] .table-wrapper {
+            background: #292020;
+            color: #f3e9e9;
+        }
+
+        html[data-theme="red"][data-mode="dark"] th {
+            background: linear-gradient(135deg, #8f0a0a 0%, #4a0707 100%);
+        }
+
+        html[data-theme="red"][data-mode="dark"] td,
+        html[data-theme="red"][data-mode="dark"] .material-name {
+            color: #f3e9e9;
+        }
+
+        html[data-theme="red"][data-mode="dark"] td {
+            border-bottom-color: #4a3737;
+        }
+
+        html[data-theme="red"][data-mode="dark"] .material-code,
+        html[data-theme="red"][data-mode="dark"] .price-sell {
+            color: #ff8a8a;
+        }
+
+        html[data-theme="red"][data-mode="dark"] .price-buy {
+            color: #74c69d;
+        }
+
+        html[data-theme="red"][data-mode="dark"] .price-range-percent,
+        html[data-theme="red"][data-mode="dark"] .no-data {
+            color: #c6b3b3;
+        }
+
+        html[data-theme="red"][data-mode="dark"] tbody tr:hover {
+            background-color: #382a2a;
+        }
+
+        html[data-theme="red"][data-mode="dark"] tbody tr.inactive {
+            background-color: #211919;
+        }
         .skip-link {
             position: absolute;
             width: 1px;
@@ -934,6 +999,14 @@
             background: linear-gradient(135deg, #4f5eb5 48%, #171422 50%);
         }
 
+        .theme-swatch[data-theme-choice="red-light"] {
+            background: linear-gradient(135deg, #bf0b0b 48%, #f7dfdf 50%);
+        }
+
+        .theme-swatch[data-theme-choice="red-dark"] {
+            background: linear-gradient(135deg, #8f0a0a 48%, #1c0909 50%);
+        }
+
         .theme-swatch[data-theme-choice="paper-light"] {
             background: linear-gradient(135deg, #f4f1ea 48%, #b77b12 50%);
         }
@@ -972,6 +1045,8 @@
         <div class="theme-picker" role="group" aria-label="Chọn giao diện">
             <button class="theme-swatch" type="button" data-theme-choice="purple-light" aria-label="Giao diện tím sáng" title="Giao diện tím sáng"></button>
             <button class="theme-swatch" type="button" data-theme-choice="purple-dark" aria-label="Giao diện tím tối" title="Giao diện tím tối"></button>
+            <button class="theme-swatch" type="button" data-theme-choice="red-light" aria-label="Giao diện đỏ sáng" title="Giao diện đỏ sáng"></button>
+            <button class="theme-swatch" type="button" data-theme-choice="red-dark" aria-label="Giao diện đỏ tối" title="Giao diện đỏ tối"></button>
             <button class="theme-swatch" type="button" data-theme-choice="paper-light" aria-label="Giao diện giấy sáng" title="Giao diện giấy sáng"></button>
             <button class="theme-swatch" type="button" data-theme-choice="paper-dark" aria-label="Giao diện giấy tối" title="Giao diện giấy tối"></button>
         </div>
@@ -983,6 +1058,8 @@
                 const themeColors = {
                     "purple-light": "#667eea",
                     "purple-dark": "#29264f",
+                    "red-light": "#bf0b0b",
+                    "red-dark": "#4a0707",
                     "paper-light": "#171a20",
                     "paper-dark": "#171612"
                 };
