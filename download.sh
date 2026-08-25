@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Download gold prices from Doji
-curl --connect-timeout 5 'https://banggia.doji.vn/api/TablePrice/GetTablePrice' \
+curl --connect-timeout 5 -k 'https://banggia.doji.vn/api/TablePrice/GetTablePrice' \
   -H 'Accept: application/json, text/plain, */*' \
   -H 'Accept-Language: en-US,en;q=0.9,cs;q=0.8' \
   -H 'Authorization: Bearer null' \
@@ -16,7 +16,7 @@ curl --connect-timeout 5 'https://banggia.doji.vn/api/TablePrice/GetTablePrice' 
   -H 'sec-ch-ua-platform: "Windows"' > prices_doji_encrypted.json
 
 # Download gold prices from GoldPrice.org
-curl --connect-timeout 5 'https://data-asg.goldprice.org/dbXRates/USD' \
+curl --connect-timeout 5 -k 'https://data-asg.goldprice.org/dbXRates/USD' \
   -H 'accept: */*' \
   -H 'accept-language: en-US,en;q=0.9' \
   -H 'cache-control: no-cache' \
@@ -28,7 +28,7 @@ curl --connect-timeout 5 'https://data-asg.goldprice.org/dbXRates/USD' \
   -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' > prices_goldprice.json
 
 # Download gold prices from mihong.vn
-curl --connect-timeout 5 'https://api.mihong.vn/v1/gold-prices?market=domestic' \
+curl --connect-timeout 5 -k 'https://api.mihong.vn/v1/gold-prices?market=domestic' \
   -H 'accept: */*' \
   -H 'accept-language: en-US,en;q=0.9' \
   -H 'cache-control: no-cache' \
@@ -48,7 +48,7 @@ curl --connect-timeout 5 'https://api.mihong.vn/v1/gold-prices?market=domestic' 
   -H 'x-market: mihong' > prices_mihong.json
 
 # Download prices from phuquy.com.vn
-curl --connect-timeout 5 'https://be.phuquy.com.vn/jewelry/product-payment-service/api/products/get-price' \
+curl --connect-timeout 5 -k 'https://be.phuquy.com.vn/jewelry/product-payment-service/api/products/get-price' \
   -H 'accept: application/json, text/plain, */*' \
   -H 'accept-language: vi-VN' \
   -H 'dnt: 1' \
@@ -64,7 +64,7 @@ curl --connect-timeout 5 'https://be.phuquy.com.vn/jewelry/product-payment-servi
   -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' > prices_phuquy.json
 
 # Download prices from btmc.vn
-curl --connect-timeout 5 'https://btmc.vn/Home/BGiaVang' \
+curl --connect-timeout 5 -k 'https://btmc.vn/Home/BGiaVang' \
   -H 'accept-language: en-US,en;q=0.9' \
   -H 'cache-control: no-cache' \
   -H 'pragma: no-cache' \
@@ -77,7 +77,7 @@ curl --connect-timeout 5 'https://btmc.vn/Home/BGiaVang' \
   -H 'sec-fetch-mode: cors' \
   -H 'sec-fetch-site: same-origin' \
   -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' > prices_btmc_vang.html
-curl --connect-timeout 5 'https://btmc.vn/Home/BGiaBac' \
+curl --connect-timeout 5 -k 'https://btmc.vn/Home/BGiaBac' \
   -H 'accept-language: en-US,en;q=0.9' \
   -H 'cache-control: no-cache' \
   -H 'pragma: no-cache' \
@@ -92,7 +92,7 @@ curl --connect-timeout 5 'https://btmc.vn/Home/BGiaBac' \
   -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' > prices_btmc_bac.html
 
 # Download prices from baotinmanhhai.vn
-curl --connect-timeout 5 'https://baotinmanhhai.vn/api/graphql' \
+curl --connect-timeout 5 -k 'https://baotinmanhhai.vn/api/graphql' \
   -H 'accept: application/graphql-response+json, application/json' \
   -H 'accept-language: en-US,en;q=0.9' \
   -H 'content-type: application/json' \
@@ -110,7 +110,7 @@ curl --connect-timeout 5 'https://baotinmanhhai.vn/api/graphql' \
   --data-raw '{"query":"\n  query GetGoldRates {\n    goldRates {\n      items {\n        code\n        name\n        vendor_name\n        buy_price\n        sell_price\n        unit\n        weight\n        trend\n        trend_value\n        sparkline_data\n        sell_sparkline_data\n        last_updated\n        rate_image\n      }\n      total_count\n      ticker_config {\n        selected_products\n        max_items\n        cta_label\n        cta_url\n        link_label\n        link_url\n        ticker_media\n        logo\n      }\n    }\n  }\n","operationName":"GetGoldRates"}' -k > prices_baotinmanhhai.json
 
  # Download ngoctham.com
- curl --connect-timeout 5 'https://ngoctham.com/ajax/proxy_banggia.php' \
+ curl --connect-timeout 5 -k 'https://ngoctham.com/ajax/proxy_banggia.php' \
   -H 'accept: */*' \
   -H 'accept-language: en-US,en;q=0.9' \
   -H 'cache-control: no-cache' \
