@@ -25,6 +25,40 @@
         }
         document.title = "Xem Giá Vàng - " + window.location.hostname;
     </script>
+    <script>
+        if (window.location.protocol === 'https:') {
+                const analyticsScript = document.createElement('script');
+                analyticsScript.async = true;
+                analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-GGYDT2S6GH';
+                document.head.appendChild(analyticsScript);
+
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+
+                gtag('js', new Date());
+                gtag('config', 'G-GGYDT2S6GH');
+
+                let qualifiedViewSent = false;
+
+                function sendQualifiedView() {
+                    if (qualifiedViewSent) return;
+                    qualifiedViewSent = true;
+                    gtag('event', 'qualified_view');
+                }
+
+                setTimeout(sendQualifiedView, 10000);
+                window.addEventListener('scroll', sendQualifiedView, {
+                    once: true,
+                    passive: true
+                });
+                window.addEventListener('pointerdown', sendQualifiedView, {
+                    once: true
+                });
+                window.addEventListener('keydown', sendQualifiedView, {
+                    once: true
+                });
+            }
+    </script>
     <style>
         :root {
             --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
@@ -1089,18 +1123,6 @@
             border-color: var(--line);
         }
     </style>
-    <script>
-        if (window.location.protocol === 'https:') {
-            const analyticsScript = document.createElement('script');
-            analyticsScript.async = true;
-            analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-GGYDT2S6GH';
-            document.head.appendChild(analyticsScript);
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'G-GGYDT2S6GH');
-        }
-    </script>
 </head>
 
 <body class="is-loading">
