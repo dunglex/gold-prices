@@ -1044,6 +1044,43 @@
             border-color: #fffdf8;
             box-shadow: 0 0 0 2px #22201b;
         }
+
+        .loading-overlay {
+            align-items: center;
+            background: rgba(23, 26, 32, 0.94);
+            color: #fff;
+            display: flex;
+            inset: 0;
+            justify-content: center;
+            opacity: 1;
+            position: fixed;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+            visibility: visible;
+            z-index: 100;
+        }
+
+        .loading-overlay.is-hidden {
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+        }
+
+        .loading-message {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 12px 16px;
+        }
+
+        html[data-theme="paper"] .loading-overlay {
+            background: rgba(244, 241, 234, 0.96);
+            color: var(--ink);
+        }
+
+        html[data-theme="paper"] .loading-message {
+            border-color: var(--line);
+        }
     </style>
     <script>
         if (window.location.protocol === 'https:') {
@@ -1060,6 +1097,9 @@
 </head>
 
 <body>
+    <div class="loading-overlay" id="loadingOverlay" role="status" aria-live="polite">
+        <div class="loading-message">Đang tải giá vàng...</div>
+    </div>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="theme-picker" role="group" aria-label="Chọn giao diện">
         <button class="theme-swatch" type="button" data-theme-choice="blue-light" aria-label="Giao diện tím sáng"
@@ -1728,15 +1768,14 @@
             }
         }
 
-        // Refresh data periodically
-        async function refreshLoop() {
-            await loadAll();
-        }
-
         // Initial load and interval
         window.addEventListener('DOMContentLoaded', () => {
-            refreshLoop();
-            setInterval(refreshLoop, 300000); // every 5 minutes
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            loadAll().finally(() => {
+                loadingOverlay.classList.add('is-hidden');
+                loadingOverlay.setAttribute('aria-hidden', 'true');
+            });
+            setInterval(loadAll, 300000); // every 5 minutes
 
             const backToTop = document.getElementById('backToTop');
             const updateBackToTopVisibility = () => {
@@ -1754,5 +1793,4 @@
         });
     </script>
 </body>
-
 </html>
