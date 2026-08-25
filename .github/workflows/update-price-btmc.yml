@@ -1,0 +1,57 @@
+name: Update Gold Price BTMC
+
+on:
+  # schedule:
+  #   - cron: '*/5 * * * *'
+  workflow_dispatch: # Keeps manual button enabled for testing
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-gold-prices
+  cancel-in-progress: false
+
+jobs:
+  update-prices:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Download btmc prices
+        run: bash download_btmc.sh
+
+      - name: Extract BTMC prices
+        run: node extract_btmc.js
+
+      - name: Generate info.json
+        run: bash generate_info.sh
+
+      - name: Check if files changed
+        id: check-changes
+        run: |
+          if git diff --quiet; then
+            echo "has-changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has-changes=true" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Commit and push changes
+        if: steps.check-changes.outputs.has-changes == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          TIMESTAMP=$(date -u +'%Y-%m-%d %H:%M:%S UTC')
+          git commit -m "updated at $TIMESTAMP"
+          git push
