@@ -1,4 +1,4 @@
-name: Update Gold Prices
+name: Update Historical Gold Prices
 
 on:
   schedule:
