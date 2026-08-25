@@ -1,14 +1,14 @@
 {
-    "id": "2180",
-    "date": "2026-08-24 15:57:00",
+    "id": "2181",
+    "date": "2026-08-25 07:36:00",
     "chitiet": [
         {
             "idloaivang": [
                 "10"
             ],
             "loaivang": "Nhẫn 999.9",
-            "giaban": "14500000",
-            "giamua": "14100000",
+            "giaban": "14600000",
+            "giamua": "14200000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -17,8 +17,8 @@
                 "60"
             ],
             "loaivang": "Vàng Ta 999.9",
-            "giaban": "14500000",
-            "giamua": "14100000",
+            "giaban": "14600000",
+            "giamua": "14200000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -27,8 +27,8 @@
                 "4"
             ],
             "loaivang": "Vàng Ta 990",
-            "giaban": "14300000",
-            "giamua": "13900000",
+            "giaban": "14400000",
+            "giamua": "14000000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
