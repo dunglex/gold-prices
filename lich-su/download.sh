@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Download monthly gold prices dataset
-curl 'https://raw.githubusercontent.com/datasets/gold-prices/refs/heads/main/data/monthly.csv' \
+curl --connect-timeout 5 'https://raw.githubusercontent.com/datasets/gold-prices/refs/heads/main/data/monthly.csv' \
   -H 'Accept: application/json, text/plain, */*' \
   -H 'Accept-Language: en-US,en;q=0.9,cs;q=0.8' \
   -H 'Connection: keep-alive' \
