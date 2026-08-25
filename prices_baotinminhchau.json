@@ -107,7 +107,7 @@
       "sell_price": 2385000,
       "buy_price_text": "2262",
       "sell_price_text": "2385",
-      "last_updated": "2026-08-25 13:41"
+      "last_updated": "2026-08-25 13:46"
     },
     {
       "metal": "silver",
@@ -117,7 +117,7 @@
       "sell_price": 11925000,
       "buy_price_text": "11310",
       "sell_price_text": "11925",
-      "last_updated": "2026-08-25 13:41"
+      "last_updated": "2026-08-25 13:46"
     },
     {
       "metal": "silver",
@@ -127,7 +127,7 @@
       "sell_price": 31792050,
       "buy_price_text": "30152.46",
       "sell_price_text": "31792.05",
-      "last_updated": "2026-08-25 13:41"
+      "last_updated": "2026-08-25 13:46"
     },
     {
       "metal": "silver",
@@ -137,77 +137,77 @@
       "sell_price": 63584100,
       "buy_price_text": "60304.92",
       "sell_price_text": "63584.1",
-      "last_updated": "2026-08-25 13:41"
+      "last_updated": "2026-08-25 13:46"
     },
     {
       "metal": "silver",
       "name": "BẠC MIẾNG PHÚ QUÝ Ag 999 1 LƯỢNG",
       "unit": "VND",
-      "buy_price": 2318000,
-      "sell_price": 2390000,
-      "buy_price_text": "2318",
-      "sell_price_text": "2390",
-      "last_updated": "2026-08-25 13:41"
+      "buy_price": 2314000,
+      "sell_price": 2386000,
+      "buy_price_text": "2314",
+      "sell_price_text": "2386",
+      "last_updated": "2026-08-25 13:46"
     },
     {
       "metal": "silver",
       "name": "BẠC MIẾNG PHÚ QUÝ Ag 999 5 LƯỢNG",
       "unit": "VND",
-      "buy_price": 11590000,
-      "sell_price": 11950000,
-      "buy_price_text": "11590",
-      "sell_price_text": "11950",
-      "last_updated": "2026-08-25 13:41"
+      "buy_price": 11570000,
+      "sell_price": 11930000,
+      "buy_price_text": "11570",
+      "sell_price_text": "11930",
+      "last_updated": "2026-08-25 13:46"
     },
     {
       "metal": "silver",
       "name": "BẠC MIẾNG PHÚ QUÝ Ag 999 1 KG (1000 GRAM)",
       "unit": "VND",
-      "buy_price": 61813179,
-      "sell_price": 63733174,
-      "buy_price_text": "61813.179",
-      "sell_price_text": "63733.174",
-      "last_updated": "2026-08-25 13:41"
+      "buy_price": 61706512,
+      "sell_price": 63626508,
+      "buy_price_text": "61706.512",
+      "sell_price_text": "63626.508",
+      "last_updated": "2026-08-25 13:46"
     },
     {
       "metal": "silver",
       "name": "BẠC BẮC SƯ TỬ ANCARAT 999 5 LƯỢNG",
       "unit": "VND",
-      "buy_price": 11535000,
-      "sell_price": 11895000,
-      "buy_price_text": "11535",
-      "sell_price_text": "11895",
-      "last_updated": "2026-08-25 13:41"
+      "buy_price": 11530000,
+      "sell_price": 11885000,
+      "buy_price_text": "11530",
+      "sell_price_text": "11885",
+      "last_updated": "2026-08-25 13:46"
     },
     {
       "metal": "silver",
       "name": "BẠC THỎI 2025 ANCARAT 999 10 LƯỢNG (375 GRAM)",
       "unit": "VND",
-      "buy_price": 23070000,
-      "sell_price": 23790000,
-      "buy_price_text": "23070",
-      "sell_price_text": "23790",
-      "last_updated": "2026-08-25 13:41"
+      "buy_price": 23060000,
+      "sell_price": 23770000,
+      "buy_price_text": "23060",
+      "sell_price_text": "23770",
+      "last_updated": "2026-08-25 13:46"
     },
     {
       "metal": "silver",
       "name": "BẠC THỎI 2025 ANCARAT 999 0.5 KG (500 GRAM)",
       "unit": "VND",
-      "buy_price": 30330000,
-      "sell_price": 31270000,
-      "buy_price_text": "30330",
-      "sell_price_text": "31270",
-      "last_updated": "2026-08-25 13:41"
+      "buy_price": 30308000,
+      "sell_price": 31243000,
+      "buy_price_text": "30308",
+      "sell_price_text": "31243",
+      "last_updated": "2026-08-25 13:46"
     },
     {
       "metal": "silver",
       "name": "BẠC THỎI 2025 ANCARAT 999 1 KG (1000 GRAM)",
       "unit": "VND",
-      "buy_price": 60660000,
-      "sell_price": 62540000,
-      "buy_price_text": "60660",
-      "sell_price_text": "62540",
-      "last_updated": "2026-08-25 13:41"
+      "buy_price": 60616000,
+      "sell_price": 62486000,
+      "buy_price_text": "60616",
+      "sell_price_text": "62486",
+      "last_updated": "2026-08-25 13:46"
     }
   ]
 }

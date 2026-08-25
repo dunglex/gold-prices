@@ -3,7 +3,7 @@ const path = require('node:path');
 
 const goldInputPath = path.join(__dirname, 'prices_btmc_vang.html');
 const silverInputPath = path.join(__dirname, 'prices_btmc_bac.html');
-const outputPath = path.join(__dirname, 'prices_btmc.json');
+const outputPath = path.join(__dirname, 'prices_baotinminhchau.json');
 
 function decodeEntities(value) {
   const namedEntities = {

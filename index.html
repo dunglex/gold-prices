@@ -1266,6 +1266,27 @@
             </div>
         </div>
 
+        <!-- BAOTINMINHHCHAU SECTION-->
+        <div class="source-section" id="baotinMinhchauSection">
+            <div class="source-title"><span class="badge">7</span> <strong>BẢO TÍN MINH CHÂU</strong></div>
+            <div class="table-wrapper no-scrollbar">
+                <table id="baotinMinhchauTable">
+                    <thead>
+                        <tr>
+                            <th>Mã</th>
+                            <th>Loại</th>
+                            <th>Tên sản phẩm</th>
+                            <th class="price-cell">Mua vào</th>
+                            <th class="price-cell">Bán ra</th>
+                            <th class="price-cell">Chênh lệch</th>
+                        </tr>
+                    </thead>
+                    <tbody id="baotinMinhchauBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
         <!-- NGOCTHAM SECTION -->
         <div class="source-section" id="ngocthamSection">
             <div class="source-title"><span class="badge">6</span> <strong>NGỌC THẨM</strong></div>
@@ -1340,6 +1361,17 @@
                     data-field="percent"></span></td>
         </tr>
     </template>
+    <template id="baotinMinhchauRowTemplate">
+        <tr>
+            <td class="material-code" data-field="code"></td>
+            <td><span class="type-badge" data-field="type"></span></td>
+            <td class="material-name" data-field="name"></td>
+            <td class="price-cell price-buy" data-field="buy"></td>
+            <td class="price-cell price-sell" data-field="sell"></td>
+            <td class="price-cell price-range"><span data-field="diff"></span><span class="price-range-percent"
+                    data-field="percent"></span></td>
+        </tr>
+    </template>
     <template id="ngocthamRowTemplate">
         <tr>
             <td class="material-code" data-field="code"></td>
@@ -1377,6 +1409,8 @@
                 rel="noopener noreferrer">#vangmihong</a>
             <a class="tag" href="https://baotinmanhhai.netlify.app" target="_blank"
                 rel="noopener noreferrer">#baotinmanhhai</a>
+            <a class="tag" href="https://baotinminhchau.netlify.app" target="_blank"
+                rel="noopener noreferrer">#baotinminhchau</a>
             <a class="tag" href="/lich-su/">#lich-su</a>
             <a class="tag" href="https://www.google.com/search?q=%23giavanghomnay" target="_blank"
                 rel="noopener noreferrer">#giavanghomnay</a>
@@ -1643,6 +1677,35 @@
             }).join('');
         }
 
+        function renderBaoTinMinhChau(bodyElId, items) {
+            const tbody = document.getElementById(bodyElId);
+            if (!Array.isArray(items) || items.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="no-data">Không có dữ liệu</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = items.map(item => {
+                const code = item.code || '';
+                const name = item.name || '';
+                let buy = item.buy_price ?? null;
+                let sell = item.sell_price ?? null;
+                if (buy == 0 || buy == 1) buy = '';
+                if (sell == 0 || sell == 1) sell = '';
+                let diff = null;
+                if (buy != null && sell != null && !isNaN(buy) && !isNaN(sell) && buy > 0 && sell > 0) {
+                    diff = sell - buy;
+                }
+
+                // Determine type based on code or name
+                const typeBadge = (code.includes('B') || name.includes('Bạc')) ? 'silver' : 'gold';
+                const typeLabel = (code.includes('B') || name.includes('Bạc')) ? 'Bạc' : 'Vàng';
+
+                return renderPriceRow({
+                    templateId: 'baotinMinhchauRowTemplate', code, typeBadge, typeLabel, name, buy, sell, diff, emptyDiff: ''
+                });
+            }).join('');
+        }
+
         function renderNgocTham(bodyElId, items) {
             const tbody = document.getElementById(bodyElId);
             if (!Array.isArray(items) || items.length === 0) {
@@ -1675,9 +1738,10 @@
             const dojiCount = sources.doji || 0;
             const phuquyCount = sources.phuquy || 0;
             const baotinManhhaiCount = sources.baotinmanhhai || 0;
+            const baotinMinhchauCount = sources.baotinminhchau || 0;
             const ngocthamCount = sources.ngoctham || 0;
 
-            const total = [goldpriceCount, mihongCount, dojiCount, phuquyCount, baotinManhhaiCount, ngocthamCount].reduce((a, b) => a + b, 0);
+            const total = [goldpriceCount, mihongCount, dojiCount, phuquyCount, baotinManhhaiCount, baotinMinhchauCount, ngocthamCount].reduce((a, b) => a + b, 0);
 
             const stats = [
                 { value: total, label: 'Tất cả nguồn', target: 'goldpriceSection' },
@@ -1686,6 +1750,7 @@
                 { value: dojiCount, label: 'DOJI', target: 'dojiSection' },
                 { value: phuquyCount, label: 'Phú Quý', target: 'phuquySection' },
                 { value: baotinManhhaiCount, label: 'Bảo Tín Mạnh Hải', target: 'baotinManhhaiSection' },
+                { value: baotinMinhchauCount, label: 'Bảo Tín Minh Châu', target: 'baotinMinhchauSection' },
                 { value: ngocthamCount, label: 'Ngọc Thắm', target: 'ngocthamSection' }
             ];
             const container = document.getElementById('statsContainer');
@@ -1705,12 +1770,13 @@
 
         async function loadAll() {
             // Fetch all data sources in parallel
-            const [gRes, mRes, dRes, pRes, bRes, nRes, infoRes] = await Promise.all([
+            const [gRes, mRes, dRes, pRes, bRes, bmRes, nRes, infoRes] = await Promise.all([
                 fetchJsonSafe('prices_goldprice.json'),
                 fetchJsonSafe('prices_mihong.json'),
                 fetchJsonSafe('prices_doji.json'),
                 fetchJsonSafe('prices_phuquy.json'),
                 fetchJsonSafe('prices_baotinmanhhai.json'),
+                fetchJsonSafe('prices_baotinminhchau.json'),
                 fetchJsonSafe('prices_ngoctham.json'),
                 fetchJsonSafe('info.json')
             ]);
@@ -1728,6 +1794,15 @@
                 renderGoldPrice('goldpriceBody', Array.isArray(gData) ? gData : []);
             } else {
                 renderErrorInto('goldpriceBody', gRes.error || 'Invalid JSON', gRes.raw, 7);
+            }
+
+            // BAOTINMINHCHAU
+            if (bmRes.ok) {
+                const bmData = bmRes.data;
+                const baotinMinhchauItems = bmData && bmData.data ? bmData.data : (Array.isArray(bmData) ? bmData : []);
+                renderBaoTinMinhChau('baotinMinhchauBody', baotinMinhchauItems);
+            } else {
+                renderErrorInto('baotinMinhchauBody', bmRes.error || 'Invalid JSON', bmRes.raw, 9);
             }
 
             // MIHONG
@@ -1762,6 +1837,14 @@
                 renderBaoTinManhHai('baotinManhhaiBody', baoTinItems);
             } else {
                 renderErrorInto('baotinManhhaiBody', bRes.error || 'Invalid JSON', bRes.raw, 6);
+            }
+
+            // BAOTINMINHCHAU
+            if (bmRes.ok) {
+                const baoTinMinhChauItems = bmRes && bmRes.data && bmRes.data.sources ? bmRes.data.sources : [];
+                renderBaoTinMinhChau('baotinMinhchauBody', baoTinMinhChauItems);
+            } else {
+                renderErrorInto('baotinMinhchauBody', bmRes.error || 'Invalid JSON', bmRes.raw, 6);
             }
 
             // NGOCTHAM
