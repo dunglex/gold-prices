@@ -1065,6 +1065,13 @@
             visibility: hidden;
         }
 
+        body.is-loading main,
+        body.is-loading .site-footer,
+        body.is-loading .back-to-top,
+        body.is-loading .theme-picker {
+            visibility: hidden;
+        }
+
         .loading-message {
             border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 6px;
@@ -1096,7 +1103,7 @@
     </script>
 </head>
 
-<body>
+<body class="is-loading">
     <div class="loading-overlay" id="loadingOverlay" role="status" aria-live="polite">
         <div class="loading-message">Đang tải giá vàng...</div>
     </div>
@@ -1707,7 +1714,14 @@
                 fetchJsonSafe('prices_ngoctham.json'),
                 fetchJsonSafe('info.json')
             ]);
-
+            // Info
+            if (infoRes.ok) {
+                const infoData = infoRes.data;
+                const updatedAt = new Date(infoData.updatedAt);
+                setUpdateTime(updatedAt);
+                updateStatsCombined(infoData.sources);
+            }
+            
             // GOLDPRICE
             if (gRes.ok) {
                 const gData = gRes.data && gRes.data.items ? gRes.data.items : gRes.data;
@@ -1758,22 +1772,17 @@
             } else {
                 renderErrorInto('ngocthamBody', nRes.error || 'Invalid JSON', nRes.raw, 7);
             }
-
-            // Info
-            if (infoRes.ok) {
-                const infoData = infoRes.data;
-                const updatedAt = new Date(infoData.updatedAt);
-                setUpdateTime(updatedAt);
-                updateStatsCombined(infoData.sources);
-            }
         }
 
         // Initial load and interval
         window.addEventListener('DOMContentLoaded', () => {
             const loadingOverlay = document.getElementById('loadingOverlay');
             loadAll().finally(() => {
-                loadingOverlay.classList.add('is-hidden');
-                loadingOverlay.setAttribute('aria-hidden', 'true');
+                requestAnimationFrame(() => {
+                    document.body.classList.remove('is-loading');
+                    loadingOverlay.classList.add('is-hidden');
+                    loadingOverlay.setAttribute('aria-hidden', 'true');
+                });
             });
             setInterval(loadAll, 300000); // every 5 minutes
 
