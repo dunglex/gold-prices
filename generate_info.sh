@@ -28,3 +28,10 @@ jq -n \
       ngoctham: $ngoctham
     }
   }' > info.json
+
+# clean json files, if they are empty file write '{}'
+for f in prices_*.json; do
+  if [ ! -s "$f" ]; then
+    echo '{}' > "$f"
+  fi
+done

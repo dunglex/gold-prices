@@ -6,22 +6,29 @@ const key = Buffer.from(
   'hex'
 );
 
-const data = require('fs').readFileSync('data/prices_doji_encrypted.json', 'utf8');
-const encryptedData = JSON.parse(data).data;
-const raw = Buffer.from(encryptedData, 'base64');
+try {
+  const data = require('fs').readFileSync('data/prices_doji_encrypted.json', 'utf8');
+  const encryptedData = JSON.parse(data).data;
+  const raw = Buffer.from(encryptedData, 'base64');
 
-const iv = raw.subarray(0,16);
-const ciphertext = raw.subarray(16);
+  const iv = raw.subarray(0,16);
+  const ciphertext = raw.subarray(16);
 
-const decipher = crypto.createDecipheriv(
-  'aes-256-cbc',
-  key,
-  iv
-);
+  const decipher = crypto.createDecipheriv(
+    'aes-256-cbc',
+    key,
+    iv
+  );
 
-let result =
-  decipher.update(ciphertext) +
-  decipher.final('utf8');
+  let result =
+    decipher.update(ciphertext) +
+    decipher.final('utf8');
 
-// write the decrypted data to a gold_prices_doji.json file
-require('fs').writeFileSync('data/prices_doji.json', JSON.stringify(JSON.parse(result), null, 2));
+  // write the decrypted data to a gold_prices_doji.json file
+  require('fs').writeFileSync('data/prices_doji.json', JSON.stringify(JSON.parse(result), null, 2));
+} catch (error) {
+  console.error('Failed to decrypt data:', error);
+  // print the first line of the input file
+  const data = require('fs').readFileSync('data/prices_doji_encrypted.json', 'utf8');
+  console.error('Input file first line:', data.split('\n')[0]);
+}
