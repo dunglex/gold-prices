@@ -2,8 +2,8 @@ name: Update Gold Prices
 
 on:
   schedule:
-    # Runs every 5 minutes
-    - cron: '*/5 * * * *'
+    # Runs once every day at 00:10 UTC
+    - cron: '10 0 * * *'
   workflow_dispatch: # Keeps manual button enabled for testing
 
 permissions:
@@ -19,20 +19,10 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-        
-      - name: Download gold prices
-        run: bash download.sh
 
-      - name: Decrypt doji prices
-        run: node decrypt_doji.js
-      
-      - name: Extract BTMC prices
-        run: node extract_btmc.js
+      - name: Download gold monthly prices
+        run: bash download.sh
+        working-directory: lich-su
 
       - name: Check if files changed
         id: check-changes
