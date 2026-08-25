@@ -34,9 +34,18 @@ jobs:
 
       - name: Decrypt doji prices
         run: node decrypt_doji.js
-      
-      - name: Extract BTMC prices
-        run: node extract_btmc.js
+
+      # - name: Download mihong prices
+      #   run: bash download_mihong.sh
+
+      # - name: Download btmc prices
+      #   run: bash download_btmc.sh
+
+      # - name: Extract BTMC prices
+      #   run: node extract_btmc.js
+
+      - name: Generate info.json
+        run: bash generate_info.sh
 
       - name: Check if files changed
         id: check-changes

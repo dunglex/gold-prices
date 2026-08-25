@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+cd "$(dirname "$0")/data"
+
 # updated At
 json_count() {
   jq -e -r "$2 | if type == \"array\" then length else 0 end" "$1" 2>/dev/null || printf '0\n'

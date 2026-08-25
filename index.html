@@ -1273,7 +1273,6 @@
                 <table id="baotinMinhchauTable">
                     <thead>
                         <tr>
-                            <th>Mã</th>
                             <th>Loại</th>
                             <th>Tên sản phẩm</th>
                             <th class="price-cell">Mua vào</th>
@@ -1363,7 +1362,6 @@
     </template>
     <template id="baotinMinhchauRowTemplate">
         <tr>
-            <td class="material-code" data-field="code"></td>
             <td><span class="type-badge" data-field="type"></span></td>
             <td class="material-name" data-field="name"></td>
             <td class="price-cell price-buy" data-field="buy"></td>
@@ -1680,28 +1678,27 @@
         function renderBaoTinMinhChau(bodyElId, items) {
             const tbody = document.getElementById(bodyElId);
             if (!Array.isArray(items) || items.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" class="no-data">Không có dữ liệu</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="5" class="no-data">Không có dữ liệu</td></tr>';
                 return;
             }
 
             tbody.innerHTML = items.map(item => {
-                const code = item.code || '';
+                const isSilver = item.metal === 'silver';
                 const name = item.name || '';
-                let buy = item.buy_price ?? null;
-                let sell = item.sell_price ?? null;
-                if (buy == 0 || buy == 1) buy = '';
-                if (sell == 0 || sell == 1) sell = '';
-                let diff = null;
-                if (buy != null && sell != null && !isNaN(buy) && !isNaN(sell) && buy > 0 && sell > 0) {
-                    diff = sell - buy;
-                }
+                const buy = Number(item.buy_price);
+                const sell = Number(item.sell_price);
+                const hasBuyPrice = Number.isFinite(buy) && buy > 0;
+                const hasSellPrice = Number.isFinite(sell) && sell > 0;
+                const diff = hasBuyPrice && hasSellPrice
+                    ? sell - buy
+                    : null;
 
-                // Determine type based on code or name
-                const typeBadge = (code.includes('B') || name.includes('Bạc')) ? 'silver' : 'gold';
-                const typeLabel = (code.includes('B') || name.includes('Bạc')) ? 'Bạc' : 'Vàng';
+                const typeBadge = isSilver ? 'silver' : 'gold';
+                const typeLabel = isSilver ? 'Bạc' : 'Vàng';
 
                 return renderPriceRow({
-                    templateId: 'baotinMinhchauRowTemplate', code, typeBadge, typeLabel, name, buy, sell, diff, emptyDiff: ''
+                    templateId: 'baotinMinhchauRowTemplate', typeBadge, typeLabel, name,
+                    buy: hasBuyPrice ? buy : null, sell: hasSellPrice ? sell : null, diff, emptyDiff: ''
                 });
             }).join('');
         }
@@ -1770,16 +1767,17 @@
 
         async function loadAll() {
             // Fetch all data sources in parallel
-            const [gRes, mRes, dRes, pRes, bRes, bmRes, nRes, infoRes] = await Promise.all([
-                fetchJsonSafe('prices_goldprice.json'),
-                fetchJsonSafe('prices_mihong.json'),
-                fetchJsonSafe('prices_doji.json'),
-                fetchJsonSafe('prices_phuquy.json'),
-                fetchJsonSafe('prices_baotinmanhhai.json'),
-                fetchJsonSafe('prices_baotinminhchau.json'),
-                fetchJsonSafe('prices_ngoctham.json'),
-                fetchJsonSafe('info.json')
+            const [infoRes,gRes, mRes, dRes, pRes, bRes, bmRes, nRes] = await Promise.all([
+                fetchJsonSafe('data/info.json'),
+                fetchJsonSafe('data/prices_goldprice.json'),
+                fetchJsonSafe('data/prices_mihong.json'),
+                fetchJsonSafe('data/prices_doji.json'),
+                fetchJsonSafe('data/prices_phuquy.json'),
+                fetchJsonSafe('data/prices_baotinmanhhai.json'),
+                fetchJsonSafe('data/prices_baotinminhchau.json'),
+                fetchJsonSafe('data/prices_ngoctham.json')
             ]);
+
             // Info
             if (infoRes.ok) {
                 const infoData = infoRes.data;
@@ -1794,15 +1792,6 @@
                 renderGoldPrice('goldpriceBody', Array.isArray(gData) ? gData : []);
             } else {
                 renderErrorInto('goldpriceBody', gRes.error || 'Invalid JSON', gRes.raw, 7);
-            }
-
-            // BAOTINMINHCHAU
-            if (bmRes.ok) {
-                const bmData = bmRes.data;
-                const baotinMinhchauItems = bmData && bmData.data ? bmData.data : (Array.isArray(bmData) ? bmData : []);
-                renderBaoTinMinhChau('baotinMinhchauBody', baotinMinhchauItems);
-            } else {
-                renderErrorInto('baotinMinhchauBody', bmRes.error || 'Invalid JSON', bmRes.raw, 9);
             }
 
             // MIHONG
@@ -1844,7 +1833,7 @@
                 const baoTinMinhChauItems = bmRes && bmRes.data && bmRes.data.sources ? bmRes.data.sources : [];
                 renderBaoTinMinhChau('baotinMinhchauBody', baoTinMinhChauItems);
             } else {
-                renderErrorInto('baotinMinhchauBody', bmRes.error || 'Invalid JSON', bmRes.raw, 6);
+                renderErrorInto('baotinMinhchauBody', bmRes.error || 'Invalid JSON', bmRes.raw, 5);
             }
 
             // NGOCTHAM

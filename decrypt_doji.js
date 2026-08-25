@@ -6,7 +6,7 @@ const key = Buffer.from(
   'hex'
 );
 
-const data = require('fs').readFileSync('prices_doji_encrypted.json', 'utf8');
+const data = require('fs').readFileSync('data/prices_doji_encrypted.json', 'utf8');
 const encryptedData = JSON.parse(data).data;
 const raw = Buffer.from(encryptedData, 'base64');
 
@@ -24,4 +24,4 @@ let result =
   decipher.final('utf8');
 
 // write the decrypted data to a gold_prices_doji.json file
-require('fs').writeFileSync('prices_doji.json', JSON.stringify(JSON.parse(result), null, 2));
+require('fs').writeFileSync('data/prices_doji.json', JSON.stringify(JSON.parse(result), null, 2));
