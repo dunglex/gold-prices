@@ -1109,10 +1109,10 @@
     </div>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="theme-picker" role="group" aria-label="Chọn giao diện">
-        <button class="theme-swatch" type="button" data-theme-choice="blue-light" aria-label="Giao diện tím sáng"
-            title="Giao diện tím sáng"></button>
-        <button class="theme-swatch" type="button" data-theme-choice="blue-dark" aria-label="Giao diện tím tối"
-            title="Giao diện tím tối"></button>
+        <button class="theme-swatch" type="button" data-theme-choice="blue-light" aria-label="Giao diện xanh sáng"
+            title="Giao diện xanh sáng"></button>
+        <button class="theme-swatch" type="button" data-theme-choice="blue-dark" aria-label="Giao diện xanh tối"
+            title="Giao diện xanh tối"></button>
         <button class="theme-swatch" type="button" data-theme-choice="red-light" aria-label="Giao diện đỏ sáng"
             title="Giao diện đỏ sáng"></button>
         <button class="theme-swatch" type="button" data-theme-choice="red-dark" aria-label="Giao diện đỏ tối"
@@ -1174,29 +1174,6 @@
                         </tr>
                     </thead>
                     <tbody id="goldpriceBody">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- MIHONG SECTION -->
-        <div class="source-section" id="mihongSection">
-            <div class="source-title"><span class="badge">2</span> <strong>MI HỒNG</strong></div>
-            <div class="table-wrapper no-scrollbar">
-                <table id="mihongTable">
-                    <thead>
-                        <tr>
-                            <th>Mã</th>
-                            <th>Loại</th>
-                            <th>Tên sản phẩm</th>
-                            <th class="price-cell">Mua vào</th>
-                            <th class="price-cell">Bán ra</th>
-                            <th class="price-cell">Chênh lệch</th>
-                            <th class="price-cell">Thay đổi Mua</th>
-                            <th class="price-cell">Thay đổi Bán</th>
-                        </tr>
-                    </thead>
-                    <tbody id="mihongBody">
                     </tbody>
                 </table>
             </div>
@@ -1286,6 +1263,29 @@
             </div>
         </div>
 
+        <!-- MIHONG SECTION -->
+        <div class="source-section" id="mihongSection">
+            <div class="source-title"><span class="badge">2</span> <strong>MI HỒNG</strong></div>
+            <div class="table-wrapper no-scrollbar">
+                <table id="mihongTable">
+                    <thead>
+                        <tr>
+                            <th>Mã</th>
+                            <th>Loại</th>
+                            <th>Tên sản phẩm</th>
+                            <th class="price-cell">Mua vào</th>
+                            <th class="price-cell">Bán ra</th>
+                            <th class="price-cell">Chênh lệch</th>
+                            <th class="price-cell">Thay đổi Mua</th>
+                            <th class="price-cell">Thay đổi Bán</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mihongBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
         <!-- NGOCTHAM SECTION -->
         <div class="source-section" id="ngocthamSection">
             <div class="source-title"><span class="badge">6</span> <strong>NGỌC THẨM</strong></div>
@@ -1313,17 +1313,15 @@
             <p data-field="label"></p>
         </button>
     </template>
-    <template id="mihongRowTemplate">
+    <template id="goldPriceRowTemplate">
         <tr>
             <td class="material-code" data-field="code"></td>
             <td><span class="type-badge" data-field="type"></span></td>
             <td class="material-name" data-field="name"></td>
-            <td class="price-cell price-buy" data-field="buy"></td>
-            <td class="price-cell price-sell" data-field="sell"></td>
-            <td class="price-cell price-range"><span data-field="diff"></span><span class="price-range-percent"
-                    data-field="percent"></span></td>
-            <td class="price-cell" data-field="buyChange"></td>
-            <td class="price-cell" data-field="sellChange"></td>
+            <td class="price-cell" data-field="price"></td>
+            <td class="price-cell" data-field="change"></td>
+            <td class="price-cell" data-field="percentChange"></td>
+            <td class="price-cell" data-field="close"></td>
         </tr>
     </template>
     <template id="dojiRowTemplate">
@@ -1381,15 +1379,17 @@
                     data-field="percent"></span></td>
         </tr>
     </template>
-    <template id="goldPriceRowTemplate">
+    <template id="mihongRowTemplate">
         <tr>
             <td class="material-code" data-field="code"></td>
             <td><span class="type-badge" data-field="type"></span></td>
             <td class="material-name" data-field="name"></td>
-            <td class="price-cell" data-field="price"></td>
-            <td class="price-cell" data-field="change"></td>
-            <td class="price-cell" data-field="percentChange"></td>
-            <td class="price-cell" data-field="close"></td>
+            <td class="price-cell price-buy" data-field="buy"></td>
+            <td class="price-cell price-sell" data-field="sell"></td>
+            <td class="price-cell price-range"><span data-field="diff"></span><span class="price-range-percent"
+                    data-field="percent"></span></td>
+            <td class="price-cell" data-field="buyChange"></td>
+            <td class="price-cell" data-field="sellChange"></td>
         </tr>
     </template>
 
