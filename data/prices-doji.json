@@ -38,7 +38,11 @@
     "type": "G",
     "costMargin": null,
     "silverPriceSource": null,
+<<<<<<< HEAD
     "updateDate": "2026-08-26T06:57:14.8584022Z",
+=======
+    "updateDate": "2026-08-26T05:29:52.2236357Z",
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "isActive": true,
     "currentPage": 1,
     "pageSize": 50,
@@ -61,7 +65,11 @@
     "type": "G",
     "costMargin": null,
     "silverPriceSource": null,
+<<<<<<< HEAD
     "updateDate": "2026-08-26T06:57:14.8584032Z",
+=======
+    "updateDate": "2026-08-26T05:29:52.2236366Z",
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "isActive": true,
     "currentPage": 1,
     "pageSize": 50,
@@ -84,7 +92,11 @@
     "type": "G",
     "costMargin": null,
     "silverPriceSource": null,
+<<<<<<< HEAD
     "updateDate": "2026-08-26T06:57:14.8584038Z",
+=======
+    "updateDate": "2026-08-26T05:29:52.2236375Z",
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "isActive": true,
     "currentPage": 1,
     "pageSize": 50,
@@ -107,7 +119,11 @@
     "type": "G",
     "costMargin": null,
     "silverPriceSource": null,
+<<<<<<< HEAD
     "updateDate": "2026-08-26T06:57:14.8584043Z",
+=======
+    "updateDate": "2026-08-26T05:29:52.2236385Z",
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "isActive": true,
     "currentPage": 1,
     "pageSize": 50,
@@ -130,7 +146,11 @@
     "type": "G",
     "costMargin": null,
     "silverPriceSource": null,
+<<<<<<< HEAD
     "updateDate": "2026-08-26T06:57:14.8584057Z",
+=======
+    "updateDate": "2026-08-26T05:29:52.22364Z",
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "isActive": true,
     "currentPage": 1,
     "pageSize": 50,
@@ -153,7 +173,11 @@
     "type": "G",
     "costMargin": null,
     "silverPriceSource": null,
+<<<<<<< HEAD
     "updateDate": "2026-08-26T06:57:14.8584061Z",
+=======
+    "updateDate": "2026-08-26T05:29:52.2236405Z",
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "isActive": true,
     "currentPage": 1,
     "pageSize": 50,
@@ -176,7 +200,11 @@
     "type": "G",
     "costMargin": null,
     "silverPriceSource": null,
+<<<<<<< HEAD
     "updateDate": "2026-08-26T06:57:14.8584066Z",
+=======
+    "updateDate": "2026-08-26T05:29:52.223641Z",
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "isActive": true,
     "currentPage": 1,
     "pageSize": 50,
@@ -199,7 +227,11 @@
     "type": "G",
     "costMargin": null,
     "silverPriceSource": null,
+<<<<<<< HEAD
     "updateDate": "2026-08-26T06:57:14.8584074Z",
+=======
+    "updateDate": "2026-08-26T05:29:52.2236423Z",
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "isActive": true,
     "currentPage": 1,
     "pageSize": 50,
@@ -222,7 +254,11 @@
     "type": "G",
     "costMargin": null,
     "silverPriceSource": null,
+<<<<<<< HEAD
     "updateDate": "2026-08-26T06:57:14.8584079Z",
+=======
+    "updateDate": "2026-08-26T05:29:52.2236429Z",
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "isActive": false,
     "currentPage": 1,
     "pageSize": 50,
@@ -245,7 +281,11 @@
     "type": "G",
     "costMargin": null,
     "silverPriceSource": null,
+<<<<<<< HEAD
     "updateDate": "2026-08-26T06:57:14.8584082Z",
+=======
+    "updateDate": "2026-08-26T05:29:52.2236435Z",
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "isActive": false,
     "currentPage": 1,
     "pageSize": 50,
@@ -268,7 +308,11 @@
     "type": "G",
     "costMargin": null,
     "silverPriceSource": null,
+<<<<<<< HEAD
     "updateDate": "2026-08-26T06:57:14.8584085Z",
+=======
+    "updateDate": "2026-08-26T05:29:52.2236456Z",
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "isActive": true,
     "currentPage": 1,
     "pageSize": 50,
@@ -291,7 +335,11 @@
     "type": "G",
     "costMargin": null,
     "silverPriceSource": null,
+<<<<<<< HEAD
     "updateDate": "2026-08-26T06:57:14.8584088Z",
+=======
+    "updateDate": "2026-08-26T05:29:52.2236459Z",
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "isActive": true,
     "currentPage": 1,
     "pageSize": 50,
@@ -307,14 +355,24 @@
     "pricePnj": null,
     "rangePriceIn": null,
     "rangePriceOut": null,
+<<<<<<< HEAD
     "priceDojiBuyIn": 2347,
     "priceDojiSellOut": 2458,
+=======
+    "priceDojiBuyIn": 2382,
+    "priceDojiSellOut": 2462,
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "notes": null,
     "orderNumber": 16,
     "type": "S",
     "costMargin": null,
+<<<<<<< HEAD
     "silverPriceSource": "Theo giá Tham Chiếu",
     "updateDate": "2026-08-26T06:57:14.860285Z",
+=======
+    "silverPriceSource": "Theo giá Thế Giới",
+    "updateDate": "2026-08-26T05:29:52.2256074Z",
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "isActive": null,
     "currentPage": 1,
     "pageSize": 50,
@@ -330,14 +388,23 @@
     "pricePnj": null,
     "rangePriceIn": null,
     "rangePriceOut": null,
+<<<<<<< HEAD
     "priceDojiBuyIn": 11735,
     "priceDojiSellOut": 12290,
+=======
+    "priceDojiBuyIn": 11910,
+    "priceDojiSellOut": 12310,
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "notes": null,
     "orderNumber": 17,
     "type": "S",
     "costMargin": null,
     "silverPriceSource": "Theo giá Tham Chiếu",
+<<<<<<< HEAD
     "updateDate": "2026-08-26T06:57:14.8612247Z",
+=======
+    "updateDate": "2026-08-26T05:29:52.2265397Z",
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "isActive": null,
     "currentPage": 1,
     "pageSize": 50,
@@ -353,14 +420,24 @@
     "pricePnj": null,
     "rangePriceIn": null,
     "rangePriceOut": null,
+<<<<<<< HEAD
     "priceDojiBuyIn": 2200,
     "priceDojiSellOut": 3000,
+=======
+    "priceDojiBuyIn": 2221,
+    "priceDojiSellOut": 2222,
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "notes": null,
     "orderNumber": 21,
     "type": "S",
     "costMargin": null,
+<<<<<<< HEAD
     "silverPriceSource": "Theo giá Tham Chiếu",
     "updateDate": "2026-08-26T06:57:14.8640163Z",
+=======
+    "silverPriceSource": "Theo giá Thế Giới",
+    "updateDate": "2026-08-26T05:29:52.2282374Z",
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "isActive": null,
     "currentPage": 1,
     "pageSize": 50,
@@ -376,14 +453,23 @@
     "pricePnj": null,
     "rangePriceIn": null,
     "rangePriceOut": null,
+<<<<<<< HEAD
     "priceDojiBuyIn": 4631.389987,
     "priceDojiSellOut": 4631.389987,
+=======
+    "priceDojiBuyIn": 4644.9795667349,
+    "priceDojiSellOut": 4644.9795667349,
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "notes": null,
     "orderNumber": 1,
     "type": "W",
     "costMargin": null,
     "silverPriceSource": null,
+<<<<<<< HEAD
     "updateDate": "2026-08-26T06:57:14.9091608Z",
+=======
+    "updateDate": "2026-08-26T05:29:52.2700126Z",
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "isActive": null,
     "currentPage": 1,
     "pageSize": 50,
@@ -399,14 +485,23 @@
     "pricePnj": null,
     "rangePriceIn": null,
     "rangePriceOut": null,
+<<<<<<< HEAD
     "priceDojiBuyIn": 68.732878,
     "priceDojiSellOut": 68.732878,
+=======
+    "priceDojiBuyIn": 69.2210306837,
+    "priceDojiSellOut": 69.2210306837,
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "notes": null,
     "orderNumber": 2,
     "type": "W",
     "costMargin": null,
     "silverPriceSource": null,
+<<<<<<< HEAD
     "updateDate": "2026-08-26T06:57:14.9091619Z",
+=======
+    "updateDate": "2026-08-26T05:29:52.2700141Z",
+>>>>>>> 8b4a7cbd63c047e3dbed8c88a8f46c08040dc96d
     "isActive": null,
     "currentPage": 1,
     "pageSize": 50,
