@@ -29,10 +29,10 @@ jobs:
           node-version: '24'
 
       - name: Download sjc prices
-        run: bash download_sjc.sh
+        run: bash download-sjc.sh
 
       - name: Generate info.json
-        run: bash generate_info.sh
+        run: bash generate-info.sh
 
       - name: Check if files changed
         id: check-changes

@@ -1791,13 +1791,13 @@
             // Fetch all data sources in parallel
             const [infoRes,gRes, mRes, dRes, pRes, bRes, bmRes, nRes] = await Promise.all([
                 fetchJsonSafe('data/info.json'),
-                fetchJsonSafe('data/prices_goldprice.json'),
-                fetchJsonSafe('data/prices_mihong.json'),
-                fetchJsonSafe('data/prices_doji.json'),
-                fetchJsonSafe('data/prices_phuquy.json'),
-                fetchJsonSafe('data/prices_baotinmanhhai.json'),
-                fetchJsonSafe('data/prices_baotinminhchau.json'),
-                fetchJsonSafe('data/prices_ngoctham.json')
+                fetchJsonSafe('data/prices-goldprice.json'),
+                fetchJsonSafe('data/prices-mihong.json'),
+                fetchJsonSafe('data/prices-doji.json'),
+                fetchJsonSafe('data/prices-phuquy.json'),
+                fetchJsonSafe('data/prices-baotinmanhhai.json'),
+                fetchJsonSafe('data/prices-baotinminhchau.json'),
+                fetchJsonSafe('data/prices-ngoctham.json')
             ]);
 
             // Info

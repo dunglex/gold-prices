@@ -15,7 +15,7 @@ curl --connect-timeout 5 -k 'https://btmc.vn/Home/BGiaVang' \
   -H 'sec-fetch-dest: empty' \
   -H 'sec-fetch-mode: cors' \
   -H 'sec-fetch-site: same-origin' \
-  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' > prices_btmc_vang.html
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' > prices-btmc-vang.html
 
 echo "Downloading https://btmc.vn/Home/BGiaBac"
 curl --connect-timeout 5 -k 'https://btmc.vn/Home/BGiaBac' \
@@ -30,4 +30,4 @@ curl --connect-timeout 5 -k 'https://btmc.vn/Home/BGiaBac' \
   -H 'sec-fetch-dest: empty' \
   -H 'sec-fetch-mode: cors' \
   -H 'sec-fetch-site: same-origin' \
-  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' > prices_btmc_bac.html
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' > prices-btmc-bac.html

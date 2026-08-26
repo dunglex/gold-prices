@@ -4,55 +4,55 @@
       "metal": "gold",
       "name": "VÀNG MIẾNG VRTL BẢO TÍN MINH CHÂU",
       "unit": "VND",
-      "buy_price": 15050000,
-      "sell_price": 15450000,
-      "buy_price_text": "15050",
-      "sell_price_text": "15450",
-      "last_updated": "2026-08-25 13:16",
+      "buy_price": 15000000,
+      "sell_price": 15400000,
+      "buy_price_text": "15000",
+      "sell_price_text": "15400",
+      "last_updated": "2026-08-26 09:00",
       "content": "999.9 (24k)"
     },
     {
       "metal": "gold",
       "name": "NHẪN TRÒN TRƠN BẢO TÍN MINH CHÂU",
       "unit": "VND",
-      "buy_price": 15050000,
-      "sell_price": 15450000,
-      "buy_price_text": "15050",
-      "sell_price_text": "15450",
-      "last_updated": "2026-08-25 13:16",
+      "buy_price": 15000000,
+      "sell_price": 15400000,
+      "buy_price_text": "15000",
+      "sell_price_text": "15400",
+      "last_updated": "2026-08-26 09:00",
       "content": "999.9 (24k)"
     },
     {
       "metal": "gold",
       "name": "ĐỒNG XU VRTL 0.1",
       "unit": "VND",
-      "buy_price": 1505000,
-      "sell_price": 1545000,
-      "buy_price_text": "1505",
-      "sell_price_text": "1545",
-      "last_updated": "2026-08-25 13:16",
+      "buy_price": 1500000,
+      "sell_price": 1540000,
+      "buy_price_text": "1500",
+      "sell_price_text": "1540",
+      "last_updated": "2026-08-26 09:00",
       "content": "999.9 (24k)"
     },
     {
       "metal": "gold",
       "name": "QUÀ MỪNG BẢN VỊ VÀNG BẢO TÍN MINH CHÂU",
       "unit": "VND",
-      "buy_price": 15050000,
-      "sell_price": 15450000,
-      "buy_price_text": "15050",
-      "sell_price_text": "15450",
-      "last_updated": "2026-08-25 13:16",
+      "buy_price": 15000000,
+      "sell_price": 15400000,
+      "buy_price_text": "15000",
+      "sell_price_text": "15400",
+      "last_updated": "2026-08-26 09:00",
       "content": "999.9 (24k)"
     },
     {
       "metal": "gold",
       "name": "VÀNG HỆ THỐNG",
       "unit": "VND",
-      "buy_price": 14750000,
+      "buy_price": 14700000,
       "sell_price": null,
-      "buy_price_text": "14750",
+      "buy_price_text": "14700",
       "sell_price_text": "Liên hệ",
-      "last_updated": "2026-08-25 13:16",
+      "last_updated": "2026-08-26 09:00",
       "content": "999.9 (24k)"
     },
     {
@@ -63,40 +63,40 @@
       "sell_price": 15060000,
       "buy_price_text": "14760",
       "sell_price_text": "15060",
-      "last_updated": "2026-08-25 13:16",
+      "last_updated": "2026-08-26 09:00",
       "content": "999.9 (24k)"
     },
     {
       "metal": "gold",
       "name": "TRANG SỨC VÀNG RỒNG THĂNG LONG 999.9",
       "unit": "VND",
-      "buy_price": 14850000,
-      "sell_price": 15350000,
-      "buy_price_text": "14850",
-      "sell_price_text": "15350",
-      "last_updated": "2026-08-25 13:16",
+      "buy_price": 14800000,
+      "sell_price": 15300000,
+      "buy_price_text": "14800",
+      "sell_price_text": "15300",
+      "last_updated": "2026-08-26 09:00",
       "content": "999.9 (24k)"
     },
     {
       "metal": "gold",
       "name": "TRANG SỨC VÀNG RỒNG THĂNG LONG 99.9",
       "unit": "VND",
-      "buy_price": 14830000,
-      "sell_price": 15330000,
-      "buy_price_text": "14830",
-      "sell_price_text": "15330",
-      "last_updated": "2026-08-25 13:16",
+      "buy_price": 14780000,
+      "sell_price": 15280000,
+      "buy_price_text": "14780",
+      "sell_price_text": "15280",
+      "last_updated": "2026-08-26 09:00",
       "content": "99.9 (24k)"
     },
     {
       "metal": "gold",
       "name": "VÀNG NGUYÊN LIỆU",
       "unit": "VND",
-      "buy_price": 14280000,
+      "buy_price": 14250000,
       "sell_price": null,
-      "buy_price_text": "14280",
+      "buy_price_text": "14250",
       "sell_price_text": "Liên hệ",
-      "last_updated": "2026-08-25 13:16",
+      "last_updated": "2026-08-26 09:00",
       "content": "999.9 (24k)"
     },
     {
@@ -107,7 +107,7 @@
       "sell_price": 2385000,
       "buy_price_text": "2262",
       "sell_price_text": "2385",
-      "last_updated": "2026-08-25 16:16"
+      "last_updated": "2026-08-26 10:54"
     },
     {
       "metal": "silver",
@@ -117,7 +117,7 @@
       "sell_price": 11925000,
       "buy_price_text": "11310",
       "sell_price_text": "11925",
-      "last_updated": "2026-08-25 16:16"
+      "last_updated": "2026-08-26 10:54"
     },
     {
       "metal": "silver",
@@ -127,7 +127,7 @@
       "sell_price": 31792050,
       "buy_price_text": "30152.46",
       "sell_price_text": "31792.05",
-      "last_updated": "2026-08-25 16:16"
+      "last_updated": "2026-08-26 10:54"
     },
     {
       "metal": "silver",
@@ -137,77 +137,77 @@
       "sell_price": 63584100,
       "buy_price_text": "60304.92",
       "sell_price_text": "63584.1",
-      "last_updated": "2026-08-25 16:16"
+      "last_updated": "2026-08-26 10:54"
     },
     {
       "metal": "silver",
       "name": "BẠC MIẾNG PHÚ QUÝ Ag 999 1 LƯỢNG",
       "unit": "VND",
-      "buy_price": 2294000,
-      "sell_price": 2365000,
-      "buy_price_text": "2294",
-      "sell_price_text": "2365",
-      "last_updated": "2026-08-25 16:16"
+      "buy_price": 2328000,
+      "sell_price": 2400000,
+      "buy_price_text": "2328",
+      "sell_price_text": "2400",
+      "last_updated": "2026-08-26 10:54"
     },
     {
       "metal": "silver",
       "name": "BẠC MIẾNG PHÚ QUÝ Ag 999 5 LƯỢNG",
       "unit": "VND",
-      "buy_price": 11470000,
-      "sell_price": 11825000,
-      "buy_price_text": "11470",
-      "sell_price_text": "11825",
-      "last_updated": "2026-08-25 16:16"
+      "buy_price": 11640000,
+      "sell_price": 12000000,
+      "buy_price_text": "11640",
+      "sell_price_text": "12000",
+      "last_updated": "2026-08-26 10:54"
     },
     {
       "metal": "silver",
       "name": "BẠC MIẾNG PHÚ QUÝ Ag 999 1 KG (1000 GRAM)",
       "unit": "VND",
-      "buy_price": 61173180,
-      "sell_price": 63066509,
-      "buy_price_text": "61173.18",
-      "sell_price_text": "63066.509",
-      "last_updated": "2026-08-25 16:16"
+      "buy_price": 62079845,
+      "sell_price": 63999840,
+      "buy_price_text": "62079.845",
+      "sell_price_text": "63999.84",
+      "last_updated": "2026-08-26 10:54"
     },
     {
       "metal": "silver",
       "name": "BẠC BẮC SƯ TỬ ANCARAT 999 5 LƯỢNG",
       "unit": "VND",
-      "buy_price": 11415000,
-      "sell_price": 11770000,
-      "buy_price_text": "11415",
-      "sell_price_text": "11770",
-      "last_updated": "2026-08-25 16:16"
+      "buy_price": 11615000,
+      "sell_price": 11975000,
+      "buy_price_text": "11615",
+      "sell_price_text": "11975",
+      "last_updated": "2026-08-26 10:54"
     },
     {
       "metal": "silver",
       "name": "BẠC THỎI 2025 ANCARAT 999 10 LƯỢNG (375 GRAM)",
       "unit": "VND",
-      "buy_price": 22830000,
-      "sell_price": 23540000,
-      "buy_price_text": "22830",
-      "sell_price_text": "23540",
-      "last_updated": "2026-08-25 16:16"
+      "buy_price": 23230000,
+      "sell_price": 23950000,
+      "buy_price_text": "23230",
+      "sell_price_text": "23950",
+      "last_updated": "2026-08-26 10:54"
     },
     {
       "metal": "silver",
       "name": "BẠC THỎI 2025 ANCARAT 999 0.5 KG (500 GRAM)",
       "unit": "VND",
-      "buy_price": 30007000,
-      "sell_price": 30937000,
-      "buy_price_text": "30007",
-      "sell_price_text": "30937",
-      "last_updated": "2026-08-25 16:16"
+      "buy_price": 30538000,
+      "sell_price": 31483000,
+      "buy_price_text": "30538",
+      "sell_price_text": "31483",
+      "last_updated": "2026-08-26 10:54"
     },
     {
       "metal": "silver",
       "name": "BẠC THỎI 2025 ANCARAT 999 1 KG (1000 GRAM)",
       "unit": "VND",
-      "buy_price": 60014000,
-      "sell_price": 61874000,
-      "buy_price_text": "60014",
-      "sell_price_text": "61874",
-      "last_updated": "2026-08-25 16:16"
+      "buy_price": 61076000,
+      "sell_price": 62966000,
+      "buy_price_text": "61076",
+      "sell_price_text": "62966",
+      "last_updated": "2026-08-26 10:54"
     }
   ]
 }

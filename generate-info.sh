@@ -10,12 +10,12 @@ json_count() {
 # sources
 jq -n \
   --arg dt "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
-  --argjson doji "$(json_count prices_doji.json '.')" \
-  --argjson mihong "$(json_count prices_mihong.json '.')" \
-  --argjson phuquy "$(json_count prices_phuquy.json '.data')" \
-  --argjson baotinmanhhai "$(json_count prices_baotinmanhhai.json '.data.goldRates.items')" \
-  --argjson baotinminhchau "$(json_count prices_baotinminhchau.json '.sources')" \
-  --argjson ngoctham "$(json_count prices_ngoctham.json '.chitiet')" \
+  --argjson doji "$(json_count prices-doji.json '.')" \
+  --argjson mihong "$(json_count prices-mihong.json '.')" \
+  --argjson phuquy "$(json_count prices-phuquy.json '.data')" \
+  --argjson baotinmanhhai "$(json_count prices-baotinmanhhai.json '.data.goldRates.items')" \
+  --argjson baotinminhchau "$(json_count prices-baotinminhchau.json '.sources')" \
+  --argjson ngoctham "$(json_count prices-ngoctham.json '.chitiet')" \
   '{
     updatedAt: $dt,
     sources: {
@@ -30,7 +30,7 @@ jq -n \
   }' > info.json
 
 # clean json files, if they are empty file write '{}'
-for f in prices_*.json; do
+for f in prices-*.json; do
   if [ ! -s "$f" ]; then
     echo '{}' > "$f"
   fi

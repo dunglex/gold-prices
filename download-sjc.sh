@@ -25,11 +25,11 @@ curl --url 'https://www.sjc.com.vn/GoldPrice/Services/PriceService.ashx' \
   -H 'sec-fetch-mode: cors' \
   -H 'sec-fetch-site: same-origin' \
   -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0' \
-  -H 'x-requested-with: XMLHttpRequest' > prices_sjc.json
+  -H 'x-requested-with: XMLHttpRequest' > prices-sjc.json
 
 # verify result if it is a html page instead of json, then it is an error page
-if grep -q '<!DOCTYPE html>' prices_sjc.json; then
+if grep -q '<!DOCTYPE html>' prices-sjc.json; then
   echo "Error: Downloaded content is an HTML page, indicating a possible error."
-  echo '{}' > prices_sjc.json
+  echo '{}' > prices-sjc.json
   exit 1
 fi

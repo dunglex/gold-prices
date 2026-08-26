@@ -21,4 +21,4 @@ curl --connect-timeout 5 -k 'https://api.mihong.vn/v1/gold-prices?market=domesti
   -H 'sec-fetch-mode: cors' \
   -H 'sec-fetch-site: same-site' \
   -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' \
-  -H 'x-market: mihong' > prices_mihong.json
+  -H 'x-market: mihong' > prices-mihong.json
