@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "$0")/data"
+cd "$(dirname "$0")/../data"
 
 echo "Downloading https://www.sjc.com.vn/GoldPrice/Services/PriceService.ashx"
 curl --url 'https://www.sjc.com.vn/GoldPrice/Services/PriceService.ashx' \

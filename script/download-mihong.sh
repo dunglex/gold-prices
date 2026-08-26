@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "$0")/data"
+cd "$(dirname "$0")/../data"
 
 # Download gold prices from mihong.vn
 echo "Downloading https://api.mihong.vn/v1/gold-prices?market=domestic"

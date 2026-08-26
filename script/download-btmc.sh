@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "$0")/data"
+cd "$(dirname "$0")/../data"
 
 echo "Downloading https://btmc.vn/Home/BGiaVang"
 curl --connect-timeout 5 -k 'https://btmc.vn/Home/BGiaVang' \

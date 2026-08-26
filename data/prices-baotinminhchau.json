@@ -8,7 +8,7 @@
       "sell_price": 15400000,
       "buy_price_text": "15000",
       "sell_price_text": "15400",
-      "last_updated": "2026-08-26 09:00",
+      "last_updated": "2026-08-26 13:33",
       "content": "999.9 (24k)"
     },
     {
@@ -19,7 +19,7 @@
       "sell_price": 15400000,
       "buy_price_text": "15000",
       "sell_price_text": "15400",
-      "last_updated": "2026-08-26 09:00",
+      "last_updated": "2026-08-26 13:33",
       "content": "999.9 (24k)"
     },
     {
@@ -30,7 +30,7 @@
       "sell_price": 1540000,
       "buy_price_text": "1500",
       "sell_price_text": "1540",
-      "last_updated": "2026-08-26 09:00",
+      "last_updated": "2026-08-26 13:33",
       "content": "999.9 (24k)"
     },
     {
@@ -41,7 +41,7 @@
       "sell_price": 15400000,
       "buy_price_text": "15000",
       "sell_price_text": "15400",
-      "last_updated": "2026-08-26 09:00",
+      "last_updated": "2026-08-26 13:33",
       "content": "999.9 (24k)"
     },
     {
@@ -52,18 +52,18 @@
       "sell_price": null,
       "buy_price_text": "14700",
       "sell_price_text": "Liên hệ",
-      "last_updated": "2026-08-26 09:00",
+      "last_updated": "2026-08-26 13:33",
       "content": "999.9 (24k)"
     },
     {
       "metal": "gold",
       "name": "VÀNG MIẾNG SJC",
       "unit": "VND",
-      "buy_price": 14760000,
-      "sell_price": 15060000,
-      "buy_price_text": "14760",
-      "sell_price_text": "15060",
-      "last_updated": "2026-08-26 09:00",
+      "buy_price": 14730000,
+      "sell_price": 15030000,
+      "buy_price_text": "14730",
+      "sell_price_text": "15030",
+      "last_updated": "2026-08-26 13:33",
       "content": "999.9 (24k)"
     },
     {
@@ -74,7 +74,7 @@
       "sell_price": 15300000,
       "buy_price_text": "14800",
       "sell_price_text": "15300",
-      "last_updated": "2026-08-26 09:00",
+      "last_updated": "2026-08-26 13:33",
       "content": "999.9 (24k)"
     },
     {
@@ -85,7 +85,7 @@
       "sell_price": 15280000,
       "buy_price_text": "14780",
       "sell_price_text": "15280",
-      "last_updated": "2026-08-26 09:00",
+      "last_updated": "2026-08-26 13:33",
       "content": "99.9 (24k)"
     },
     {
@@ -96,7 +96,7 @@
       "sell_price": null,
       "buy_price_text": "14250",
       "sell_price_text": "Liên hệ",
-      "last_updated": "2026-08-26 09:00",
+      "last_updated": "2026-08-26 13:33",
       "content": "999.9 (24k)"
     },
     {
@@ -107,7 +107,7 @@
       "sell_price": 2385000,
       "buy_price_text": "2262",
       "sell_price_text": "2385",
-      "last_updated": "2026-08-26 10:54"
+      "last_updated": "2026-08-26 13:58"
     },
     {
       "metal": "silver",
@@ -117,7 +117,7 @@
       "sell_price": 11925000,
       "buy_price_text": "11310",
       "sell_price_text": "11925",
-      "last_updated": "2026-08-26 10:54"
+      "last_updated": "2026-08-26 13:58"
     },
     {
       "metal": "silver",
@@ -127,7 +127,7 @@
       "sell_price": 31792050,
       "buy_price_text": "30152.46",
       "sell_price_text": "31792.05",
-      "last_updated": "2026-08-26 10:54"
+      "last_updated": "2026-08-26 13:58"
     },
     {
       "metal": "silver",
@@ -137,77 +137,77 @@
       "sell_price": 63584100,
       "buy_price_text": "60304.92",
       "sell_price_text": "63584.1",
-      "last_updated": "2026-08-26 10:54"
+      "last_updated": "2026-08-26 13:58"
     },
     {
       "metal": "silver",
       "name": "BẠC MIẾNG PHÚ QUÝ Ag 999 1 LƯỢNG",
       "unit": "VND",
-      "buy_price": 2328000,
-      "sell_price": 2400000,
-      "buy_price_text": "2328",
-      "sell_price_text": "2400",
-      "last_updated": "2026-08-26 10:54"
+      "buy_price": 2307000,
+      "sell_price": 2378000,
+      "buy_price_text": "2307",
+      "sell_price_text": "2378",
+      "last_updated": "2026-08-26 13:58"
     },
     {
       "metal": "silver",
       "name": "BẠC MIẾNG PHÚ QUÝ Ag 999 5 LƯỢNG",
       "unit": "VND",
-      "buy_price": 11640000,
-      "sell_price": 12000000,
-      "buy_price_text": "11640",
-      "sell_price_text": "12000",
-      "last_updated": "2026-08-26 10:54"
+      "buy_price": 11535000,
+      "sell_price": 11890000,
+      "buy_price_text": "11535",
+      "sell_price_text": "11890",
+      "last_updated": "2026-08-26 13:58"
     },
     {
       "metal": "silver",
       "name": "BẠC MIẾNG PHÚ QUÝ Ag 999 1 KG (1000 GRAM)",
       "unit": "VND",
-      "buy_price": 62079845,
-      "sell_price": 63999840,
-      "buy_price_text": "62079.845",
-      "sell_price_text": "63999.84",
-      "last_updated": "2026-08-26 10:54"
+      "buy_price": 61519846,
+      "sell_price": 63413175,
+      "buy_price_text": "61519.846",
+      "sell_price_text": "63413.175",
+      "last_updated": "2026-08-26 13:58"
     },
     {
       "metal": "silver",
       "name": "BẠC BẮC SƯ TỬ ANCARAT 999 5 LƯỢNG",
       "unit": "VND",
-      "buy_price": 11615000,
-      "sell_price": 11975000,
-      "buy_price_text": "11615",
-      "sell_price_text": "11975",
-      "last_updated": "2026-08-26 10:54"
+      "buy_price": 11515000,
+      "sell_price": 11870000,
+      "buy_price_text": "11515",
+      "sell_price_text": "11870",
+      "last_updated": "2026-08-26 13:58"
     },
     {
       "metal": "silver",
       "name": "BẠC THỎI 2025 ANCARAT 999 10 LƯỢNG (375 GRAM)",
       "unit": "VND",
-      "buy_price": 23230000,
-      "sell_price": 23950000,
-      "buy_price_text": "23230",
-      "sell_price_text": "23950",
-      "last_updated": "2026-08-26 10:54"
+      "buy_price": 23030000,
+      "sell_price": 23740000,
+      "buy_price_text": "23030",
+      "sell_price_text": "23740",
+      "last_updated": "2026-08-26 13:58"
     },
     {
       "metal": "silver",
       "name": "BẠC THỎI 2025 ANCARAT 999 0.5 KG (500 GRAM)",
       "unit": "VND",
-      "buy_price": 30538000,
-      "sell_price": 31483000,
-      "buy_price_text": "30538",
-      "sell_price_text": "31483",
-      "last_updated": "2026-08-26 10:54"
+      "buy_price": 30268000,
+      "sell_price": 31203000,
+      "buy_price_text": "30268",
+      "sell_price_text": "31203",
+      "last_updated": "2026-08-26 13:58"
     },
     {
       "metal": "silver",
       "name": "BẠC THỎI 2025 ANCARAT 999 1 KG (1000 GRAM)",
       "unit": "VND",
-      "buy_price": 61076000,
-      "sell_price": 62966000,
-      "buy_price_text": "61076",
-      "sell_price_text": "62966",
-      "last_updated": "2026-08-26 10:54"
+      "buy_price": 60536000,
+      "sell_price": 62406000,
+      "buy_price_text": "60536",
+      "sell_price_text": "62406",
+      "last_updated": "2026-08-26 13:58"
     }
   ]
 }

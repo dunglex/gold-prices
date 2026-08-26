@@ -30,9 +30,11 @@ jobs:
 
       - name: Download sjc prices
         run: bash download-sjc.sh
+        working-directory: script
 
       - name: Generate info.json
         run: bash generate-info.sh
+        working-directory: script
 
       - name: Check if files changed
         id: check-changes

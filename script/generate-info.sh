@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "$0")/data"
+cd "$(dirname "$0")/../data"
 
 # updated At
 json_count() {

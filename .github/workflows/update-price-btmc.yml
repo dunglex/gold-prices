@@ -30,12 +30,15 @@ jobs:
 
       - name: Download btmc prices
         run: bash download-btmc.sh
+        working-directory: script
 
       - name: Extract BTMC prices
         run: node extract-btmc.js
+        working-directory: script
 
       - name: Generate info.json
         run: bash generate-info.sh
+        working-directory: script
 
       - name: Check if files changed
         id: check-changes

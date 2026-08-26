@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "$0")/data"
+cd "$(dirname "$0")/../data"
 
 # Download gold prices from GoldPrice.org
 echo "Downloading https://data-asg.goldprice.org/dbXRates/USD"

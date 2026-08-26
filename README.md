@@ -1,6 +1,6 @@
 # Gold Price
 
-An automated tool that fetches and displays gold price data from DOJI & SJC.
+An automated tool that fetches and displays gold price data from multiple sources.
 
 ## 🌐 Live Demo
 
@@ -16,4 +16,4 @@ This project is open source and available under the MIT License.
 
 ---
 
-*Last updated: 2026-07-23*
+*Last updated: 2026-08-26*
