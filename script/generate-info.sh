@@ -11,7 +11,6 @@ json_count() {
 jq -n \
   --arg dt "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
   --argjson doji "$(json_count prices-doji.json '.')" \
-  --argjson mihong "$(json_count prices-mihong.json '.')" \
   --argjson phuquy "$(json_count prices-phuquy.json '.data')" \
   --argjson baotinmanhhai "$(json_count prices-baotinmanhhai.json '.data.goldRates.items')" \
   --argjson baotinminhchau "$(json_count prices-baotinminhchau.json '.sources')" \
@@ -21,7 +20,6 @@ jq -n \
     sources: {
       goldprice: 2,
       doji: $doji,
-      mihong: $mihong,
       phuquy: $phuquy,
       baotinmanhhai: $baotinmanhhai,
       baotinminhchau: $baotinminhchau,
