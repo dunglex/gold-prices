@@ -1711,7 +1711,7 @@
 
         async function loadAll() {
             // Fetch all data sources in parallel
-            const [infoRes,gRes, mRes, dRes, pRes, bRes, bmRes, nRes] = await Promise.all([
+            const [infoRes, gRes, dRes, pRes, btmhRes, btmcRes, nRes] = await Promise.all([
                 fetchJsonSafe('data/info.json'),
                 fetchJsonSafe('data/prices-goldprice.json'),
                 fetchJsonSafe('data/prices-doji.json'),
@@ -1755,20 +1755,20 @@
             }
 
             // BAOTINMANHHAI
-            if (bRes.ok) {
-                const bData = bRes.data;
+            if (btmhRes.ok) {
+                const bData = btmhRes.data;
                 const baoTinItems = bData && bData.data && bData.data.goldRates && bData.data.goldRates.items ? bData.data.goldRates.items : [];
                 renderBaoTinManhHai('baotinManhhaiBody', baoTinItems);
             } else {
-                renderErrorInto('baotinManhhaiBody', bRes.error || 'Invalid JSON', bRes.raw, 6);
+                renderErrorInto('baotinManhhaiBody', btmhRes.error || 'Invalid JSON', btmhRes.raw, 6);
             }
 
             // BAOTINMINHCHAU
-            if (bmRes.ok) {
-                const baoTinMinhChauItems = bmRes && bmRes.data && bmRes.data.sources ? bmRes.data.sources : [];
+            if (btmcRes.ok) {
+                const baoTinMinhChauItems = btmcRes && btmcRes.data && btmcRes.data.sources ? btmcRes.data.sources : [];
                 renderBaoTinMinhChau('baotinMinhchauBody', baoTinMinhChauItems);
             } else {
-                renderErrorInto('baotinMinhchauBody', bmRes.error || 'Invalid JSON', bmRes.raw, 5);
+                renderErrorInto('baotinMinhchauBody', btmcRes.error || 'Invalid JSON', btmcRes.raw, 5);
             }
 
             // NGOCTHAM
