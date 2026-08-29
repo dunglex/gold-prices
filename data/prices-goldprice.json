@@ -1,1 +1,14 @@
-{"ts":1787963974940,"tsj":1787963965333,"date":"Aug 28th 2026, 08:39:25 pm NY","items":[{"curr":"USD","xauPrice":4455.43,"xagPrice":66.3777,"chgXau":-155.22,"chgXag":-3.1181,"pcXau":-3.3666,"pcXag":-4.4867,"xauClose":4610.65,"xagClose":69.4958}]}
+<html>
+<head>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="initial-scale=1.0 user-scalable = no">
+<link rel="stylesheet" type="text/css" href="https://resources.webscale.com/css/errorpage.css">
+</head>
+<body>
+  <div class="error-box">
+    <h1>We&rsquo;re sorry.</h1>
+    Service is temporarily unavailable. The site is under maintenance.<br/>
+    <button onclick="document.location.reload(true)">Try your request again</button>
+  </div>
+</body>
+</html>
