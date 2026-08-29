@@ -1,14 +1,1 @@
-<html>
-<head>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="viewport" content="initial-scale=1.0 user-scalable = no">
-<link rel="stylesheet" type="text/css" href="https://resources.webscale.com/css/errorpage.css">
-</head>
-<body>
-  <div class="error-box">
-    <h1>We&rsquo;re sorry.</h1>
-    Service is temporarily unavailable. The site is under maintenance.<br/>
-    <button onclick="document.location.reload(true)">Try your request again</button>
-  </div>
-</body>
-</html>
+{"ts":1788009265280,"tsj":1788009255955,"date":"Aug 29th 2026, 09:14:15 am NY","items":[{"curr":"USD","xauPrice":4453.6965,"xagPrice":66.375,"chgXau":-23.8735,"chgXag":-0.657,"pcXau":-0.5332,"pcXag":-0.9801,"xauClose":4477.57,"xagClose":67.032}]}
