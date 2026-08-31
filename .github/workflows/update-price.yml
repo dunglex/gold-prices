@@ -40,9 +40,9 @@ jobs:
         run: node decrypt-doji.js
         working-directory: script
 
-      # - name: Download mihong prices
-      #   run: bash download-mihong.sh
-      #   working-directory: script
+      - name: Download mihong prices
+        run: bash download-mihong.sh
+        working-directory: script
 
       # - name: Download btmc prices
       #   run: bash download-btmc.sh
