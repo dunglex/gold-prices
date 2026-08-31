@@ -1,9 +1,8 @@
-name: Update Gold Prices
+name: Update Gold Price MIHONG
 
 on:
-  schedule:
-    # Runs every 5 minutes
-    - cron: '*/5 * * * *'
+  # schedule:
+  #   - cron: '*/5 * * * *'
   workflow_dispatch: # Keeps manual button enabled for testing
 
 permissions:
@@ -31,26 +30,10 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: '24'
-        
-      - name: Download gold prices
-        run: bash download.sh
+
+      - name: Download mihong prices
+        run: bash download-mihong.sh
         working-directory: script
-      
-      - name: Decrypt doji prices
-        run: node decrypt-doji.js
-        working-directory: script
-
-      # - name: Download mihong prices
-      #   run: bash download-mihong.sh
-      #   working-directory: script
-
-      # - name: Download btmc prices
-      #   run: bash download-btmc.sh
-      #   working-directory: script
-
-      # - name: Extract BTMC prices
-      #   run: node extract-btmc.js
-      #   working-directory: script
 
       - name: Generate info.json
         run: bash generate-info.sh

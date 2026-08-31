@@ -1285,6 +1285,29 @@
             </div>
         </div>
 
+        <!-- MIHONG SECTION -->
+        <div class="source-section" id="mihongSection">
+            <div class="source-title"><span class="badge">2</span> <strong>MI HỒNG</strong></div>
+            <div class="table-wrapper no-scrollbar">
+                <table id="mihongTable">
+                    <thead>
+                        <tr>
+                            <th>Mã</th>
+                            <th>Loại</th>
+                            <th>Tên sản phẩm</th>
+                            <th class="price-cell">Mua vào</th>
+                            <th class="price-cell">Bán ra</th>
+                            <th class="price-cell">Chênh lệch</th>
+                            <th class="price-cell">Thay đổi Mua</th>
+                            <th class="price-cell">Thay đổi Bán</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mihongBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
         <!-- NGOCTHAM SECTION -->
         <div class="source-section" id="ngocthamSection">
             <div class="source-title"><span class="badge">6</span> <strong>NGỌC THẨM</strong></div>
@@ -1378,6 +1401,19 @@
                     data-field="percent"></span></td>
         </tr>
     </template>
+    <template id="mihongRowTemplate">
+        <tr>
+            <td class="material-code" data-field="code"></td>
+            <td><span class="type-badge" data-field="type"></span></td>
+            <td class="material-name" data-field="name"></td>
+            <td class="price-cell price-buy" data-field="buy"></td>
+            <td class="price-cell price-sell" data-field="sell"></td>
+            <td class="price-cell price-range"><span data-field="diff"></span><span class="price-range-percent"
+                    data-field="percent"></span></td>
+            <td class="price-cell" data-field="buyChange"></td>
+            <td class="price-cell" data-field="sellChange"></td>
+        </tr>
+    </template>
 
     <button class="back-to-top" id="backToTop" type="button" aria-label="Về đầu trang" title="Về đầu trang"
         aria-hidden="true">&#8593;</button>
@@ -1389,6 +1425,8 @@
             <a class="tag" href="https://vangdoji.netlify.app" target="_blank" rel="noopener noreferrer">#vangdoji</a>
             <a class="tag" href="https://vangphuquy.netlify.app" target="_blank"
                 rel="noopener noreferrer">#vangphuquy</a>
+            <a class="tag" href="https://vangmihong.netlify.app" target="_blank"
+                rel="noopener noreferrer">#vangmihong</a>
             <a class="tag" href="https://baotinmanhhai.netlify.app" target="_blank"
                 rel="noopener noreferrer">#baotinmanhhai</a>
             <a class="tag" href="https://baotinminhchau.netlify.app" target="_blank"
@@ -1400,6 +1438,8 @@
                 rel="noopener noreferrer">#vangsjc</a>
             <a class="tag" href="https://www.google.com/search?q=%23vang9999" target="_blank"
                 rel="noopener noreferrer">#vang9999</a>
+            <a class="tag" href="https://www.google.com/search?q=%23mihong" target="_blank"
+                rel="noopener noreferrer">#mihong</a>
             <a class="tag" href="https://www.google.com/search?q=%23giabac" target="_blank"
                 rel="noopener noreferrer">#giabac</a>
             <a class="tag" href="https://www.google.com/search?q=%23sosanhgiavang" target="_blank"
@@ -1411,7 +1451,7 @@
         </div>
     </footer>
     <script>
-        // Load data sources and render them vertically in the order: goldprice, doji, phuquy, baotinmanhhai, ngoctham
+        // Load data sources and render them vertically in the order: goldprice, mihong, doji, phuquy, baotinmanhhai, ngoctham
         async function fetchJsonSafe(url) {
             try {
                 const resp = await fetch(url, { cache: 'no-store' });
@@ -1527,6 +1567,42 @@
                     percentChange: pcText,
                     close: formatNumber(row.close)
                 }, row.type, { change: chgColor, percentChange: pcColor });
+            }).join('');
+        }
+
+        function renderMihong(bodyElId, prices) {
+            const tbody = document.getElementById(bodyElId);
+            if (!Array.isArray(prices) || prices.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" class="no-data">Không có dữ liệu</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = prices.map(price => {
+                const code = price.code || '';
+                const name = price.code ? (price.code + ' - ' + (price.type || 'Vàng')) : 'Vàng';
+                let buy = price.buyingPrice ?? '';
+                let sell = price.sellingPrice ?? '';
+                let buyChange = price.buyChange ?? '';
+                let sellChange = price.sellChange ?? '';
+                if (buy == 0) buy = '';
+                if (sell == 0) sell = '';
+                if (buy == '' || buyChange == 0) buyChange = '';
+                if (sell == '' || sellChange == 0) sellChange = '';
+                let diff = null;
+                if (buy != null && sell != null && !isNaN(buy) && !isNaN(sell) && buy > 0 && sell > 0) {
+                    diff = sell - buy;
+                }
+
+                const buyChangeColor = buyChange != null ? (buyChange >= 0 ? '#4caf50' : '#f44336') : '#666';
+                const sellChangeColor = sellChange != null ? (sellChange >= 0 ? '#4caf50' : '#f44336') : '#666';
+                const buyChangeText = buyChange != null ? (buyChange > 0 ? '+' + formatNumber(buyChange) : formatNumber(buyChange)) : '-';
+                const sellChangeText = sellChange != null ? (sellChange > 0 ? '+' + formatNumber(sellChange) : formatNumber(sellChange)) : '-';
+
+                return renderPriceRow({
+                    templateId: 'mihongRowTemplate', code, typeBadge: 'gold', typeLabel: 'Vàng', name, buy, sell, diff, emptyDiff: '',
+                    extraFields: { buyChange: buyChangeText, sellChange: sellChangeText },
+                    fieldColors: { buyChange: buyChangeColor, sellChange: sellChangeColor }
+                });
             }).join('');
         }
 
@@ -1677,13 +1753,14 @@
         function updateStatsCombined(sources) {
             // Count total entries across six tables
             const goldpriceCount = sources.goldprice || 0;
+            const mihongCount = sources.mihong || 0;
             const dojiCount = sources.doji || 0;
             const phuquyCount = sources.phuquy || 0;
             const baotinManhhaiCount = sources.baotinmanhhai || 0;
             const baotinMinhchauCount = sources.baotinminhchau || 0;
             const ngocthamCount = sources.ngoctham || 0;
 
-            const total = [goldpriceCount, dojiCount, phuquyCount, baotinManhhaiCount, baotinMinhchauCount, ngocthamCount].reduce((a, b) => a + b, 0);
+            const total = [goldpriceCount, mihongCount, dojiCount, phuquyCount, baotinManhhaiCount, baotinMinhchauCount, ngocthamCount].reduce((a, b) => a + b, 0);
 
             const stats = [
                 { value: total, label: 'Tất cả nguồn', target: 'goldpriceSection' },
@@ -1692,6 +1769,7 @@
                 { value: phuquyCount, label: 'Phú Quý', target: 'phuquySection' },
                 { value: baotinManhhaiCount, label: 'Bảo Tín Mạnh Hải', target: 'baotinManhhaiSection' },
                 { value: baotinMinhchauCount, label: 'Bảo Tín Minh Châu', target: 'baotinMinhchauSection' },
+                { value: mihongCount, label: 'Mi Hồng', target: 'mihongSection' },
                 { value: ngocthamCount, label: 'Ngọc Thắm', target: 'ngocthamSection' }
             ];
             const container = document.getElementById('statsContainer');
@@ -1714,6 +1792,7 @@
             const [infoRes, gRes, dRes, pRes, btmhRes, btmcRes, nRes] = await Promise.all([
                 fetchJsonSafe('data/info.json'),
                 fetchJsonSafe('data/prices-goldprice.json'),
+                fetchJsonSafe('data/prices-mihong.json'),
                 fetchJsonSafe('data/prices-doji.json'),
                 fetchJsonSafe('data/prices-phuquy.json'),
                 fetchJsonSafe('data/prices-baotinmanhhai.json'),
@@ -1735,6 +1814,14 @@
                 renderGoldPrice('goldpriceBody', Array.isArray(gData) ? gData : []);
             } else {
                 renderErrorInto('goldpriceBody', gRes.error || 'Invalid JSON', gRes.raw, 7);
+            }
+
+            // MIHONG
+            if (mRes.ok) {
+                const mData = mRes.data;
+                renderMihong('mihongBody', Array.isArray(mData) ? mData : (mData && mData.items ? mData.items : []));
+            } else {
+                renderErrorInto('mihongBody', mRes.error || 'Invalid JSON', mRes.raw, 8);
             }
 
             // DOJI
