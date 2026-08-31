@@ -1789,14 +1789,14 @@
 
         async function loadAll() {
             // Fetch all data sources in parallel
-            const [infoRes, gRes, dRes, pRes, btmhRes, btmcRes, nRes] = await Promise.all([
+            const [infoRes, gRes, dRes, pRes, btmhRes, btmcRes, mRes, nRes] = await Promise.all([
                 fetchJsonSafe('data/info.json'),
                 fetchJsonSafe('data/prices-goldprice.json'),
-                fetchJsonSafe('data/prices-mihong.json'),
                 fetchJsonSafe('data/prices-doji.json'),
                 fetchJsonSafe('data/prices-phuquy.json'),
                 fetchJsonSafe('data/prices-baotinmanhhai.json'),
                 fetchJsonSafe('data/prices-baotinminhchau.json'),
+                fetchJsonSafe('data/prices-mihong.json'),
                 fetchJsonSafe('data/prices-ngoctham.json')
             ]);
 
@@ -1814,14 +1814,6 @@
                 renderGoldPrice('goldpriceBody', Array.isArray(gData) ? gData : []);
             } else {
                 renderErrorInto('goldpriceBody', gRes.error || 'Invalid JSON', gRes.raw, 7);
-            }
-
-            // MIHONG
-            if (mRes.ok) {
-                const mData = mRes.data;
-                renderMihong('mihongBody', Array.isArray(mData) ? mData : (mData && mData.items ? mData.items : []));
-            } else {
-                renderErrorInto('mihongBody', mRes.error || 'Invalid JSON', mRes.raw, 8);
             }
 
             // DOJI
@@ -1856,6 +1848,14 @@
                 renderBaoTinMinhChau('baotinMinhchauBody', baoTinMinhChauItems);
             } else {
                 renderErrorInto('baotinMinhchauBody', btmcRes.error || 'Invalid JSON', btmcRes.raw, 5);
+            }
+
+            // MIHONG
+            if (mRes.ok) {
+                const mData = mRes.data;
+                renderMihong('mihongBody', Array.isArray(mData) ? mData : (mData && mData.items ? mData.items : []));
+            } else {
+                renderErrorInto('mihongBody', mRes.error || 'Invalid JSON', mRes.raw, 8);
             }
 
             // NGOCTHAM
