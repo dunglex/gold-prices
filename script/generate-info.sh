@@ -14,7 +14,6 @@ jq -n \
   --argjson mihong "$(json_count prices-mihong.json '.')" \
   --argjson phuquy "$(json_count prices-phuquy.json '.data')" \
   --argjson baotinmanhhai "$(json_count prices-baotinmanhhai.json '.data.goldRates.items')" \
-  --argjson baotinminhchau "$(json_count prices-baotinminhchau.json '.sources')" \
   --argjson ngoctham "$(json_count prices-ngoctham.json '.chitiet')" \
   '{
     updatedAt: $dt,
@@ -24,7 +23,6 @@ jq -n \
       mihong: $mihong,
       phuquy: $phuquy,
       baotinmanhhai: $baotinmanhhai,
-      baotinminhchau: $baotinminhchau,
       ngoctham: $ngoctham
     }
   }' > info.json

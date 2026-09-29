@@ -1265,26 +1265,6 @@
             </div>
         </div>
 
-        <!-- BAOTINMINHHCHAU SECTION-->
-        <div class="source-section" id="baotinMinhchauSection">
-            <div class="source-title"><span class="badge">7</span> <strong>BẢO TÍN MINH CHÂU</strong></div>
-            <div class="table-wrapper no-scrollbar">
-                <table id="baotinMinhchauTable">
-                    <thead>
-                        <tr>
-                            <th>Loại</th>
-                            <th>Tên sản phẩm</th>
-                            <th class="price-cell">Mua vào</th>
-                            <th class="price-cell">Bán ra</th>
-                            <th class="price-cell">Chênh lệch</th>
-                        </tr>
-                    </thead>
-                    <tbody id="baotinMinhchauBody">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
         <!-- MIHONG SECTION -->
         <div class="source-section" id="mihongSection">
             <div class="source-title"><span class="badge">2</span> <strong>MI HỒNG</strong></div>
@@ -1380,16 +1360,6 @@
                     data-field="percent"></span></td>
         </tr>
     </template>
-    <template id="baotinMinhchauRowTemplate">
-        <tr>
-            <td><span class="type-badge" data-field="type"></span></td>
-            <td class="material-name" data-field="name"></td>
-            <td class="price-cell price-buy" data-field="buy"></td>
-            <td class="price-cell price-sell" data-field="sell"></td>
-            <td class="price-cell price-range"><span data-field="diff"></span><span class="price-range-percent"
-                    data-field="percent"></span></td>
-        </tr>
-    </template>
     <template id="ngocthamRowTemplate">
         <tr>
             <td class="material-code" data-field="code"></td>
@@ -1429,8 +1399,6 @@
                 rel="noopener noreferrer">#vangmihong</a>
             <a class="tag" href="https://baotinmanhhai.netlify.app" target="_blank"
                 rel="noopener noreferrer">#baotinmanhhai</a>
-            <a class="tag" href="https://baotinminhchau.netlify.app" target="_blank"
-                rel="noopener noreferrer">#baotinminhchau</a>
             <a class="tag" href="/lich-su/">#lich-su</a>
             <a class="tag" href="https://www.google.com/search?q=%23giavanghomnay" target="_blank"
                 rel="noopener noreferrer">#giavanghomnay</a>
@@ -1697,34 +1665,6 @@
             }).join('');
         }
 
-        function renderBaoTinMinhChau(bodyElId, items) {
-            const tbody = document.getElementById(bodyElId);
-            if (!Array.isArray(items) || items.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" class="no-data">Không có dữ liệu</td></tr>';
-                return;
-            }
-
-            tbody.innerHTML = items.map(item => {
-                const isSilver = item.metal === 'silver';
-                const name = item.name || '';
-                const buy = Number(item.buy_price);
-                const sell = Number(item.sell_price);
-                const hasBuyPrice = Number.isFinite(buy) && buy > 0;
-                const hasSellPrice = Number.isFinite(sell) && sell > 0;
-                const diff = hasBuyPrice && hasSellPrice
-                    ? sell - buy
-                    : null;
-
-                const typeBadge = isSilver ? 'silver' : 'gold';
-                const typeLabel = isSilver ? 'Bạc' : 'Vàng';
-
-                return renderPriceRow({
-                    templateId: 'baotinMinhchauRowTemplate', typeBadge, typeLabel, name,
-                    buy: hasBuyPrice ? buy : null, sell: hasSellPrice ? sell : null, diff, emptyDiff: ''
-                });
-            }).join('');
-        }
-
         function renderNgocTham(bodyElId, items) {
             const tbody = document.getElementById(bodyElId);
             if (!Array.isArray(items) || items.length === 0) {
@@ -1757,10 +1697,9 @@
             const dojiCount = sources.doji || 0;
             const phuquyCount = sources.phuquy || 0;
             const baotinManhhaiCount = sources.baotinmanhhai || 0;
-            const baotinMinhchauCount = sources.baotinminhchau || 0;
             const ngocthamCount = sources.ngoctham || 0;
 
-            const total = [goldpriceCount, mihongCount, dojiCount, phuquyCount, baotinManhhaiCount, baotinMinhchauCount, ngocthamCount].reduce((a, b) => a + b, 0);
+            const total = [goldpriceCount, mihongCount, dojiCount, phuquyCount, baotinManhhaiCount, ngocthamCount].reduce((a, b) => a + b, 0);
 
             const stats = [
                 { value: total, label: 'Tất cả nguồn', target: 'goldpriceSection' },
@@ -1768,7 +1707,6 @@
                 { value: dojiCount, label: 'DOJI', target: 'dojiSection' },
                 { value: phuquyCount, label: 'Phú Quý', target: 'phuquySection' },
                 { value: baotinManhhaiCount, label: 'Bảo Tín Mạnh Hải', target: 'baotinManhhaiSection' },
-                { value: baotinMinhchauCount, label: 'Bảo Tín Minh Châu', target: 'baotinMinhchauSection' },
                 { value: mihongCount, label: 'Mi Hồng', target: 'mihongSection' },
                 { value: ngocthamCount, label: 'Ngọc Thắm', target: 'ngocthamSection' }
             ];
@@ -1789,13 +1727,12 @@
 
         async function loadAll() {
             // Fetch all data sources in parallel
-            const [infoRes, gRes, dRes, pRes, btmhRes, btmcRes, mRes, nRes] = await Promise.all([
+            const [infoRes, gRes, dRes, pRes, btmhRes, mRes, nRes] = await Promise.all([
                 fetchJsonSafe('data/info.json'),
                 fetchJsonSafe('data/prices-goldprice.json'),
                 fetchJsonSafe('data/prices-doji.json'),
                 fetchJsonSafe('data/prices-phuquy.json'),
                 fetchJsonSafe('data/prices-baotinmanhhai.json'),
-                fetchJsonSafe('data/prices-baotinminhchau.json'),
                 fetchJsonSafe('data/prices-mihong.json'),
                 fetchJsonSafe('data/prices-ngoctham.json')
             ]);
@@ -1840,14 +1777,6 @@
                 renderBaoTinManhHai('baotinManhhaiBody', baoTinItems);
             } else {
                 renderErrorInto('baotinManhhaiBody', btmhRes.error || 'Invalid JSON', btmhRes.raw, 6);
-            }
-
-            // BAOTINMINHCHAU
-            if (btmcRes.ok) {
-                const baoTinMinhChauItems = btmcRes && btmcRes.data && btmcRes.data.sources ? btmcRes.data.sources : [];
-                renderBaoTinMinhChau('baotinMinhchauBody', baoTinMinhChauItems);
-            } else {
-                renderErrorInto('baotinMinhchauBody', btmcRes.error || 'Invalid JSON', btmcRes.raw, 5);
             }
 
             // MIHONG
