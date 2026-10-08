@@ -4,12 +4,12 @@
   "data" : [ {
     "idx" : "1",
     "name" : "Bạc PQ",
-    "priceChangePercent" : 0.37,
-    "priceBuyTael" : 2114000.0,
-    "priceSellTael" : 2179000.0,
+    "priceChangePercent" : -1.98,
+    "priceBuyTael" : 2064000.0,
+    "priceSellTael" : 2128000.0,
     "id" : "B",
-    "buyprice" : 211400.0,
-    "sellprice" : 217900.0,
+    "buyprice" : 206400.0,
+    "sellprice" : 212800.0,
     "unit_name" : "Chỉ"
   }, {
     "idx" : "2",
