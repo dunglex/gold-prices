@@ -14,22 +14,22 @@
   }, {
     "idx" : "2",
     "name" : "Vàng PQ",
-    "priceChangePercent" : 0.0,
-    "priceBuyTael" : 140000000.0,
-    "priceSellTael" : 143000000.0,
+    "priceChangePercent" : -0.28,
+    "priceBuyTael" : 139600000.0,
+    "priceSellTael" : 142600000.0,
     "id" : "V",
-    "buyprice" : 14000000.0,
-    "sellprice" : 14300000.0,
+    "buyprice" : 13960000.0,
+    "sellprice" : 14260000.0,
     "unit_name" : "Chỉ"
   }, {
     "idx" : "3",
     "name" : "SJC           ",
-    "priceChangePercent" : 0.0,
-    "priceBuyTael" : 140000000.0,
-    "priceSellTael" : 143600000.0,
+    "priceChangePercent" : -0.35,
+    "priceBuyTael" : 139600000.0,
+    "priceSellTael" : 143100000.0,
     "id" : "S",
-    "buyprice" : 14000000.0,
-    "sellprice" : 14360000.0,
+    "buyprice" : 13960000.0,
+    "sellprice" : 14310000.0,
     "unit_name" : "Chỉ"
   } ]
 }
