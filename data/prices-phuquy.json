@@ -4,17 +4,17 @@
   "data" : [ {
     "idx" : "1",
     "name" : "Bạc PQ",
-    "priceChangePercent" : 0.2,
-    "priceBuyTael" : 1974000.0,
-    "priceSellTael" : 2035000.0,
+    "priceChangePercent" : -1.08,
+    "priceBuyTael" : 1953000.0,
+    "priceSellTael" : 2013000.0,
     "id" : "B",
-    "buyprice" : 197400.0,
-    "sellprice" : 203500.0,
+    "buyprice" : 195300.0,
+    "sellprice" : 201300.0,
     "unit_name" : "Chỉ"
   }, {
     "idx" : "2",
     "name" : "Vàng PQ",
-    "priceChangePercent" : -0.21,
+    "priceChangePercent" : 0.0,
     "priceBuyTael" : 138700000.0,
     "priceSellTael" : 141700000.0,
     "id" : "V",
@@ -24,7 +24,7 @@
   }, {
     "idx" : "3",
     "name" : "SJC           ",
-    "priceChangePercent" : -0.21,
+    "priceChangePercent" : 0.0,
     "priceBuyTael" : 138700000.0,
     "priceSellTael" : 142300000.0,
     "id" : "S",
