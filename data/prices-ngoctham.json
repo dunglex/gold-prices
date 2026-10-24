@@ -1,14 +1,14 @@
 {
-    "id": "2443",
-    "date": "2026-10-24 07:46:00",
+    "id": "2448",
+    "date": "2026-10-24 18:58:00",
     "chitiet": [
         {
             "idloaivang": [
                 "10"
             ],
             "loaivang": "Nhẫn Trơn 24K",
-            "giaban": "13250000",
-            "giamua": "12900000",
+            "giaban": "13300000",
+            "giamua": "12950000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -17,8 +17,8 @@
                 "61"
             ],
             "loaivang": "Vàng 24K",
-            "giaban": "13250000",
-            "giamua": "12900000",
+            "giaban": "13300000",
+            "giamua": "12950000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -27,8 +27,8 @@
                 "4"
             ],
             "loaivang": "Vàng 990",
-            "giaban": "13100000",
-            "giamua": "12700000",
+            "giaban": "13150000",
+            "giamua": "12750000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -57,8 +57,8 @@
                 "58"
             ],
             "loaivang": "Vàng Miếng SJC (Loại 10 chỉ)",
-            "giaban": "14100000",
-            "giamua": "13750000",
+            "giaban": "14150000",
+            "giamua": "13800000",
             "chihiengiaban": "0",
             "chihiengiamua": "0"
         }
