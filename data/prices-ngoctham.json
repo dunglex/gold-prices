@@ -1,14 +1,14 @@
 {
-    "id": "2529",
-    "date": "2026-11-13 07:21:00",
+    "id": "2536",
+    "date": "2026-11-14 09:05:00",
     "chitiet": [
         {
             "idloaivang": [
                 "10"
             ],
             "loaivang": "Nhẫn Trơn 24K",
-            "giaban": "13100000",
-            "giamua": "12750000",
+            "giaban": "13050000",
+            "giamua": "12700000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -17,8 +17,8 @@
                 "61"
             ],
             "loaivang": "Vàng 24K",
-            "giaban": "13100000",
-            "giamua": "12750000",
+            "giaban": "13050000",
+            "giamua": "12700000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -27,8 +27,8 @@
                 "4"
             ],
             "loaivang": "Vàng 990",
-            "giaban": "12950000",
-            "giamua": "12550000",
+            "giaban": "12900000",
+            "giamua": "12500000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -37,8 +37,8 @@
                 "1"
             ],
             "loaivang": "Vàng 18K 750",
-            "giaban": "9789000",
-            "giamua": "9239000",
+            "giaban": "9750000",
+            "giamua": "9200000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -47,8 +47,8 @@
                 "46"
             ],
             "loaivang": "Vàng Trắng AU750",
-            "giaban": "9789000",
-            "giamua": "9239000",
+            "giaban": "9750000",
+            "giamua": "9200000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -57,8 +57,8 @@
                 "58"
             ],
             "loaivang": "Vàng Miếng SJC (Loại 10 chỉ)",
-            "giaban": "13800000",
-            "giamua": "13450000",
+            "giaban": "13700000",
+            "giamua": "13350000",
             "chihiengiaban": "0",
             "chihiengiamua": "0"
         }
