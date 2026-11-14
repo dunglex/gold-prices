@@ -1,14 +1,14 @@
 {
-    "id": "2536",
-    "date": "2026-11-14 09:05:00",
+    "id": "2537",
+    "date": "2026-11-14 15:05:00",
     "chitiet": [
         {
             "idloaivang": [
                 "10"
             ],
             "loaivang": "Nhẫn Trơn 24K",
-            "giaban": "13050000",
-            "giamua": "12700000",
+            "giaban": "13100000",
+            "giamua": "12750000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -17,8 +17,8 @@
                 "61"
             ],
             "loaivang": "Vàng 24K",
-            "giaban": "13050000",
-            "giamua": "12700000",
+            "giaban": "13100000",
+            "giamua": "12750000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
@@ -27,8 +27,8 @@
                 "4"
             ],
             "loaivang": "Vàng 990",
-            "giaban": "12900000",
-            "giamua": "12500000",
+            "giaban": "12950000",
+            "giamua": "12550000",
             "chihiengiaban": 0,
             "chihiengiamua": 0
         },
