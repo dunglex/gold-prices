@@ -2,6 +2,15 @@
 
 cd "$(dirname "$0")/../data"
 
+# Download VND rates
+echo "Downloading VND rates"
+curl --connect-timeout 5 -k 'https://portal.vietcombank.com.vn/UserControls/TVPortal.TyGia/pXML.aspx' \
+  -H 'accept: application/json' \
+  -H 'accept-language: en-US,en;q=0.9' \
+  -H 'cache-control: no-cache' \
+  -H 'pragma: no-cache' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36' > rates-vnd.xml
+
 # Download gold prices from GoldPrice.org
 echo "Downloading https://data-asg.goldprice.org/dbXRates/USD"
 curl --connect-timeout 5 -k 'https://data-asg.goldprice.org/dbXRates/USD' \

@@ -246,6 +246,17 @@
             font-family: var(--font-mono);
         }
 
+        .goldprice-note {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.78rem;
+            margin-top: 6px;
+        }
+
+        .goldprice-conversion-row td {
+            border-top: 1px dashed #b77b12;
+            font-size: 0.88rem;
+        }
+
         .price-buy {
             color: #2e7d32;
         }
@@ -853,6 +864,10 @@
             color: var(--ink);
         }
 
+        html[data-theme="paper"] .goldprice-note {
+            color: var(--muted);
+        }
+
         html[data-theme="paper"] .source-title span.badge {
             background: var(--ink);
             color: var(--surface);
@@ -1190,8 +1205,8 @@
                             <th>Loại</th>
                             <th>Tên sản phẩm</th>
                             <th class="price-cell">Giá hiện tại</th>
-                            <th class="price-cell">Thay đổi 6 tháng</th>
-                            <th class="price-cell">Thay đổi hôm nay</th>
+                            <th class="price-cell">Thay đổi ($)</th>
+                            <th class="price-cell">Thay đổi (%)</th>
                             <th class="price-cell">Giá đóng cửa</th>
                         </tr>
                     </thead>
@@ -1199,6 +1214,7 @@
                     </tbody>
                 </table>
             </div>
+            <p class="goldprice-note" id="goldpriceNote">Quy đổi tham khảo theo tỷ giá bán USD/VND Vietcombank, 1 lượng = 37,5 g và 1 troy ounce = 31,1035 g; đây không phải giá niêm yết trong nước.</p>
         </div>
 
         <!-- DOJI SECTION -->
@@ -1442,6 +1458,32 @@
             try { return Number(v).toLocaleString('vi-VN'); } catch (e) { return String(v); }
         }
 
+        const TROY_OUNCE_GRAMS = 31.1034768;
+        const VIETNAMESE_LUONG_GRAMS = 37.5;
+
+        async function fetchUsdVndTransferRate() {
+            try {
+                const response = await fetch('data/rates-vnd.xml', { cache: 'no-store' });
+                if (!response.ok) return null;
+
+                const xml = new DOMParser().parseFromString(await response.text(), 'application/xml');
+                if (xml.querySelector('parsererror')) return null;
+
+                const usdRate = xml.querySelector('Exrate[CurrencyCode="USD"]')?.getAttribute('Sell');
+                const rate = Number(usdRate?.replace(/,/g, ''));
+                return Number.isFinite(rate) && rate > 0 ? rate : null;
+            } catch (error) {
+                console.warn('Unable to load USD/VND transfer rate', error);
+                return null;
+            }
+        }
+
+        function formatEstimatedVndPerLuong(priceUsdPerOunce, usdVndRate) {
+            if (priceUsdPerOunce === null || priceUsdPerOunce === undefined || !Number.isFinite(Number(priceUsdPerOunce)) || !Number.isFinite(usdVndRate)) return '-';
+            const estimate = Number(priceUsdPerOunce) * usdVndRate * (VIETNAMESE_LUONG_GRAMS / TROY_OUNCE_GRAMS);
+            return `${Math.round(estimate).toLocaleString('vi-VN')} ₫`;
+        }
+
         function escapeHtml(s) {
             if (s === null || s === undefined) return '';
             return String(s)
@@ -1507,7 +1549,7 @@
             } catch (e) { }
         }
 
-        function renderGoldPrice(bodyElId, items) {
+        function renderGoldPrice(bodyElId, items, usdVndRate) {
             const tbody = document.getElementById(bodyElId);
             if (!Array.isArray(items) || items.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="7" class="no-data">Không có dữ liệu</td></tr>';
@@ -1520,7 +1562,7 @@
                 { label: 'Bạc', code: 'XAG', type: 'silver', price: data.xagPrice, chg: data.chgXag, pc: data.pcXag, close: data.xagClose }
             ];
 
-            tbody.innerHTML = rows.map(row => {
+            const priceRows = rows.map(row => {
                 const chgColor = row.chg != null ? (row.chg >= 0 ? '#4caf50' : '#f44336') : '#666';
                 const pcColor = row.pc != null ? (row.pc >= 0 ? '#4caf50' : '#f44336') : '#666';
                 const chgText = row.chg != null ? (row.chg > 0 ? '+' + formatNumber(row.chg) : formatNumber(row.chg)) : '-';
@@ -1530,12 +1572,24 @@
                     code: data.curr,
                     type: row.label === 'Vàng' ? 'Vàng' : 'Bạc',
                     name: row.label,
-                    price: formatNumber(row.price),
+                    price: `${formatNumber(row.price)} USD/oz`,
                     change: chgText,
                     percentChange: pcText,
                     close: formatNumber(row.close)
                 }, row.type, { change: chgColor, percentChange: pcColor });
             }).join('');
+
+            const conversionRows = rows.map(row => renderTableRow('goldPriceRowTemplate', {
+                code: data.curr,
+                type: row.label,
+                name: `${row.label} quy đổi (ước tính)`,
+                price: `${formatEstimatedVndPerLuong(row.price, usdVndRate)} /lượng`,
+                change: '—',
+                percentChange: '—',
+                close: '—'
+            }, row.type, {}, 'goldprice-conversion-row')).join('');
+
+            tbody.innerHTML = priceRows + conversionRows;
         }
 
         function renderMihong(bodyElId, prices) {
@@ -1727,15 +1781,21 @@
 
         async function loadAll() {
             // Fetch all data sources in parallel
-            const [infoRes, gRes, dRes, pRes, btmhRes, mRes, nRes] = await Promise.all([
+            const [infoRes, gRes, dRes, pRes, btmhRes, mRes, nRes, usdVndRate] = await Promise.all([
                 fetchJsonSafe('data/info.json'),
                 fetchJsonSafe('data/prices-goldprice.json'),
                 fetchJsonSafe('data/prices-doji.json'),
                 fetchJsonSafe('data/prices-phuquy.json'),
                 fetchJsonSafe('data/prices-baotinmanhhai.json'),
                 fetchJsonSafe('data/prices-mihong.json'),
-                fetchJsonSafe('data/prices-ngoctham.json')
+                fetchJsonSafe('data/prices-ngoctham.json'),
+                fetchUsdVndTransferRate()
             ]);
+
+            const goldpriceNote = document.getElementById('goldpriceNote');
+            goldpriceNote.textContent = usdVndRate
+                ? `Quy đổi tham khảo theo tỷ giá bán USD/VND Vietcombank ${usdVndRate.toLocaleString('vi-VN')} VND/USD, 1 lượng = 37,5 g và 1 troy ounce = 31,1035 g; đây không phải giá niêm yết trong nước.`
+                : 'Không tải được tỷ giá USD/VND từ data/rates-vnd.xml; giá quy đổi tạm thời không khả dụng.';
 
             // Info
             if (infoRes.ok) {
@@ -1748,7 +1808,7 @@
             // GOLDPRICE
             if (gRes.ok) {
                 const gData = gRes.data && gRes.data.items ? gRes.data.items : gRes.data;
-                renderGoldPrice('goldpriceBody', Array.isArray(gData) ? gData : []);
+                renderGoldPrice('goldpriceBody', Array.isArray(gData) ? gData : [], usdVndRate);
             } else {
                 renderErrorInto('goldpriceBody', gRes.error || 'Invalid JSON', gRes.raw, 7);
             }
