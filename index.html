@@ -1580,7 +1580,7 @@
             }).join('');
 
             const conversionRows = rows.map(row => renderTableRow('goldPriceRowTemplate', {
-                code: data.curr,
+                code: 'VND (*)',
                 type: row.label,
                 name: `${row.label} quy đổi (ước tính)`,
                 price: `${formatEstimatedVndPerLuong(row.price, usdVndRate)} /lượng`,
@@ -1794,8 +1794,8 @@
 
             const goldpriceNote = document.getElementById('goldpriceNote');
             goldpriceNote.textContent = usdVndRate
-                ? `Quy đổi tham khảo theo tỷ giá bán USD/VND Vietcombank ${usdVndRate.toLocaleString('vi-VN')} VND/USD, 1 lượng = 37,5 g và 1 troy ounce = 31,1035 g; đây không phải giá niêm yết trong nước.`
-                : 'Không tải được tỷ giá USD/VND từ data/rates-vnd.xml; giá quy đổi tạm thời không khả dụng.';
+                ? `(*) Quy đổi tham khảo theo tỷ giá bán USD/VND Vietcombank ${usdVndRate.toLocaleString('vi-VN')} VND/USD, 1 lượng = 37,5 g và 1 troy ounce = 31,1035 g; đây không phải giá niêm yết trong nước.`
+                : '(*) Không tải được tỷ giá USD/VND từ data/rates-vnd.xml; giá quy đổi tạm thời không khả dụng.';
 
             // Info
             if (infoRes.ok) {
