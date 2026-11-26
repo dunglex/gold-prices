@@ -1,6 +1,6 @@
 <!--For reference only. Only one request every 5 minutes!-->
 <ExrateList>
-  <DateTime>11/26/2026 9:03:58 PM</DateTime>
+  <DateTime>11/27/2026 5:48:56 AM</DateTime>
   <Exrate CurrencyCode="AUD" CurrencyName="AUSTRALIAN DOLLAR   " Buy="16,685.36" Transfer="16,853.90" Sell="17,394.14" />
   <Exrate CurrencyCode="CAD" CurrencyName="CANADIAN DOLLAR     " Buy="17,699.07" Transfer="17,877.84" Sell="18,450.91" />
   <Exrate CurrencyCode="CHF" CurrencyName="SWISS FRANC         " Buy="30,234.93" Transfer="30,540.33" Sell="31,519.29" />
